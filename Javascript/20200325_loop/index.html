@@ -9,20 +9,45 @@
 	</style>
 </head>
 <body>
+	<!-- *while -->
 	<!-- ~하는 동안 반복적인 작업을 한다. -->
 	<!-- loop, iterate : 반복적인 작업 이라는 뜻 -->
-	<!-- Hello world;<br> -->
-	<!-- Hello world;<br> -->
-	<!-- Hello world;<br> -->
-	<!-- while(Boolean(조건)){
+	<!--
+	while(Boolean(조건)){
 		 반복해서 실행할 코드
-	} -->
+	}
+	 -->
+
+	<!-- *for -->
+	<!-- while 은 세가지 구성으로 이루어져 있음(초기화(변수 선언), 반복 조건, 반복 실행) -->
+	<!-- 가독성을 높이고 오류가 생길 확률을 줄이기 위해 이를 문법으로 만든 것이 FOR** -->
+	<!--
+	for(초기화(변수 선언), 반복 조건, 반복 실행){
+		 반복해서 실행할 코드
+	}
+	 -->
 	<script>
-		let i = 0;
-		while(i < 10){
-			document.write("Coding everbody" + i +"<br>");
-			i = i + 1;
-		}
+		// *while
+		// let i = 0;
+		// while(i < 10){
+		// 	document.write("Coding everbody" + i +"<br>");
+		// 	i = i + 1;
+		// }
+
+		// *for
+		// for(let i=0; i<10; i++){
+		// 	document.write("Coding everbody" + i +"<br>");
+		// }
+		// i=i+1; = i++ 와 같은 말
+		// i++; 구문이 실행될 때 마다 i의 값을 1씩 증가시킨다.(0 부터)
+		// ++i; 구문이 실행될 때 마다 i의 값을 1씩 증가시킨다.(0에서 1을 이미 더한 상태인 1부터)
+		// EX. 1부터 or 2의 배수
+		// for(let i=0; i<1000; i++){
+		// 	document.write("Coding is the best." + ((i+1)*2) + '<br>')
+		// }
+
+		// *반복문의 제어
+		
 	</script>
 </body>
 </html>
