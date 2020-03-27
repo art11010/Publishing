@@ -3,13 +3,70 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Slide</title>
 	<script src="../js/jquery.1.12.4.js"></script>
 	<style>
-		body{color:#fff;background-color:#333;}
+		body{margin:0;background-color:#333;}
+		ul{padding:0;}
+		li{list-style:none;}
+		button{display:block;cursor:pointer;background:none;border:none;}
+		div.wrap{width:fit-content;position:relative;padding-bottom:15px;}
+		div.wrap button{color:#fff;width:100%;height:100%;}
+
+		div.slide_wrap{width:100px;height:50px;margin:15px 50px;overflow:hidden;}
+		ul.slide{width:100px;height:50px;white-space:nowrap;font-size:0;position:relative;/*transform:translate3d(0px, 0px, 0px);*/}
+		ul.slide li{display:inline-block;width:50px;height:50px;font-size:16px;text-align:center;color:#fff;line-height:50px;box-sizing:border-box;border:1px solid #ccc;}
+
+		ul.dot{white-space:nowrap;font-size:0;position:absolute;bottom:0;left:50%;margin-left:-22px;}
+		ul.dot li{display:inline-block;width:5px;height:5px;border-radius:3px;background-color:#ccc;margin:0 2px;text-align:center;}
+
+		/*
+		*ul:after{display:block;content:'';clear:both}
+		 li{float:left;}
+		*/
+		/*
+		*ul{white-space:nowrap;font-size:0;}
+		 li{display:inline-block;font-size:15px;}
+		*/
 	</style>
 </head>
 <body>
-	
+	<div class="wrap">
+		<button type="button" class="prev">prev</button>
+		<div class="slide_wrap">
+			<ul class="slide">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+			</ul>
+		</div>
+		<button type="button" class="next">next</button>
+		<ul class="dot">
+			<li><button type="button"></button></li>
+			<li><button type="button"></button></li>
+			<li><button type="button"></button></li>
+			<li><button type="button"></button></li>
+			<li><button type="button"></button></li>
+		</ul>
+	</div>
+	<script>
+		function slide(){
+			let ulSd = $('ul.slide'),
+			ulSdW = ulSd.children().outerWidth(), // 이미지의 폭
+			ulSdH = ulSd.children().outerHeight(), // 이미지의 높이
+			ulSdL = ulSd.children().length-3; // 이미지의 갯수
+			ulSd.css("width", ulSdW * ulSdL + "px");
+			ulSd.css("height", ulSdH + "px");
+			ulSd.animate({left : - ulSdW + "px"}, 1000, "linear", function(){
+				ulSd.append("<li>" + ulSd.find("li:first").html() + "</li>");
+				$(this).find("li:first").remove();
+				$(this).css("left", 0);
+			});
+		}
+		// slide();
+		setInterval(slide,3000); // auto
+	</script>
 </body>
 </html>
