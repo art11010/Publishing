@@ -9,6 +9,15 @@
 	</style>
 </head>
 <body>
+	<!-- html에 for문 적용 -->
+	<!-- <ul>
+		<script>
+			let grades = {'egoing':10,'art11010':5,'wl11010':7};
+			for(let name in grades){
+				document.write("<li>key : "+name+" value : "+grades[name]+"</li>");
+			}
+		</script>
+	</ul> -->
 	<script>
 		// let object_name = {'key':value}
 		// 객체 정의 방법 1.
@@ -21,8 +30,47 @@
 		// grades['wl11010']=7;
 
 		// 객체 호출
-		// 1. grades['egoing']
-		// 2. grades.egoing
+		// 1. grades['egoing'], grades['ego'+'ing']
+		// 2. grades.egoing, 나눠쓰지 못함
+
+		// 객체 forIn문 사용
+		// for(key in value){
+		// 	실행할 코드
+		// }
+		// let grades = {'egoing':10,'art11010':5,'wl11010':7};
+		// for(key in grades){
+		// 	document.write("key : "+key+" value : "+grades[key]+"<br>");
+		// }
+		// document.write("<br>");
+		// for(let name in grades){
+		// 	document.write("key : "+name+" value : "+grades[name]+"<br>");
+		// }
+
+		// *객체지향
+		// 연관되어있는 값(데이터)과 연관되어있는 처리(기능)를 하나의 그릇 안에 그룹을 지어놓은 것 
+		let grades = {
+			'list':{'egoing':10,'art11010':5,'wl11010':7},
+			// 'show':function(){
+			// 	alert('Hello world')
+			// },
+			// 'show2':function(){
+			// 	console.log(this.list);
+			// },
+			// 'show3':function(){
+			// 	console.log(this.show());
+			// },
+			'show4':function(){
+				for(let name in this.list){
+					console.log(name, this.list[name])
+				}
+			}
+		}
+		// console.log(grades['list']['egoing'])
+		// grades['show']()
+		// grades['show2']()
+		// grades['show3']()
+		// grades['show4']()
+		grades.show4()
 	</script>
 </body>
 </html>
