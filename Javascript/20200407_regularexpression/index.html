@@ -16,9 +16,74 @@
 		// 3. 찾아낸 정보를 다른 정보로 치환할 때
 		// 주로 씀
 
-		// let str = "a";	// "문자"
+		// let str = 'a';	// "문자"
 		// let pattern = /a/;	// /찾고자 하는 대상/ ↓ 같음
 		// let pattern = new RegExp('a');	// ('찾고자 하는 대상') ↑ 같음
+
+		// ※ 정규표현법 소속 함수 (메소드)
+		// *exec 찾는 정보 추출 (결과로 배열이 나옴)
+		// *test 찾는 정보 존재유무 테스트 (결과로 boolean)
+		// *match 문자열이 담긴 변수.match(정규표현법을 인자로); (exec와 비슷)
+		// *replace 찾는 정보를 찾아서 원하는 정보로 바꾸어줌
+
+		// *exec
+		// let pattern = /a/;		1
+		// let pattern = /a./;		2	// . 은 하나의 문자를 의미함 즉, . 이오는 자리에 어떤 문자에 상관없이 문자가 있어야함
+		// let pattern = /f/;		3
+		// pattern.exec('abcde');	 → pattern 이라는 정규 표현식이 찾는 정보를 추출하라 (pattern은 a를 찾고싶어 함)
+		//  ∴ ['a'] 'abcde' 중 'a'를 찾아라		1
+		//  ∴ ['ab'] 'abcde' 중 'a'와 문자 하나를 찾아라	2
+		//  ∴ null 'abcde' 중 'f'가 없기 때문	3
+
+		// *test
+		// let pattern = /a/;
+		// pattern.test('abcde');	// ∴ true
+		// pattern.test('bcdef');	// ∴ false
+
+		// *match
+		// let pattern = /a/;	1
+		// let pattern = /g/;	2
+		// let str = 'abcdef';
+		// str.match(pattern);
+		// ∴ ['a'] 'abcdef' 중 'a'를 찾아라		1
+		// ∴ null 'abcdef' 중 'f'가 없기 떄문	2
+
+		// *replace
+		// let pattern = /a/;
+		// let str = 'abcdef';
+		// str.replace(pattern,'A');
+		// ∴ 'Abcdef'
+
+
+		// ※ 정규표현법 옵션
+		// *i 대소문자를 구문하지 않음
+		// *g 검색된 모든 결과를 리턴 (global의 약자)
+
+		// *i
+		// let xi = /a/;
+		// 'Abced'.match(xi);
+		// ∴ null
+		// let oi = /'a'/i;
+		// 'Abced'.match(oi);
+		// ∴ ['A']	i 를 넣으면 대소문자 구분을 안 하기 때문
+
+		// *g
+		// let xg =/a/;
+		// 'abcda'.match(xg);
+		// ∴ ['a']
+		// let og =/a/g;
+		// 'abcda'.match(og);
+		// ∴ ['a','a']	i 를 넣으면 찾는 모든 값을 리턴해줌
+
+		// *i,g
+		// let ig =/a/ig;	→ 대소문자 구분 X, 찾는 모든 값을 리턴
+		// 'AabcdAa'.match(ig);
+		// ∴ ['A','a','A','a']
+
+		// (\w+) \s (\w+)	→ 문자 하나 이상 + 공백 + 문자 하나 이상
+		// \w : 문자를 의미
+		// \w+ : +는 수량자를 의미(문자가 1개 보다 많다는 뜻?)
+		// \s : Space 공백
 	</script>
 </body>
 </html>
