@@ -24,7 +24,7 @@
 		// *exec 찾는 정보 추출 (결과로 배열이 나옴)
 		// *test 찾는 정보 존재유무 테스트 (결과로 boolean)
 		// *match 문자열이 담긴 변수.match(정규표현법을 인자로); (exec와 비슷)
-		// *replace 찾는 정보를 찾아서 원하는 정보로 바꾸어줌
+		// *replace 문자열이 담긴 변수.replace 찾는 정보를 찾아서 원하는 정보로 바꾸어줌
 
 		// *exec
 		// let pattern = /a/;		1
@@ -80,10 +80,19 @@
 		// 'AabcdAa'.match(ig);
 		// ∴ ['A','a','A','a']
 
+
 		// (\w+) \s (\w+)	→ 문자 하나 이상 + 공백 + 문자 하나 이상
+		// ∴ coding everybody
+
 		// \w : 문자를 의미
-		// \w+ : +는 수량자를 의미(문자가 1개 보다 많다는 뜻?)
+		// \w+ : +는 수량자를 의미(문자가 1개 보다 많다는 뜻)
 		// \s : Space 공백
+		let pattern = /(\w+)\s(\w+)/;	// → /(첫번째 그룹))\s(두번째 그룹)/
+		let str = 'coding everybody';
+		let result = str.replace(pattern, '$2, $1');	// 문자열.replace → 문자열(str)의 값을 pattern에 해당 되는 문자를 뒤의 값('$2, $1')으로 치환한다(replace).
+														// $2 : 두번째 그룹, $1 : 첫번째 그룹
+		console.log(result);
+		// ∴ everybody, coding
 	</script>
 </body>
 </html>
