@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Scope</title>
+	<style>
+		body{color:#fff;background-color:#333;}
+	</style>
+</head>
+<body>
+	<!-- ※유효범위 -->
+	<script>
+		// 1.
+		// * 변수선언(var, let)은 지역 변수를 만들 때 씀
+		//	 (변수선언을 하지 않은 채 선언하면 전역 변수가 됨)
+		// let vscope = 'global';
+		// function fscope(){
+		// 	// let vscope = 'local';
+		// 	vscope = 'local';
+		// }
+		// fscope();
+		// alert(vscope);
+		// 함수 fscope()에서 변수 선언을 했을 경우 'global'
+		// 함수 fscope()에서 변수 선언을 안 했을 경우 'local'
+
+		// 2.
+		// function a(){
+		// 	let i = 0;
+		// }
+		// for(let i = 0; i < 5; i++){
+		// 	a();
+		// 	document.write(i);
+		// }
+
+		// 3.
+		// let MYAPP = {}
+		// MYAPP.calculator = {
+		// 	'left' : null,	// null : 값을 정의 하지않았다는 뜻
+		// 	'right' : null
+		// }
+		// MYAPP.coordinate = {
+		// 	'left' : null,
+		// 	'right' : null
+		// }
+		// MYAPP.calculator.left = 10;
+		// MYAPP.calculator.right = 20;
+		// function sum(){
+		// 	return MYAPP.calculator.left + MYAPP.calculator.right;
+		// }
+		// document.write(sum());
+		// *전역 번수를 하나 만들어 .속성으로 하여 다른 변수들을 만들 수 있다?
+		// * (function(){위의 함수}(함수호출괄호)) 으로 감싸 함수화 시키면 전역 변수를 없앨 수 있다.
+
+		// 4.
+		// for(var i = 0; i < 1; i++){
+		// 	var name = 'coding everybody';
+		// }
+		// *for문이나 if문 안에서 선언된 변수는 전역 변수이다.
+
+		// 5.
+		// var i = 5;
+		// function a(){
+		// 	var i = 10;
+		// 	b();
+		// }
+		// function b(){
+		// 	document.write(i);
+		// }
+		// a();
+		// ∴ 5
+	</script>
+</body>
+</html>

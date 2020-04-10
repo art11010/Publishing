@@ -4,9 +4,10 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 	<meta charset="UTF-8">
 	<title>gallery</title>
-	<link rel="stylesheet" href="../../css/reset.css">
-	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="../js/jquery.1.12.4.js"></script>
 	<style>
+		*{margin:0;padding:0;box-sizing:border-box;}
+		li{list-style:none;}
 		#gallery{width: 824px;height: 595px;margin: 20px auto;
 			background-color: gray;}
 		#image{width: 760px;height: 470px;margin: 0 auto;}
@@ -24,7 +25,7 @@
 			position: relative;left: 33px;overflow: hidden;}
 		#thumnail .container ul{position: absolute;width: 2280px;}
 		#thumnail .container li{float: left;width: 120px;height: 95px;
-			margin-left: 8px;}
+			margin: 8px;font-size: 0;}
 		#thumnail .container .ml0{margin-left: 0;}
 	</style>
 	<script>
@@ -44,7 +45,7 @@
 				if(current <= 3){
 					current++;//curent = current + 1;
 					if(current == 3){current = 0}
-				} 
+				}
 				var num = current * 760 * -1;
 				console.log(num);
 				$(".container > ul").animate({left:num},300);

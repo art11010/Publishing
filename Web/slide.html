@@ -9,23 +9,25 @@
 		body{margin:0;background-color:#333;}
 		ul{padding:0;}
 		li{list-style:none;}
-		button{display:block;cursor:pointer;background:none;border:none;}
-		div.wrap{width:fit-content;position:relative;padding-bottom:15px;}
-		div.wrap button{color:#fff;width:100%;height:100%;}
+		button{padding:0;width:100%;height:100%;cursor:pointer;background:none;border:none;}
+		div.wrap{width:fit-content;position:relative;margin-top:15px;padding-bottom:15px;}
+		div.wrap > button{display:block;color:#fff;}
 
-		div.slide_wrap{width:100px;height:50px;margin:15px 50px;overflow:hidden;}
-		ul.slide{width:100px;height:50px;white-space:nowrap;font-size:0;position:relative;/*transform:translate3d(0px, 0px, 0px);*/}
-		ul.slide li{display:inline-block;width:50px;height:50px;font-size:16px;text-align:center;color:#fff;line-height:50px;box-sizing:border-box;border:1px solid #ccc;}
+		div.slide_wrap{width:100px;height:100px;margin:15px 50px;_overflow:hidden;position:relative;}
+		ul.slide{font-size:0;position:absolute;left:0;white-space:nowrap}
+		ul.slide li{display:inline-block;width:100px;height:100px;font-size:16px;text-align:center;color:#fff;line-height:100px;box-sizing:border-box;border:1px solid #ccc;}
 
-		ul.dot{white-space:nowrap;font-size:0;position:absolute;bottom:0;left:50%;margin-left:-22px;}
-		ul.dot li{display:inline-block;width:5px;height:5px;border-radius:3px;background-color:#ccc;margin:0 2px;text-align:center;}
+		ul.dot{white-space:nowrap;font-size:0;position:absolute;bottom:0;left:50%;transform:translateX(-50%);}
+		ul.dot:after{display:block;content:'';clear:both}
+		ul.dot li{display:block;float:left;width:6px;height:6px;border-radius:3px;background-color:#ccc;margin:0 2px;}
+		/* ul.dot button{height:100%;} */
 
 		/*
-		*ul:after{display:block;content:'';clear:both}
+		 ul:after{display:block;content:'';clear:both}
 		 li{float:left;}
 		*/
 		/*
-		*ul{white-space:nowrap;font-size:0;}
+		 ul{white-space:nowrap(끊이지않게 해줌);font-size:0;}
 		 li{display:inline-block;font-size:15px;}
 		*/
 	</style>
@@ -42,7 +44,7 @@
 				<li>5</li>
 			</ul>
 		</div>
-		<button type="button" class="next" onclick="slide();">next</button>
+		<button type="button" class="next" onclick="arNext();">next</button>
 		<ul class="dot">
 			<li><button type="button"></button></li>
 			<li><button type="button"></button></li>
@@ -55,36 +57,102 @@
 		let ulSd = $('ul.slide'),
 		ulSdW = ulSd.children().outerWidth(), // 이미지의 폭
 		ulSdH = ulSd.children().outerHeight(), // 이미지의 높이
-		ulSdL = ulSd.children().length-3; // 이미지의 갯수
-		ulSd.css("width", ulSdW * ulSdL + "px");
-		ulSd.css("height", ulSdH + "px");
+		ulSdL = ulSd.children().length, // 이미지의 갯수
+		ulcrrt = 0;
 
-
+		// * 슬라이드
 		function slide(){
-			ulSd.animate({left : - ulSdW + "px"}, 1000, "linear", function(){
-				ulSd.append("<li>" + ulSd.find("li:first").html() + "</li>");
-				ulSd.find("li:first").remove();
-				ulSd.css("left", 0);
-			});
+			if(ulcrrt <= ulSdL){
+				ulcrrt++;
+				if(ulcrrt == ulSdL){ulcrrt = 0}
+				ulSd.animate({left : - ulSdW + "px"}, 500, "linear", function(){
+					ulSd.append("<li>" + ulSd.find("li:nth-child("+ulcrrt+")").html() + "</li>");
+					// ulSd.append("<li>" + ulSd.find("li:nth-child("+ulcrrt+")").html() + "</li>");
+					ulSd.find("li:first").remove();
+					ulSd.css("left",0);
+				});
+			}
+			console.log(ulcrrt);
 		}
-
-		function arPrv(){
-			ulSd.animate({left : ulSdW + "px"}, 1000, "linear", function(){
-				ulSd.prepend("<li>" + ulSd.find("li:last").html() + "</li>");
-				ulSd.find("li:last").remove();
-				ulSd.css("left", 0);
-			});
-		}
-
-		function DotBtn(){
-			let
-		}
-
-
 		let autoSet = function(){setInterval(slide,3000);} // auto
+		autoSet();
+
+		// * Arrow
+		function arNext(){
+			if(ulcrrt <= ulSdL){
+				ulcrrt++;
+				if(ulcrrt == ulSdL){ulcrrt = 0}
+			}
+			let num = ulcrrt * ulSdW * -1;
+			console.log(ulSdW);
+			$("ul.slide").animate({left:num},400);
+		}
+		function arPrv(){
+			if(ulcrrt <= ulSdL){
+				ulcrrt--;
+				if(ulcrrt == ulSdL){ulcrrt = 0}
+			}
+			let num = ulcrrt * ulSdW * 1;
+			// console.log(num);
+			$("ul.slide").animate({left:num},400);
+		}
+
+		// * Dot
+		// function DotBtn(){
+		// 	$(".dot li").click(function(){
+		// 		let i = $(this).index();
+		// 		let num = i * ulSdW * -1;
+		// 		console.log(i, num);
+		// 		$("ul.slide").animate({left:num},400);
+		// 	});
+		// }
+		// DotBtn();
+		// ------------------------------------------------------------------
+
+		// 1 망작
+		// let ulSd = $('ul.slide'),
+		// ulSdW = ulSd.children().outerWidth(), // 이미지의 폭
+		// ulSdH = ulSd.children().outerHeight(), // 이미지의 높이
+		// ulSdL = ulSd.children().length-3; // 이미지의 갯수
+		// ulSd.css("width", ulSdW * ulSdL + "px");
+		// ulSd.css("height", ulSdH + "px");
+
+		// function slide(){
+		// 	ulSd.animate({left : - ulSdW + "px"}, 1000, "linear", function(){
+		// 		ulSd.append("<li>" + ulSd.find("li:first").html() + "</li>");
+		// 		ulSd.find("li:first").remove();
+		// 		ulSd.css("left", 0);
+		// 	});
+		// }
+
+		// function arPrv(){
+		// 	ulSd.animate({left : ulSdW + "px"}, 1000, "linear", function(){
+		// 		ulSd.prepend("<li>" + ulSd.find("li:last").html() + "</li>");
+		// 		ulSd.find("li:last").remove();
+		// 		ulSd.css("left", 0);
+		// 	});
+		// }
+
+		// function DotBtn(){
+		// 	let
+		// }
+
+
+		// let autoSet = function(){setInterval(slide,3000);} // auto
 		// autoSet();
 
 
+
+
+
+
+
+
+
+
+
+
+		// ------------------------------------------------------------------
 		// slick 이미지 마다 효과가 필요할 때 on
 		// function benefitInfo(e){
 		// 	var finOver = $(e).parent().next('div');
