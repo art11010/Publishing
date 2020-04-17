@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Closure</title>
+	<style>
+		body{color:#fff;background-color:#333;}
+	</style>
+</head>
+<body>
+	<!-- 클로저 -->
+	<script>
+		// *Closure (외부함수, 내부함수)
+		// function outter(){
+		// 	let title = 'coding everybody';
+		// 	return function(){
+		// 		alert(title);
+		// 	}
+		// }
+		// let inner = outter();	// return 값이 inner가 되는 것
+		// inner();		// 외부함수가 죽어도 외부함수에서 파생된 값을 받음(내부함수를 통해 외부함수에 접근할 수 있음).
+
+		// *Private variable : 정보를 아무나 수정하는 것을 방지하는 것
+		// function factory_movie(title){
+		// 	return {
+		// 		get_title : function(){		// 내부함수
+		// 			return title;
+		// 		},
+		// 		set_title : function(_title){	// 내부함수
+		// 			title = _title
+		// 		}
+		// 	}
+		// }
+		// let ghost = factory_movie('Ghost in the shell <br>');
+		// let matrix = factory_movie('Matrix <br>');
+		// document.write(ghost.get_title());
+		// document.write(matrix.get_title());
+		// ghost.set_title('공각기동대 <br>');
+		// document.write(ghost.get_title());
+		// document.write(matrix.get_title());
+
+		// *Closure example
+		let arr = []
+		for(let i = 0; i < 5; i++){
+			arr[i] = function(){
+				console.log(i);
+				// return i;
+			}
+		}
+		for(let index in arr) {
+			console.log(arr[index]());
+		}
+	</script>
+</body>
+</html>
