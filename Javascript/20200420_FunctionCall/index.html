@@ -3,15 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Arguments</title>
+	<title>Function Call</title>
 	<style>
 		body{color:#fff;background-color:#333;}
 	</style>
 </head>
 <body>
-	<!-- 함수 호출 -->
+	<!-- 함수의 호출 -->
 	<script>
-	// ※ arguments 객체가 하는 일
+	// ※ 함수호출
+	// function func(){
+	// }
+	// func();
+
+	// *apply
+	// function sum(arg1, arg2){
+	// 	return arg1+arg2;
+	// }
+	// sum(1,2)   =   sum.apply(null, [1,2])
+
+	o1 = {val1:1, val2:2, val3:3}
+	o2 = {v1:10, v2:50, v3:100, v4:25}
+	function sum(){
+		var _sum = 0;
+		for(name in this){
+			_sum += this[name];
+		}
+		return _sum;
+	}
+	alert(sum.apply(o1)) //   =   alert(o1.sum)	// 6
+	alert(sum.apply(o2)) //   =   alert(o2.sum)	// 185
 	</script>
 </body>
 </html>
