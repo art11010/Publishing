@@ -41,14 +41,14 @@
 		// document.write(matrix.get_title());
 
 		// *Closure example
-		let arr = []
-		for(let i = 0; i < 5; i++){
+		var arr = []
+		for(var i = 0; i < 5; i++){
 			arr[i] = function(){
-				console.log(i);
-				// return i;
+				// console.log(i);
+				return i;
 			}
 		}
-		for(let index in arr) {
+		for(var index in arr) {
 			console.log(arr[index]());
 		}
 	</script>
