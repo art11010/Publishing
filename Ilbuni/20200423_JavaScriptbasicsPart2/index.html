@@ -13,7 +13,7 @@
 	<!-- ※자바스크립트 기초 Part 2 -->
 	<h1>JavaScript</h1>
 	<script>
-		// *함수(어떠한 기능을 하는 코드 덩어리)
+		// ***함수(어떠한 기능을 하는 코드 덩어리)
 		// 자바스크립트는 자동으로 실행되지만 함수를 통해 이를 막고 원할 때 씀
 		// console.log('zzzz');
 		// function sample(){
@@ -22,7 +22,7 @@
 		// }
 		// sample();	// 함수 실행(호출연산자)
 
-		// *return
+		// ***return문
 		// var a = -100;
 		// function sample2(){
 		// 	if( a > 0 ){
@@ -32,7 +32,7 @@
 		// }
 		// sample2();
 
-		// *parameter
+		// ***parameter
 		// function 인사(이름){
 		// 	console.log('안녕? 나는 ' + 이름 + '야.');
 		// }
@@ -54,7 +54,7 @@
 		// console.log(plus2);
 		// document.querySelector('h1').style.height = plus2 + 'px';	// h1 height 조절 JavaScript
 
-		// *변수의 유효범위(Scope)	// 변수를 인식할 수 있는 범위
+		// ***변수의 유효범위(Scope)	// 변수를 인식할 수 있는 범위
 		// var a = 100;	// 전역변수
 		// function scope(){
 		// 	var a ='Scope 내부의 a'	// 속한 함수에서 우선적으로 변수를 찾음
@@ -71,6 +71,30 @@
 		// scope();
 		// console.log(a);
 		// console.log(b);	// b is not defined
+
+		// ***객체
+		// var object = {
+		// 	key : value
+		// }
+
+		// var person = {};
+		// person.nickname = '동네친구';	// 속성(property)
+		// person.age = '17';
+		// person.introduce = function(){	// 속성 중 값이 함수인 것을 메서드(method)라 함
+		// 	console.log('안녕? 나는 ' + this.nickname + '야. 나이는 ' + this.age + '살이야.');
+		// 	// console.log('안녕? 나는 ' + person.nickname + '야. 나이는 ' + person.age + '살이야.');
+		// };
+		// console.log(person.name);	//  .name : consolg의 log 객체에 접근한 것
+		// person.introduce();	// 객체가 함수일 때 호출법
+
+		// var person2 = {
+		// 	nickname : 'Zena',
+		// 	age : 20,
+		// 	introduce : function(){
+		// 		console.log('안녕? 나는 ' + this.nickname + '야. 나이는 ' + this.age + '살이야.');
+		// 	}
+		// }
+		// person2.introduce();
 
 		// 전역 변수를 최소화 하는 법(객체 이용)
 		// var jejudo = {
