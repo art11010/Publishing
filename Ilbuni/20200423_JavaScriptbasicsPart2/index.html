@@ -6,6 +6,7 @@
 	<title>JavaScript basics 2</title>
 	<style>
 		body{color:#fff;background-color:#333;}
+		h1{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;}
 	</style>
 </head>
 <body>
@@ -37,19 +38,52 @@
 		// }
 		// 인사('일분이');
 
-		// a와 b는 더하기 함수의 매개변수(parameter)
-		function 더하기(a, b){
-			document.write(a + b);
-		}
-		// 더하기(1, 100);
-		var h = (더하기(100,200));
-		console.log(h);
+		// function 더하기(a, b){	// a와 b는 더하기 함수의 매개변수(parameter)
+		// 	document.write(a + b);
+		// }
+		// // 더하기(1, 100);
+		// var plus1 = (더하기(100,200));
+		// console.log(plus1);
 
-		function 더하기2 ( a, b ){
-			return a + b;	// 리턴값(반환값)
-		}
-		// console.log(더하기2(100,200));
+		// function 더하기2( a, b ){
+		// 	document.write(a + b);
+		// 	return a + b;	// 리턴값(반환값)
+		// }
+		// // 더하기2(200,400);
+		// var plus2 = (더하기2(200,500));
+		// console.log(plus2);
+		// document.querySelector('h1').style.height = plus2 + 'px';	// h1 height 조절 JavaScript
 
+		// *변수의 유효범위(Scope)	// 변수를 인식할 수 있는 범위
+		// var a = 100;	// 전역변수
+		// function scope(){
+		// 	var a ='Scope 내부의 a'	// 속한 함수에서 우선적으로 변수를 찾음
+		// 	var b = 200;	//지역변수
+		// 	console.log('Scope에서 출력한 ' + a);
+		// 	// console.log('Scope에서 출력한 ' + b);
+		// 	function scope2(){
+		// 		var c = 10000;
+		// 		console.log(b);
+		// 	}
+		// 	scope2();
+		// 	// console.log(c);	// c is not defined
+		// }
+		// scope();
+		// console.log(a);
+		// console.log(b);	// b is not defined
+
+		// 전역 변수를 최소화 하는 법(객체 이용)
+		// var jejudo = {
+		// 	a : 100,
+		// 	b : 200,
+		// 	c : 300,
+		// 	d : {
+		// 		A : 1000,
+		// 		B : 2000
+		// 	}
+		// }
+		// console.log(jejudo.c);	// 300
+		// console.log(jejudo.d.A);	// 1000
 	</script>
 </body>
 </html>
