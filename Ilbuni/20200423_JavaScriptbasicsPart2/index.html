@@ -84,7 +84,7 @@
 		// 	console.log('안녕? 나는 ' + this.nickname + '야. 나이는 ' + this.age + '살이야.');
 		// 	// console.log('안녕? 나는 ' + person.nickname + '야. 나이는 ' + person.age + '살이야.');
 		// };
-		// console.log(person.name);	//  .name : consolg의 log 객체에 접근한 것
+		// console.log(person.nickname);	//  .name : consolg의 log 객체에 접근한 것
 		// person.introduce();	// 객체가 함수일 때 호출법
 
 		// var person2 = {
@@ -95,6 +95,19 @@
 		// 	}
 		// }
 		// person2.introduce();
+
+		// 생성자(constructor)
+		function Person(username, age){
+			this.username = username;
+			this.age = age;
+			this.introduce = function(){
+				console.log('안녕? 나는' + this.username + '야. 나이는 ' + this.age + '살이야.');
+			}
+		}
+		var p1 = new Person('동네친구', 17);
+		var p2 = new Person('일분이', 3);
+		p1.introduce();
+		p2.introduce();
 
 		// 전역 변수를 최소화 하는 법(객체 이용)
 		// var jejudo = {
