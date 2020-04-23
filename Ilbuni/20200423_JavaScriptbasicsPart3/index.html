@@ -8,12 +8,32 @@
 		body{color:#fff;background-color:#333;}
 		h1{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;}
 	</style>
+	<script>
+		// ***DOM 스크립트
+		// window.onload = function(){	// 전체 문서가 로드되면 함수 실행 코드
+		// 	var title = document.getElementById('main-title');
+		// 	console.log(title);
+		// }
+
+		window.addEventListener('load',function(){	// 위 코드와 같음
+			var title = document.getElementById('main-title');
+			console.log(title);
+		});
+	</script>
 </head>
 <body>
 	<!-- ※자바스크립트 기초 Part 3 -->
-	<h1>JavaScript</h1>
-	<script>
-		// ***함수
-	</script>
+	<h1 id="main-title">DOM (Document Object Model)</h1>
+	<article>
+		<header class="main-header">header</header>
+		<section>
+			<header>s header</header>
+			section 1
+		</section>
+		<section>
+			<header>s header</header>
+			section 2
+		</section>
+	</article>
 </body>
 </html>
