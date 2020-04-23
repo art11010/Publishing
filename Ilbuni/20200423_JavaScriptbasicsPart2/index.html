@@ -12,8 +12,44 @@
 	<!-- ※자바스크립트 기초 Part 2 -->
 	<h1>JavaScript</h1>
 	<script>
-		// *함수(자바스크립트는 자동으로 실행되지만 함수를 통해 이를 막고 원할 때 씀)
-		console.log('zzzz')
+		// *함수(어떠한 기능을 하는 코드 덩어리)
+		// 자바스크립트는 자동으로 실행되지만 함수를 통해 이를 막고 원할 때 씀
+		// console.log('zzzz');
+		// function sample(){
+		// 	return;	// 함수 안에서 returen이 나오면 이 자리에서 함수가 종료됨 실행한 위치로 돌아감
+		// 	console.log('zzzz');
+		// }
+		// sample();	// 함수 실행(호출연산자)
+
+		// *return
+		// var a = -100;
+		// function sample2(){
+		// 	if( a > 0 ){
+		// 		return;	// return이 있는 시점에서 함수를 종료시킴.
+		// 	}
+		// 	console.log('zzzz');
+		// }
+		// sample2();
+
+		// *parameter
+		// function 인사(이름){
+		// 	console.log('안녕? 나는 ' + 이름 + '야.');
+		// }
+		// 인사('일분이');
+
+		// a와 b는 더하기 함수의 매개변수(parameter)
+		function 더하기(a, b){
+			document.write(a + b);
+		}
+		// 더하기(1, 100);
+		var h = (더하기(100,200));
+		console.log(h);
+
+		function 더하기2 ( a, b ){
+			return a + b;	// 리턴값(반환값)
+		}
+		// console.log(더하기2(100,200));
+
 	</script>
 </body>
 </html>
