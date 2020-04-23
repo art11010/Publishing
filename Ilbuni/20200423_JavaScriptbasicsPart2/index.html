@@ -95,7 +95,8 @@
 		// 	}
 		// }
 		// person2.introduce();
-
+		
+		// ***생성자와 인스턴스는 짝꿍으로 사용
 		// 생성자(constructor)
 		function Person(username, age){
 			this.username = username;
@@ -104,6 +105,10 @@
 				console.log('안녕? 나는' + this.username + '야. 나이는 ' + this.age + '살이야.');
 			}
 		}
+
+		// 인스턴스(instance)
+		// Person('동네친구', 17);	// this 동작 안 함
+		// Person('일분이', 3);	// this 동작 안 함
 		var p1 = new Person('동네친구', 17);
 		var p2 = new Person('일분이', 3);
 		p1.introduce();
