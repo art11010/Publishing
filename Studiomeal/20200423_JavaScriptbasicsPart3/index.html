@@ -7,6 +7,12 @@
 	<style>
 		body{color:#fff;background-color:#333;}
 		h1{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;}
+		li{font-size:0;}
+		a{font-size:16px;}
+		.ilbuni{display:inline-block;list-style:none;}
+		.ilbuni img{width:100px;}
+		.link-google{color:#fff;}
+		.special{background-color:pink;}
 	</style>
 	<!-- <script>
 		// ***DOM 스크립트
@@ -39,21 +45,59 @@
 	<!-- ※자바스크립트 기초 Part 3 -->
 	<h1 id="main-title">
 		DOM (Document Object Model)
+		<small>small</small>
 	</h1>
-	<uk>
-		<li class="ilbuni"><img src="image/ilbuni-1.png" alt=""></li>
-		<li class="ilbuni"><img src="image/ilbuni-2.png" alt=""></li>
-		<li class="ilbuni"><img src="image/ilbuni-3.png" alt=""></li>
-	</uk>
+	<ul>
+		<li class="ilbuni">
+			<img src="image/ilbuni.gif" alt="">
+			<a class="link-google" href="https://google.com">Goolgle</a>
+		</li>
+		<li class="ilbuni"><img src="image/ilbuni-1.jpg" alt=""></li>
+		<li class="ilbuni"><img src="image/ilbuni-2.jpg" alt=""></li>
+	</ul>
+
 	<script>
 		// ***DOM 스크립트
-		var title = document.getElementById('main-title');	// getElementById id로 element를 get하는 것
-		var titleSpan = title.getElementsByTagName('span');
-		//태그는 복수가 될수있기 때문에 s가 붙고 가져오는 형태도 배열처럼 나옴(index와 length 존재)
+		// var title = document.getElementById('main-title');	// getElementById id로 element를 get하는 것
+		// var titleSpan = title.getElementsByTagName('span');
+		//태그는 복수가 될수있기 때문에 s가 붙고 가져오는 형태도 배열과 비슷하게 나옴(index와 length 존재)
 		// getElementById, getElementsByTagName → 요즘 잘 안 씀
 		// console.log(title);	// <h1 id="main-title">...</h1>
 		// console.log(titleSpan);	// HTMLCollection [span]
 		// console.log(titleSpan[2]);	//<span>hello</span>
+
+		// var mainTitle =  document.querySelector('#main-title small');
+		// 제이쿼리에서 var mainTitle =  $('#main-title small'); 와 같음
+		// console.log(mainTitle);
+
+		// var ilbuni =  document.querySelector('.ilbuni');
+		//querySelector 는 해당 객체가 여러개일 경우 첫 객체만 가져옴
+		// ilbuni.style.border = '1px solid red';	// 첫 객체에만 적용
+
+		// var ilbuni =  document.querySelectorAll('.ilbuni');
+		// querySelectorAll 은 여러개의 해당 객체를 다 가져옴, 배열과 비슷하게 나옴(index와 length 존재)
+		// console.log(ilbuni[1]);
+		// for(var i = 0; i < ilbuni.length; i++){
+		// 	ilbuni[i].style.border = '1px solid red';
+		// }
+
+		// *변수.style.stylename : 스타일 변경 명령어
+		var link = document.querySelector('.ilbuni a')
+		// link.style.color = 'white';
+		// console.log(link.getAttribute('href'));
+		// console.log(link.getAttribute('class'));
+
+		// *setAttribute(속성이름, 바꿀 속성값) : 속성 변경 명령어 (매개변수 2개)
+		// link.setAttribute('href','https://studiomeal.com');
+		// console.log(link.getAttribute('href'));
+		// console.log(link.setAttribute('href','https://studiomeal.com'));	//undefined
+		// ※ 명령어에 get이 들어가있을 경우 : geter라고 부름, return 값 있음
+		// ※ 명령어에 set이 들어가있을 경우 : seter라고 부름, return 값 없음
+
+		// *className
+		link.className = 'special';
+
 	</script>
+
 </body>
 </html>
