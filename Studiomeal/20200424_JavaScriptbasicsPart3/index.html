@@ -116,20 +116,29 @@
 		// console.log(link.classList.contains('special'));
 
 		// *createElement는 새로운 요소를 변수에 만들어줌
-		var listElem = document.createElement('li');
-		// *변수명.innerHTML : html 삽입
-		listElem.innerHTML = '<span>일분이</span>';
-		console.log(listElem);	//<li></li>
+		// var listElem = document.createElement('li');
+		// *변수명.innerHTML : html 삽입,	*변수명.createTextNode('Text') : 택한 요소에 텍스트를 추가
+		// listElem.innerHTML = '<span>일분이</span>';
+		// console.log(listElem);	//<li></li>
 
+		// var ilbuniMom = document.querySelector('.ilbuni-mom');
+		// *변수명.appendChild : 선택한 요소 안에 자식 요소 추가
+		// ilbuniMom.appendChild(listElem);
 
-		var ilbuniMom = document.querySelector('.ilbuni-mom');
-		ilbuniMom.appendChild(listElem);
 
 		// ***Event : 정적인 가운데 발생하는 사건
 		// [ 웹이벤트.Ex) 마우스 Move Click Double-Click Wheel 등, Touch, Tab, Load, Resize ]
+		var h2Title = document.querySelector('.title');
 		var btn = document.querySelector('.btn');
-		
-
+		function btnClickHandler(){
+			h2Title.style.background = 'dodgerblue';
+		}
+		// *변수명.addEventListener('이벤트 이름',함수명) : 
+		btn.addEventListener('click',btnClickHandler)
+					// ↑ 같은 거
+		// btn.addEventListener('click',function(){
+		// 	btnClickHandler();
+		// });
 	</script>
 
 </body>
