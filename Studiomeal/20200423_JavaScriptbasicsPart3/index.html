@@ -6,9 +6,9 @@
 	<title>JavaScript basics 3</title>
 	<style>
 		body{color:#fff;background-color:#333;}
-		h1{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;}
-		li{font-size:0;}
-		a{font-size:16px;}
+		h1,h2{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;}
+		/* li{font-size:0;} */
+		/* a{font-size:16px;} */
 		.ilbuni{display:inline-block;list-style:none;}
 		.ilbuni img{width:100px;}
 		.link-google{color:#fff;}
@@ -47,7 +47,7 @@
 		DOM (Document Object Model)
 		<small>small</small>
 	</h1>
-	<ul>
+	<ul class="ilbuni-mom">
 		<li class="ilbuni">
 			<img src="image/ilbuni.gif" alt="">
 			<a class="link-google" href="https://google.com">Goolgle</a>
@@ -55,6 +55,7 @@
 		<li class="ilbuni"><img src="image/ilbuni-1.jpg" alt=""></li>
 		<li class="ilbuni"><img src="image/ilbuni-2.jpg" alt=""></li>
 	</ul>
+	<h2 class="title">Event</h2>
 
 	<script>
 		// ***DOM 스크립트
@@ -70,33 +71,60 @@
 		// 제이쿼리에서 var mainTitle =  $('#main-title small'); 와 같음
 		// console.log(mainTitle);
 
+		// *querySelector 는 해당 객체가 여러개일 경우 첫 객체만 가져옴
 		// var ilbuni =  document.querySelector('.ilbuni');
-		//querySelector 는 해당 객체가 여러개일 경우 첫 객체만 가져옴
 		// ilbuni.style.border = '1px solid red';	// 첫 객체에만 적용
 
+		// *querySelectorAll 은 여러개의 해당 객체를 다 가져옴, 배열과 비슷하게 나옴(index와 length 존재)
 		// var ilbuni =  document.querySelectorAll('.ilbuni');
-		// querySelectorAll 은 여러개의 해당 객체를 다 가져옴, 배열과 비슷하게 나옴(index와 length 존재)
 		// console.log(ilbuni[1]);
 		// for(var i = 0; i < ilbuni.length; i++){
 		// 	ilbuni[i].style.border = '1px solid red';
 		// }
 
-		// *변수.style.stylename : 스타일 변경 명령어
-		var link = document.querySelector('.ilbuni a')
+
+		// var link = document.querySelector('.ilbuni a')
+
+		// *변수명.style.stylename : 스타일 변경 명령어
 		// link.style.color = 'white';
 		// console.log(link.getAttribute('href'));
 		// console.log(link.getAttribute('class'));
 
-		// *setAttribute(속성이름, 바꿀 속성값) : 속성 변경 명령어 (매개변수 2개)
+		// *변수명.setAttribute(속성이름, 바꿀 속성값) : 속성 변경 명령어 (매개변수 2개)
 		// link.setAttribute('href','https://studiomeal.com');
 		// console.log(link.getAttribute('href'));
 		// console.log(link.setAttribute('href','https://studiomeal.com'));	//undefined
 		// ※ 명령어에 get이 들어가있을 경우 : geter라고 부름, return 값 있음
 		// ※ 명령어에 set이 들어가있을 경우 : seter라고 부름, return 값 없음
 
-		// *className
-		link.className = 'special';
+		// *변수명.className : 기존에 있던 class를 지우고 새로운 값으로 교체 → 요즘 잘 안 씀
+		// link.className = 'special';
 
+		// *변수명.classList	(여러개 class를 하고싶을 경우 , 로 추가)
+		// + .add() : 기존에 있던 class를 유지하며 새로운 값 추가 (add() : classList의 메소드)
+		// link.classList.add('special');
+		// + .remove() : 기존 class 제거 (remove() : classList의 메소드)
+		// link.classList.remove('link-google');
+
+		// setTimeout(function(){
+		// 	link.classList.remove('link-google', 'special');
+		// },2000);	// setTimeout : 1초 후 함수 실행
+
+
+		// *변수명.classList.contains : return값 = boolean, 해당 요소 안에 찾고자 하는 class가 있는지
+		// console.log(link.classList.contains('special'));
+
+		// *createElement는 새로운 요소를 변수에 만들어줌
+		var listElem = document.createElement('li');
+		// *변수명.innerHTML : html 삽입
+		listElem.innerHTML = '<span>일분이</span>';
+		console.log(listElem);	//<li></li>
+
+
+		var ilbuniMom = document.querySelector('.ilbuni-mom');
+		ilbuniMom.appendChild(listElem);
+
+		// ***Event
 	</script>
 
 </body>
