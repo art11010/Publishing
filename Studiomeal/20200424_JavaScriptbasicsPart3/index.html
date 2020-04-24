@@ -160,10 +160,11 @@
 		// 	ilbuni[i].style.border = '1px solid red';
 		// }
 
-		var navMenu = document.querySelector('.menu')
-		var navMenuA = document.querySelectorAll('.menu a')
+		var navMenu = document.querySelector('.menu');
+		var navMenuA = document.querySelectorAll('.menu a');
+		var navMenuIndex = navMenuA.index();
 		function navMenuClick(){
-			navMenuA.classList.add('menu-active');
+			navMenuA[navMenuIndex].classList.add('menu-active');
 		}
 		navMenuA.addEventListener('click',navMenuClick);
 	</script>
