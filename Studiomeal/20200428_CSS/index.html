@@ -3,15 +3,73 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Layout·JavaScript</title>
+	<title>Layout·Grid·JavaScript</title>
 	<style>
-		body{color:#fff;background-color:#333;}
-		h1,h2{width:fit-content;padding:0 10px;color:#333;background-color:#fff000;transition: .3s;}
+		body{color:#fff;background-color:#ccc;margin:0;}
+		ul{margin:0;padding:0;}
+		li{list-style:none;}
+		p{margin:0;}
+		strong{color:#000}
+		img{width:100px;}
+		.container{
+			/* ·FLEX· */
+			/* display:flex; */
+			/* flex-direction:column; */
+			/* flex-wrap:wrap; */
+			/* justify-content:flex-start; */
+			/* align-items:stretch; */
+			/* align-content:flex-start; */
+			/* height:100vh; */
 
+			/* ·GRID· */
+			display:grid;
+			/* grid-template-columns:40% 60%; */	/* 여백이 생겼을 때 스크롤 생김 */
+			/* grid-template-columns:4fr 6fr; */	/* 여백 포함 40% 60% */
+			grid-template-columns:repeat(3,1fr);	/* grid-template-columns:1fr 1fr 1fr; 과 같음 */
+			/* grid-template-columns:200px 1fr; */	/* 200px은 고정 */
+			grid-gap:1rem;
+
+			background-color:#333;
+		}
+		.item{
+			/* ·FLEX· */
+			/* flex-grow:1; */
+			/* flex-basis:0; */
+			background-color:rgba(255,0,0,0.5);
+		}
+		.item:nth-child(1){
+			/* ·FLEX· */
+			/* flex:1;order:2; */
+			/* flex-grow:1;flex-shrink:1;align-self:flex-start; */
+		}
+		.item:nth-child(2){
+			/* ·FLEX· */
+			/* flex:2;order:3; */
+			/* flex-grow:2;flex-shrink:2;align-self:center; */
+		}
+		.item:nth-child(3){
+			/* ·FLEX· */
+			/* flex:1;order:1; */
+			/* flex-grow:1;flex-shrink:1;align-self:flex-end; */
+		}
+		/* flex-grow:1여백이 1 : 2 : 1 비율값 */
+
+		.item:nth-child(odd){background-color:rgba(255,255,0,0.5);}
 	</style>
 </head>
 <body>
 	<!-- ※CSS 레이아웃·자바스크립트 기초 정리 -->
+	<div class="container">
+		<div class="item"><strong>1</strong><img src="image/ilbuni.gif" alt=""><p>AAAAA</p></div>
+		<div class="item"><strong>2</strong><img src="image/ilbuni-1.jpg" alt=""><p>BBBBB</p></div>
+		<div class="item"><strong>3</strong><img src="image/ilbuni-2.jpg" alt=""><p>CCCCC</p></div>
+		<div class="item"><strong>4</strong><img src="image/ilbuni.gif" alt=""><p>DDDDD</p></div>
+		<div class="item"><strong>5</strong><img src="image/ilbuni-1.jpg" alt=""><p>EEEEE</p></div>
+		<div class="item"><strong>6</strong><img src="image/ilbuni-2.jpg" alt=""><p>FFFFF</p></div>
+		<div class="item"><strong>7</strong><img src="image/ilbuni.gif" alt=""><p>GGGGG</p></div>
+		<div class="item"><strong>8</strong><img src="image/ilbuni-1.jpg" alt=""><p>HHHHH</p></div>
+		<div class="item"><strong>9</strong><img src="image/ilbuni-2.jpg" alt=""><p>IIIII</p></div>
+	</div>
 
 	<script>
 
