@@ -14,7 +14,7 @@
 		$(function(){
 			var $duration = 300,
 				$button = $('#btns button');
-			// 버튼들의 높이 지정
+			// *버튼들의 높이 지정
 			// JavaScript ↓
 			// var $buttons = document.getElementsByTagName('button');
 			// $buttons[0].style.top = '-40px';
@@ -22,6 +22,20 @@
 			// for(var i = 0;i<$buttons.length;i++){
 			// 	$buttons[i].style.top = i * 40 - 40 + 'px';
 			// }
+
+			// JQuery ↓
+			$button.each(function(idx){
+				console.log(idx);
+				$(this).css({top:idx * 40 - 40 + 'px'})
+			}).mouseover(function(){
+				$(this).stop().animate({backgroundColor:'#fff000',color:'#000'},$duration);
+				$(this).find('img').eq(0).stop().animate({opacity:0},$duration)
+				$(this).find('img').eq(1).stop().animate({opacity:1},$duration)
+			}).mouseout(function(){
+				$(this).stop().animate({backgroundColor:'#fff',color:'#01b169'},$duration);
+				$(this).find('img').eq(0).stop().animate({opacity:1},$duration)
+				$(this).find('img').eq(1).stop().animate({opacity:0},$duration)
+			});
 		});
 	</script>
 </head>
