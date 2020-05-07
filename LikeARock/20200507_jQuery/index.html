@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		</style>
+	<script src="../../_js/jquery.1.12.4.js"></script>
+	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
+	<!-- <script>
+		// window.addEventListener('DOMContentLoaded',function(){
+		// 	document.getElementsByTagName('h1')[0].style.color='red';
+		// });
+
+		// $(document).ready(function(){});
+
+		// $(function(){
+		// 	$('h1').css({'color':'red','background':'#aaa'});
+		// });
+	</script> -->
+</head>
+<body>
+	<header class="page-header" role="banner">
+		<h1>Creative jQuery Sample</h1>
+	</header>
+	<div class="page_main" role="main">
+		<div id="typo">
+			<div class="inner">Creative jQuery</div>
+		</div>
+	</div>
+	<script>
+		// *출력
+		// document.getElementsByTagName('h1')[0].style.color='red';
+		// $('h1').css({'color':'red'});
+
+
+		// *CSS
+		$('h1').css('color','red');	// CSS 하나만 바꿀 경우 {} 없애고 ,를 써야함
+		$('#typo .inner').css({
+			'text-decoration':'underline',
+			textDecorationColor:'#fff',
+			borderBottom:'5px solid red',
+			'opacity':0.8
+		});
+		// CSS 여러개 바꿀 경우 {} 와 : 를 써야함
+
+
+		// *실행 지점 제어 - event 종료 - mouseover
+		// $('선택자').on('이벤트 종류' 할 일);	// 할 일 = 임의 함수 = function(){}
+
+		// 기본
+		// $('#typo').on('mouseover',function(){
+		// 	$('#typo').css('background-color','green');
+		// }).on('mouseout',function(){
+		// 	$('#typo').css('background-color','#333');
+		// });
+
+		// 줄이기 (on 없앰)
+		// $('#typo').mouseover(function(){
+		// 	$('#typo').css('background-color','green');
+		// }).mouseout(function(){
+		// 	$('#typo').css('background-color','#333');
+		// });
+
+		// 둘다 바뀜
+		// $('#typo, h1').mouseover(function(){
+		// 	$('#typo, h1').css('background-color','green');
+		// }).mouseout(function(){
+		// 	$('#typo, h1').css('background-color','#333');
+		// });
+
+		// 하나만 바뀜
+		// $('#typo, h1').mouseover(function(){
+		// 	$(this).css('background-color','green');
+		// }).mouseout(function(){
+		// 	$(this).css('background-color','#333');
+		// });
+
+
+		// *Animation
+		// $(선택자).animate({속성:값,속성:값},시간,'easing',다른 할 일);
+		// easing = linear, swing	// 다른 할 일 = 임의 함수 = function(){}
+		$('#typo .inner').click(function(){
+			// $(this).animate({opacity:0,fontSize:'0px'},1500,'linear');
+			$(this).animate({opacity:0,fontSize:'0px'},1500,'easeInOutElastic',
+			function(){
+				$(this).animate({opacity:1,fontSize:'16px'},500);
+			});
+		});
+	</script>
+</body>
+</html>
