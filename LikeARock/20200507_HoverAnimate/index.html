@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+	</style>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../../_js/jquery.1.12.4.js"></script>
+	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script>
+		$(function(){
+			var $duration = 300,
+				$image = $('#images p');	// $자바스크립트 내장 변수와 겹칠 우려가 있을 때 붙임
+
+			// 1.
+			// 공백 O = find
+			// 공백 X = filter
+			// #images p span → $image.find('span')
+			// #images p.class → $image.filter('class')
+			$image.eq(0).mouseover(function(){
+				$(this).find('span,strong').stop().animate({opacity:1},$duration);
+			}).mouseout(function(){
+				$(this).find('span,strong').stop().animate({opacity:0},$duration);
+			});
+
+			// 2.
+			// #images p:nth-child(2)
+			// $image.filter(':nth-child(2)')
+			$image.filter(':nth-child(2)').mouseover(function(){
+				$(this).find('span').stop().animate({opacity:1},$duration);
+				$(this).find('strong').stop().animate({opacity:1,left:0},$duration);
+			}).mouseout(function(){
+				$(this).find('span').stop().animate({opacity:0},$duration);
+				$(this).find('strong').stop().animate({left:'-200%'},$duration);
+			});
+
+			// 3.
+			$image.eq(2).mouseover(function(){
+				$(this).find('img').stop().animate({top:'-40px'},$duration);
+				$(this).find('span').stop().animate({opacity:1},$duration);
+				$(this).find('strong').stop().animate({bottom:0},$duration);
+			}).mouseout(function(){
+				$(this).find('img').stop().animate({top:0},$duration);
+				$(this).find('span').stop().animate({opacity:0},$duration);
+				$(this).find('strong').stop().animate({bottom:'-80px'},$duration);
+			})
+		});
+	</script>
+</head>
+<body>
+	<header class="page-header" role="banner">
+		<h1>hover_img_caption</h1>
+	</header>
+	<div class="page-main" role="main">
+		<div id="images">
+			<h2>IMAGES</h2>
+			<div class="inner clearfix">
+				<p><img src="img/01_img.jpg"><strong>Hummingbird</strong><span></span></p>
+				<p><img src="img/02_img.jpg"><strong>Sitta</strong><span></span></p>
+				<p><img src="img/03_img.jpg"><strong>Bee-eater</strong><span></span></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
