@@ -4,8 +4,311 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="../_js/jquery.1.12.4.js"></script>
+	<script src="script.js"></script>
 </head>
 <body>
-	
+	<!-- <div class="wrapper">
+		<ul class="tap_1">
+			<li><button>이지 드라이빙</button></li>
+			<li><button>스마트<br>어시스턴트</button></li>
+			<li><button>편의사양</button></li>
+			<li><button>엔진</butto></li>
+		</ul>
+		<div class="wrap show">
+			<ul class="tap_2">
+				<li><button>1</button></li>
+				<li><button>2</button></li>
+				<li><button>3</button></li>
+				<li><button>4</button></li>
+			</ul>
+			<ul class="img" style="background-color:orangered;">
+				<li class="show">01</li>
+				<li>02</li>
+				<li>03</li>
+				<li>04</li>
+			</ul>
+		</div>
+		<div class="wrap">
+			<ul class="tap_2">
+				<li><button>1</button></li>
+				<li><button>2</button></li>
+				<li><button>3</button></li>
+				<li><button>4</button></li>
+			</ul>
+			<ul class="img" style="background-color:orange;">
+				<li class="show">01</li>
+				<li>02</li>
+				<li>03</li>
+				<li>04</li>
+			</ul>
+		</div>
+		<div class="wrap">
+			<ul class="tap_2">
+				<li><button>1</button></li>
+				<li><button>2</button></li>
+				<li><button>3</button></li>
+				<li><button>4</button></li>
+			</ul>
+			<ul class="img" style="background-color:yellow;">
+				<li class="show">01</li>
+				<li>02</li>
+				<li>03</li>
+				<li>04</li>
+			</ul>
+		</div>
+		<div class="wrap">
+			<ul class="tap_2">
+				<li><button>1</button></li>
+				<li><button>2</button></li>
+				<li><button>3</button></li>
+				<li><button>4</button></li>
+			</ul>
+			<ul class="img" style="background-color:yellowgreen;">
+				<li class="show">01</li>
+				<li>02</li>
+				<li>03</li>
+				<li>04</li>
+			</ul>
+		</div>
+	</div> -->
+
+	<div id="tabs">
+		<ul class="tab">
+		  <li><span>2014</span></li>
+		  <li><span>2015</span></li>
+		  <li><span>2016</span></li>
+		  <li class="active"><span>2017</span></li>
+		</ul>
+		<div class="tabContent">
+		  <div class="tabContentInner">
+			 <div class="monthly">
+			  <ul class="tab2">
+				<li><span>4月</span></li>
+				<li><span>5月</span></li>
+				<li><span>6月</span></li>
+				<li><span>7月</span></li>
+				<li><span>8月</span></li>
+				<li><span>9月</span></li>
+				<li><span>10月</span></li>
+				<li class="active"><span>11月</span></li>
+				<li><span>12月</span></li>
+				<li><span>1月</span></li>
+				<li><span>2月</span></li>
+				<li><span>3月</span></li>
+			  </ul>
+			  <div class="tabContent2">
+				<p>1ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>2ダミー</p>
+			  </div>
+			  <div class="tabContent2 active">
+				<p>3ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>4ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>5ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>6ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2 ">
+				<h3>11月</h3>
+				<p>ダミーダミーダミーダミーダミーダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="tabContent">
+		  <div class="tabContentInner">
+			 <div class="monthly">
+			  <ul class="tab2">
+				<li><span>4月</span></li>
+				<li><span>5月</span></li>
+				<li><span>6月</span></li>
+				<li><span>7月</span></li>
+				<li><span>8月</span></li>
+				<li><span>9月</span></li>
+				<li><span>10月</span></li>
+				<li class="active"><span>11月</span></li>
+				<li><span>12月</span></li>
+				<li><span>1月</span></li>
+				<li><span>2月</span></li>
+				<li><span>3月</span></li>
+			  </ul>
+			  <div class="tabContent2">
+				<p>1ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>2ダミー</p>
+			  </div>
+			  <div class="tabContent2 active">
+				<p>3ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>4ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>5ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>6ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2 ">
+				<h3>11月</h3>
+				<p>ダミーダミーダミーダミーダミーダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="tabContent">
+		  <div class="tabContentInner">
+			 <div class="monthly">
+			  <ul class="tab2">
+				<li><span>4月</span></li>
+				<li><span>5月</span></li>
+				<li><span>6月</span></li>
+				<li><span>7月</span></li>
+				<li><span>8月</span></li>
+				<li><span>9月</span></li>
+				<li><span>10月</span></li>
+				<li class="active"><span>11月</span></li>
+				<li><span>12月</span></li>
+				<li><span>1月</span></li>
+				<li><span>2月</span></li>
+				<li><span>3月</span></li>
+			  </ul>
+			  <div class="tabContent2">
+				<p>1ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>2ダミー</p>
+			  </div>
+			  <div class="tabContent2 active">
+				<p>3ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>4ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>5ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>6ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2 ">
+				<h3>11月</h3>
+				<p>ダミーダミーダミーダミーダミーダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		<div class="tabContent active">
+		  <div class="tabContentInner">
+			<div class="monthly">
+			  <ul class="tab2">
+				<li><span>4月</span></li>
+				<li><span>5月</span></li>
+				<li><span>6月</span></li>
+				<li><span>7月</span></li>
+				<li><span>8月</span></li>
+				<li><span>9月</span></li>
+				<li><span>10月</span></li>
+				<li class="active"><span>11月</span></li>
+				<li><span>12月</span></li>
+				<li><span>1月</span></li>
+				<li><span>2月</span></li>
+				<li><span>3月</span></li>
+			  </ul>
+			  <div class="tabContent2">
+				<p>1ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>2ダミー</p>
+			  </div>
+			  <div class="tabContent2 active">
+				<p>3ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>4ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>5ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>6ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2 ">
+				<h3>11月</h3>
+				<p>ダミーダミーダミーダミーダミーダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			  <div class="tabContent2">
+				<p>ダミー</p>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
 </body>
 </html>
