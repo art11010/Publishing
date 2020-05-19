@@ -7,24 +7,30 @@
 	<style>
 		body{margin:0;color:#fff;background-color:#333;}
 		@keyframes sample_ani {
-			0%{
+			0%/* from과 같음 */{
 				transform: translate(0,0);
 			}
 			50%{
 				transform: translate(500px,0);
 				background-color:red;
 			}
-			100%{
+			100%/* to와 같음 */{
 				transform: translate(700px,300px);
 			}
 		}
 		.box{display:flex;align-items:center;justify-content:center;width:100px;height:100px;background-color:rgba(255,255,0,0.7);border:1px solid black;animation:sample_ani 2s linear forwards/* 3 or infinite alternate or alternate-reverse */;}
-		.box:hover{animation-play-state:paused;}
+		.box:hover{animation-play-state:paused;background-color:red;}
+
+		@keyframes spaceship-ani{
+			to{background-position:-2550px 0;}
+		}
+		.spaceship{width:150px;height:150px;background:url(images/sprite_spaceship.png) no-repeat 0 0 / auto 150px;animation:spaceship-ani 1.5s infinite reverse steps(17);}
 	</style>
 </head>
 <body>
 	<h1>Animation</h1>
 	<div class="box">BOX</div>
 	<!-- frame by frame -->
+	<div class="spaceship"></div>
 </body>
 </html>
