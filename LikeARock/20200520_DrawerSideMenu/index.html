@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Drawer Side Menu</title>
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+	</style>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../../_js/jquery.1.12.4.js"></script>
+	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script>
+		$(function(){
+			var $aside = $('aside'),
+				$button = $aside.find('button'),
+				$img = $button.find('img'),
+				$duration = 300;
+			$button.click(function(){
+				// $aside.stop().animate({left:0},$duration);
+				$aside.toggleClass('open');
+				if($aside.hasClass('open')){
+					$aside.stop().animate({left:'-75px'},$duration,'easeOutBack');
+					$img.attr({'src':'img/btn_close.png'})
+				}else{
+					$aside.stop().animate({left:'-350px'},$duration,'easeInBack');
+					$img.attr({'src':'img/btn_open.png'})
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<header class="page-header" role="banner">
+		<h1>Drawer Side Menu</h1>
+	</header>
+	<div class="page-main" role="main">
+		<aside>
+			<ul>
+				<li><a href="#"><img src="img/01_aside.png"></a></li>
+				<li><a href="#"><img src="img/02_aside.png"></a></li>
+				<li><a href="#"><img src="img/03_aside.png"></a></li>
+			</ul>
+			<button><img src="img/btn_open.png"></button>
+		</aside>
+	</div>
+</body>
+</html>
