@@ -1,0 +1,33 @@
+/* Reset */
+html{font-family:"Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;font-size:16px;line-height:1.5;}
+ul{margin:0;}
+img{vertical-align:middle;}
+button{padding:0;border:none;outline:none;cursor:pointer;}
+::-moz-selection{background:#fff000;text-shadow:none;}
+::selection{background:#fff000;text-shadow:none;}
+
+/* Clearfix */
+.clearfix:before,
+.clearfix:after{content:" ";display:block;clear:both;}
+
+/* Base */
+.page-header h1{width:976px;height:80px;margin:0 auto;padding-left:10px;font-size:20px;font-weight:normal;line-height:80px;letter-spacing:0.1em;}
+.page-main{position:relative;}
+.page-main > div{padding:50px 0 100px;}
+.page-main > div h2{color:#fff;text-align:center;margin:0 0 50px;font-weight:normal;letter-spacing:0.15em;}
+.page-footer{background-color:#656565;}
+.page-footer small{display:block;color:#fff;font-size:11px;text-align:right;width:976px;margin:0 auto;height:120px;line-height:120px;letter-spacing:0.15em;}
+.page-footer a{color:#fff;text-decoration:none;}
+
+/* Slide */
+.slideshow{height:372px;width:1280px;margin:0 auto;position:relative;overflow:hidden;}
+.slideshow_slides{text-align:center;position:relative;}
+.slideshow_slides li{list-style:none;position:absolute;}
+.slideshow_slides li img{width:100%;}
+.slideshow_nav{text-align:center;}
+.slideshow_nav button{width:71px;height:71px;text-indent:-9999em;background:url(../img/sprites.png) no-repeat;position:absolute;top:50%;transform:translateY(-50%);}
+.slideshow_nav button.prev{margin-left:-550px;background-position:0 -20px;}
+.slideshow_nav button.next{margin-left:480px;background-position:-81px -20px;}
+.indicator{width:100%;position:absolute;bottom:20px;text-align:center;}
+.indicator button{display:inline-block;width:8px;height:8px;border-radius:4px;margin:0 5px;text-indent:-9999em;background-color:#fff;box-shadow:0px 0px 10px #333;}
+.indicator button.active{background-color:#333;}

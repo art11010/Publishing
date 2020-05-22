@@ -17,13 +17,15 @@
 				$img = $button.find('img'),
 				$duration = 300;
 			$button.click(function(){
-				// $aside.stop().animate({left:0},$duration);
+				// animate → CPU(본채) 사용		// PC에서는 상관없지만 Mobile에서는 버벅일 수 있음
+				// transition → GPU(그래픽 카드) 사용
+				// ∴ CSS로 만들 수 있는건 CSS로
 				$aside.toggleClass('open');
 				if($aside.hasClass('open')){
-					$aside.stop().animate({left:'-75px'},$duration,'easeOutBack');
+					// $aside.stop().animate({left:'-75px'},$duration,'easeOutBack');
 					$img.attr({'src':'img/btn_close.png'})
 				}else{
-					$aside.stop().animate({left:'-350px'},$duration,'easeInBack');
+					// $aside.stop().animate({left:'-350px'},$duration,'easeInBack');
 					$img.attr({'src':'img/btn_open.png'})
 				}
 			});

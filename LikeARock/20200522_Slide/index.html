@@ -4,53 +4,12 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Slide</title>
-	<script src="../_js/jquery.1.12.4.js"></script>
-	<script src="../_js/jquery-ui-1.10.3.custom.min.js"></script>
-	<!-- <script src="../_js/modernizr.custom.min.js"></script> -->
 	<style>
-		ul{margin:0;}
-		body{margin:0;background-color:#333;}
-		button{padding:0;border:none;}
-
-		.slideshow{height:465px;width:1600px;margin:0 auto;position:relative;overflow:hidden;}
-		/*slideshow_slides*/
-		.slideshow_slides{text-align:center;position:relative;}
-		.slideshow_slides li{list-style:none;position:absolute;}
-		/*slideshow_nav*/
-		.slideshow_nav{text-align:center;}
-		.slideshow_nav button{width:71px;height:71px;text-indent:-9999em;background:url(img/sprites.png) no-repeat;position:absolute;top:50%;transform:translateY(-50%);}
-		.slideshow_nav button.prev{margin-left:-480px;background-position:0 -20px;}
-		.slideshow_nav button.next{margin-left:410px;background-position:-81px -20px;}
-		/*indicator*/
-		.indicator{width:100%;position:absolute;bottom:20px;text-align:center;background-color:#000;}
-		.indicator button{display:inline-block;width:8px;height:8px;border-radius:4px;margin:0 5px;text-indent:-9999em;background-color:#fff;}
-		.indicator button.active{background-color:#333;}
+		body{margin:0;color:#fff;background-color:#333;}
 	</style>
-</head>
-<body>
-	<div class="slideshow">
-		<ul class="slideshow_slides">
-			<li>
-				<a href="javascript:;"><img src="img/slide-1.jpg" alt="slide1"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-2.jpg" alt="slide2"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-3.jpg" alt="slide3"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-4.jpg" alt="slide4"></a>
-			</li>
-		</ul><!-- slideshow_slides -->
-
-		<div class="slideshow_nav">
-			<button type="button" class="prev">prev</button>
-			<button type="button" class="next">next</button>
-		</div><!-- slideshow_nav -->
-
-		<div class="indicator"></div><!-- indicator -->
-	</div>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../../_js/jquery.1.12.4.js"></script>
+	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script>
 		$(function(){
 			slideWrap();
@@ -127,5 +86,30 @@
 			// }
 		}
 	</script>
+</head>
+<body>
+	<div class="slideshow">
+		<ul class="slideshow_slides">
+			<li>
+				<a href="javascript:;"><img src="img/slide-1.jpg" alt="slide1"></a>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="img/slide-2.jpg" alt="slide2"></a>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="img/slide-3.jpg" alt="slide3"></a>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="img/slide-4.jpg" alt="slide4"></a>
+			</li>
+		</ul><!-- slideshow_slides -->
+
+		<div class="slideshow_nav">
+			<button type="button" class="prev">prev</button>
+			<button type="button" class="next">next</button>
+		</div><!-- slideshow_nav -->
+
+		<div class="indicator"></div><!-- indicator -->
+	</div>
 </body>
 </html>

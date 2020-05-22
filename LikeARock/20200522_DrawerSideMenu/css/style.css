@@ -20,7 +20,8 @@ button{outline:none;cursor:pointer;}
 
 /* .page-main */
 .page-main{position:relative}
-.page-main > aside{width:350px;height:100%;position:fixed;top:0;left:-350px;background-color:rgba(0,0,0,0.8)}
+.page-main > aside{width:350px;height:100%;position:fixed;top:0;left:-350px;background-color:rgba(0,0,0,0.8);transition:.3s cubic-bezier(.06,1.95,.69,.6);}
+.page-main > aside.open{left:-75px;}
 .page-main > aside ul{margin:0;padding:0;position:absolute;top:50px;left:114px;}
 .page-main > aside li{margin:0 0 20px;list-style:none}
 .page-main > aside button{display:block;margin:0;padding:0;width:52px;height:132px;position:absolute;top:150px;left:350px;border:none;background-color:rgba(0,0,0,0.8);}
