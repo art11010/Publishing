@@ -13,7 +13,35 @@
 	<script src="js/modernizr.custom.min.js"></script>
 	<script>
 		$(function(){
+			var slides = $('.slideshow img'),
+				slidesLength = slides.length,
+				currentidx = 0;
+
+			slides.eq(0).fadeIn();
+			function showNext(){
+				var nextidx = (currentidx + 1) % slidesLength;
+				slides.eq(currentidx).fadeOut();
+				slides.eq(nextidx).fadeIn();
+				currentidx = nextidx;
+			}
+
+			var timer = setInterval(showNext,3000);
+			function hoverOn(){clearInterval(timer);}
+			function hoverOff(){setInterval(showNext,3000);}
+			slides.mouseover(function(){
+				hoverOn();
+			}).mouseout(function(){
+				hoverOff();
+			});
 		});
+
+		// 해당 시간이 지나면 한 번 할 일
+		// var time = setTimeout(할 일, 시간);
+		// clearTimeOut(time);
+
+		// 일정시간 마다 할일
+		// var time = setInterval(할 일, 시간);
+		// clearInterval(time);
 	</script>
 </head>
 <body>
