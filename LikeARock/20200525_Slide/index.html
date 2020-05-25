@@ -11,9 +11,7 @@
 	<script src="../../_js/jquery.1.12.4.js"></script>
 	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
 	<script>
-		$(function(){
-			slideWrap();
-		});
+		$(function(){});
 	</script>
 </head>
 <body>
@@ -21,27 +19,22 @@
 		<h1>Drawer Side Menu</h1>
 	</header>
 	<div class="slideshow">
-		<ul class="slideshow_slides">
-			<li>
-				<a href="javascript:;"><img src="img/slide-1.jpg" alt="slide1"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-2.jpg" alt="slide2"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-3.jpg" alt="slide3"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-4.jpg" alt="slide4"></a>
-			</li>
-		</ul>
-
-		<div class="slideshow_nav">
-			<button type="button" class="prev">prev</button>
-			<button type="button" class="next">next</button>
+		<div class="slideshow_slides">
+			<a href="javascript:;"><img src="img/slide-1.jpg" alt="slide1"></a>
+			<a href="javascript:;"><img src="img/slide-2.jpg" alt="slide2"></a>
+			<a href="javascript:;"><img src="img/slide-3.jpg" alt="slide3"></a>
+			<a href="javascript:;"><img src="img/slide-4.jpg" alt="slide4"></a>
 		</div>
-
-		<div class="indicator"></div>
+		<div class="slideshow_nav">
+			<a href="javascript:;" class="prev"></a>
+			<a href="javascript:;" class="next"></a>
+		</div>
+		<div class="indicator">
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+			<a href="javascript:;"></a>
+		</div>
 	</div>
 </body>
 </html>
