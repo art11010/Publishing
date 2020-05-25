@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,106 +10,25 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="../../_js/jquery.1.12.4.js"></script>
 	<script src="../../_js/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="js/modernizr.custom.min.js"></script>
 	<script>
 		$(function(){
-			slideWrap();
 		});
-
-		function slideWrap(){
-			var contanier = $('.slideshow'),
-			slideGroup = contanier.find('.slideshow_slides'),
-			// slideGroup = $('.slideshow .slideshow_slides') → 같지만 로딩이 좀 더 걸림
-			slides = slideGroup.find('li'),
-			slideCount = slides.length,
-			nav = contanier.find('.slideshow_nav'),
-			indicator = contanier.find('.indicator'),
-			indicatorHtml = '',
-			currentIndex = 0,
-			duration = 500,
-			easing = 'easeInOutExpo',
-			interval = 3500,
-			timer;
-
-			// *슬라이드 가로로 배열, 인디케이터 추가
-			// i : slides 내부 순서로 자동 인자값이 들어감
-			slides.each(function(i){
-				// console.log(i);
-				var newLeft = i * 100 + '%';
-				$(this).css({left:newLeft});
-
-				indicatorHtml += '<button type="button">' + (i+1) +'</button>';
-				indicator.html(indicatorHtml);
-			});
-			// A.text(B); a요소의 내부를 지우고 b의 내용을 글씨 형태로 교체
-			// A.html(B); a요소의 내부를 지우고 b의 내용을 html 형태로 교체
-			// A.append(B); a요소의 내부를 지우지않고 b의 내용을 html 형태로 교체
-
-			// *슬라이드 이동 함수
-			function goToSlide(index){
-				slideGroup.animate({left:index * -100 +'%'},duration,easing);
-				currentIndex = index;
-			}
-
-			// *인디케이터로 이동하기
-			indicator.find('button').click(function(){
-				var idx = $(this).index();
-				goToSlide(idx);
-			});
-
-			// *처음인지 마지막인지 검사
-			function updateNav(){
-				if(currentIndex > 0){
-					currentIndex --;
-				}else{
-					currentIndex = 4;
-				}
-			};
-
-
-			// *좌우 버튼으로 이동하기
-			nav.find('button').click(function(){
-				if($(this).hasClass('prev')){
-					goToSlide(currentIndex - 1);
-					// updateNav();
-				}else{
-					goToSlide(currentIndex + 1);
-					// updateNav();
-				}
-			});
-			// function slidePrev(){
-			// 	var i = currentIndex - 1;
-			// 	goToSlide(i);
-			// }
-			// function slideNext(){
-			// 	var i = currentIndex + 1;
-			// 	goToSlide(i);
-			// }
-		}
 	</script>
 </head>
 <body>
-	<div class="slideshow">
-		<ul class="slideshow_slides">
-			<li>
-				<a href="javascript:;"><img src="img/slide-1.jpg" alt="slide1"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-2.jpg" alt="slide2"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-3.jpg" alt="slide3"></a>
-			</li>
-			<li>
-				<a href="javascript:;"><img src="img/slide-4.jpg" alt="slide4"></a>
-			</li>
-		</ul><!-- slideshow_slides -->
-
-		<div class="slideshow_nav">
-			<button type="button" class="prev">prev</button>
-			<button type="button" class="next">next</button>
-		</div><!-- slideshow_nav -->
-
-		<div class="indicator"></div><!-- indicator -->
+	<header class="page-header" role="banner">
+		<h1>Drawer Side Menu</h1>
+	</header>
+	<div class="header">
+		<div class="inner">
+			<ul class="slideshow">
+				<img src="img/slide-1.jpg" alt="slide1">
+				<img src="img/slide-2.jpg" alt="slide2">
+				<img src="img/slide-3.jpg" alt="slide3">
+				<img src="img/slide-4.jpg" alt="slide4">
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

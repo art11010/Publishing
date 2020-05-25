@@ -20,11 +20,7 @@ button{padding:0;border:none;outline:none;cursor:pointer;}
 .page-footer a{color:#fff;text-decoration:none;}
 
 /* Slide */
-header.header{}
-.slideshow{min-width:960px;height:465px;overflow:hidden;position:relative;}
-.slideshow img{display:none;width:1600px;height:465px;position:absolute;left:50%;margin-left:-800px;}
-.no-js.slideshow img:first-child{display:inline;}
-/* .slideshow{height:372px;width:1280px;margin:0 auto;position:relative;overflow:hidden;}
+.slideshow{height:372px;width:1280px;margin:0 auto;position:relative;overflow:hidden;}
 .slideshow_slides{text-align:center;position:relative;}
 .slideshow_slides li{list-style:none;position:absolute;}
 .slideshow_slides li img{width:100%;}
@@ -34,4 +30,4 @@ header.header{}
 .slideshow_nav button.next{margin-left:480px;background-position:-81px -20px;}
 .indicator{width:100%;position:absolute;bottom:20px;text-align:center;}
 .indicator button{display:inline-block;width:8px;height:8px;border-radius:4px;margin:0 5px;text-indent:-9999em;background-color:#fff;box-shadow:0px 0px 10px #333;}
-.indicator button.active{background-color:#333;} */
+.indicator button.active{background-color:#333;}
