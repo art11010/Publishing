@@ -7,10 +7,21 @@
 	<style>
 		body{margin:0;color:#fff;background-color:#333;}
 		h1{margin:0;}
+		.world{display:flex;align-items:center;justify-content:center;width:60vw;height:60vh;background-color:#fff;/* perspective:500px; */}
+		.world:hover .card{transform:rotateY(180deg);}
+		.card{display:flex;align-items:center;justify-content:center;width:100px;height:150px;margin:1em;border-radius:.5em;font-size:1.5rem;background-color:cadetblue;transition: 1s;transform:rotateY(0deg);/* transform:perspective(500px) rotateY(45deg); */}
+		/* transform:rotateY(0deg) → 변화 없는 default 상태도 지정 */
 	</style>
 </head>
 <body>
 	<h1>CSS 3D</h1>
-	
+	<div class="world">
+		<!-- <div class="card">CARD</div>
+		<div class="card">CARD</div> -->
+		<div class="card">
+			<div class="card-side card_front">CARD</div>
+			<div class="card-side card_back"></div>
+		</div>
+	</div>
 </body>
 </html>
