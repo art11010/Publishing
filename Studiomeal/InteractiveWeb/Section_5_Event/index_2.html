@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Event</title>
+	<link rel="stylesheet" href="../res/css/reset.css">
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		h1{margin:0;}
+		img{max-width:100%;height:auto}
+		.stage{width:100vw;height:75vw;background-color:#ccc;overflow:hidden;position:relative;}
+		.ilbuni{width:100px;height:100px;background-repeat:no-repeat;background-position:50% 50%;background-size:contain;position:absolute;animation:moving 3s infinite alternate;}
+		@keyframes moving {
+			from{transform:translateX(0);}
+			to{transform:translateX(90vw);}
+		}
+		.ilbuni:nth-of-type(1){left:5%;bottom:5%;background-image:url(../res/img/ilbuni_0.png);animation-duration:2s;}
+		.ilbuni:nth-of-type(2){left:10%;bottom:3%;background-image:url(../res/img/ilbuni_1.png);animation-duration:3s;}
+		.ilbuni:nth-of-type(3){left:7%;bottom:10%;background-image:url(../res/img/ilbuni_2.png);animation-duration:4s;}
+	</style>
+</head>
+<body>
+	<h1>Event</h1>
+	<div class="stage">
+		<div class="ilbuni"></div>
+		<div class="ilbuni"></div>
+		<div class="ilbuni"></div>
+	</div>
+
+	<script>
+		(function(){
+			const ilbuniGroup = document.querySelectorAll('.ilbuni');
+			function cilckHandler(){
+				this.parentNode.removeChild(this);	// this.parentNode → 부모 element
+				// this.style.display = 'none';
+			}
+			for(let i = 0; i < ilbuniGroup.length; i++){
+				ilbuniGroup[i].addEventListener('click',cilckHandler);
+			}
+		})();
+	</script>
+</body>
+</html>

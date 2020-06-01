@@ -8,13 +8,21 @@
 	<style>
 		body{margin:0;color:#fff;background-color:#333;}
 		h1{margin:0;}
-
 		img{max-width:100%;height:auto}
-        .characters{display:flex;align-items:center;_justify-content:space-around;background:#ccc}
+        .characters{display:flex;align-items:center;background:#ccc}
         .ilbuni{width:100px;cursor:pointer}
         .characters .ilbuni{display:inline-block}
         .special{border:10px dashed red}
 	</style>
+	<script>
+		// jQuery
+		// $(function(){})					→ DOM만 로드돼도 실행
+		// $(window).load(function(){})		→ DOM만 로드돼도 실행
+
+		// window.addEventListener(type,listener,option)				→ event를 등록하는 메소드
+		// window.addEventListener('load',function(){});				→ 이미지까지 다 로드돼야 실행
+		// window.addEventListener('DOMContentLoaded',function(){});	→ DOM만 로드돼도 실행(ie9부터)
+	</script>
 </head>
 <body>
 	<h1>Event</h1>
@@ -34,12 +42,45 @@
 	</div>
 	<script>
 		// Step 1
-		// const ilbuni = document.querySelector('.ilbuni:nth-child(3)')
-		const ilbuni = document.querySelector('.ilbuni.c')
-		// ilbuni.addEventListener(type,listener,option)	→ event를 등록하는 메소드
-		ilbuni.addEventListener('click',function(){
-			ilbuni.classList.add('special');
-		})
+		// 1.
+		// const ilbuni = document.querySelector('.ilbuni:nth-child(3)');
+		// const ilbuni = document.querySelector('.ilbuni.c');
+		// ilbuni.addEventListener('click',function(){
+		// 	ilbuni.classList.add('special');
+		// });
+
+		// 2.
+		// ↓ 전역변수
+		// const ilbuni = document.querySelector('.ilbuni.c');
+		// ⓐ
+		// const cilckIibuniHandler = () => {ilbuni.classList.toggle('special');}	→ ECMA2015
+		// ⓑ
+		// const cilckIibuniHandler = function(){
+		// 	ilbuni.classList.toggle('special');
+		// };
+		// ⓒ
+		// function cilckIibuniHandler(){
+		// 	ilbuni.classList.toggle('special');
+		// }
+		// ilbuni.addEventListener('click',cilckIibuniHandler);
+		// ↓ 지역변수
+		// (function(){
+		// 	const ilbuni = document.querySelector('.ilbuni.c');
+		// 	function cilckIibuniHandler(){
+		// 		ilbuni.classList.toggle('special');
+		// 	}
+		// 	ilbuni.addEventListener('click',cilckIibuniHandler);
+		// })();
+
+		// Step 2
+		(function(){
+			const ilbuni = document.querySelector('.characters');
+			function cilckHandler(e){
+				// console.log(this); = console.log(e.currentTarget);
+				console.log(e.target);	// → 클릭한 부분 출력
+			}
+			ilbuni.addEventListener('click',cilckHandler);
+		})();
 	</script>
 </body>
 </html>
