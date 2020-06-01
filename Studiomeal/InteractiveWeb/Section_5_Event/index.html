@@ -15,39 +15,10 @@
         .characters .ilbuni{display:inline-block}
         .special{border:10px dashed red}
 	</style>
-	<script>
-		// Step 1
-		// document.querySelector('.ilbuni');	→ 첫 객체만 가져옴
-		// document.querySelectorAll('.ilbuni');
-		// const ilbuniGroup = document.querySelectorAll('.ilbuni');
-		// ilbuniGroup[2]	//→ .ilbuni.c
-		// document.querySelector('.ilbuni:nth-child(2)');
-
-
-		// Step 2
-		// const char = document.querySelector('.characters');
-		// char.setAttribute('date-id',123)	→ element에 속성을 넣을 수 있음
-		// char.getAttribute('date-id')		→ element에 속성을 값 가져옴
-
-
-		// Step 3
-		// const pElem = document.createElement('p')	→ element 만듦
-		// pElem.innerHTML = '<a herf="#">안녕?</a>???'	→ element 내부 삽입
-		// const charactersElem = document.querySelector('.characters')
-		// charactersElem.appendChild(pElem)			→ 자식 element로 내부 삽입
-
-		// charactersElem.removeChild(document.querySelector('.b'))	→ element 삭제
-
-		// const ilbuni = document.querySelector('.ilbuni')
-		// ilbuni.className = 'special'					→ 기존 class를 없애고 해당 class로 대체
-		// ilbuni.classList.add('special')				→ class 추가
-		// ilbuni.classList.remove('ilbuni')			→ class 제거
-		// ilbuni.classList.toggle('ilbuni')			→ class 를 갖고있으면 제거, 없으면 추가
-	</script>
 </head>
 <body>
 	<h1>Event</h1>
-	<div class="characters" data-co="">
+	<div class="characters">
 		<div class="ilbuni a">
 			<img src="../res/img/ilbuni_0.png" alt="일분이">
 		</div>
@@ -61,5 +32,14 @@
 	<div class="ilbuni d">
 		<img src="../res/img/ilbuni_3.png" alt="일분이">
 	</div>
+	<script>
+		// Step 1
+		// const ilbuni = document.querySelector('.ilbuni:nth-child(3)')
+		const ilbuni = document.querySelector('.ilbuni.c')
+		// ilbuni.addEventListener(type,listener,option)	→ event를 등록하는 메소드
+		ilbuni.addEventListener('click',function(){
+			ilbuni.classList.add('special');
+		})
+	</script>
 </body>
 </html>
