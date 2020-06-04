@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Event Delegation</title>
+	<link rel="stylesheet" href="../res/css/reset.css">
+	<style>
+		body{margin:0;color:#fff;background-color:#333;overflow:hidden;}
+		h1{margin:0;}
+		img{max-width:100%;height:auto}
+		@keyframes pointer-ani{
+			0% { transform:scale(0); }
+			50% { transform:scale(1); }
+			100% { transform:scale(1.5); opacity:0; }
+		}
+		.pointer{position:absolute;left:0;top:0;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;background:url('../res/img/ilbuni_2.png') no-repeat 0 0/cover;transform:scale(0);animation:pointer-ani 0.5s linear}
+		.menu-wrap{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;}
+		.menu{display:flex;margin-top:-10vh;padding:2em;border-radius:20px;background:#eee}
+		.menu-btn{display:inline-flex;align-items:center;margin:0 1em;padding:0.5em 1em 0.5em 0.5em;border:5px solid white;border-radius:20px;outline:0;font:900 1.2rem NotoSans;background:linear-gradient(0deg,rgba(223,210,0,1) 0%,rgba(255,240,0,1) 24%,rgba(255,240,0,1) 70%,rgba(255,255,255,1) 100%);box-shadow:rgba(0,0,0,0.1) 0 0 0 1px inset}
+		.btn-label{text-shadow:rgba(255,255,255,1) 0 1px 0;/*pointer-events:none;*/}
+		.icon{width:60px;/*pointer-events:none;*/}
+	</style>
+</head>
+<body>
+	<h1>Event Delegation</h1>
+	<div class="menu-wrap">
+		<div class="menu">
+			<button class="menu-btn" data-value="1">
+				<img class="icon" src="../res/img/ilbuni_1.png" alt="">
+				<span class="btn-label">일분이 1</span>
+			</button>
+			<button class="menu-btn" data-value="2">
+				<img class="icon" src="../res/img/ilbuni_2.png" alt="">
+				<span class="btn-label">일분이 2</span>
+			</button>
+			<button class="menu-btn" data-value="3">
+				<img class="icon" src="../res/img/ilbuni_3.png" alt="">
+				<span class="btn-label">일분이 3</span>
+			</button>
+		</div>
+	</div>
+	<script>
+		// 이벤트 위임 안한거
+		// const btns = document.querySelectorAll('.menu-btn');
+		// function clickBtnHandler(){
+		// 	console.log(this);
+		// }
+		// for(let i = 0; i < btns.length; i++){
+		// 	btns[i].addEventListener('click',clickBtnHandler);
+		// }
+
+		// 이벤트 위임 한거
+		const menu = document.querySelector('.menu');
+		function clickMenuHandler(e){
+			if(e.target.classList.contains('menu-btn')){
+				console.log(e.target);
+			}
+		}
+		menu.addEventListener('click',clickMenuHandler);
+	</script>
+</body>
+</html>
