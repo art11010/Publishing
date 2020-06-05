@@ -41,7 +41,7 @@
 		</div>
 	</div>
 	<script>
-		// 이벤트 위임 안한거
+		// 이벤트 위임 안 한거
 		// const btns = document.querySelectorAll('.menu-btn');
 		// function clickBtnHandler(){
 		// 	console.log(this);
@@ -53,9 +53,19 @@
 		// 이벤트 위임 한거
 		const menu = document.querySelector('.menu');
 		function clickMenuHandler(e){
-			if(e.target.classList.contains('menu-btn')){
-				console.log(e.target);
+			let elem = e.target;
+			while(!elem.classList.contains('menu-btn')){
+				elem = elem.parentNode;
+				if(elem.nodeName == 'BODY'){
+					elem = null;
+					return;
+				}
 			}
+			console.log(elem.dataset.value);
+			// 내가 한거
+			// if(e.target.classList.contains('menu-btn')){
+			// 	console.log(e.target);
+			// }
 		}
 		menu.addEventListener('click',clickMenuHandler);
 	</script>
