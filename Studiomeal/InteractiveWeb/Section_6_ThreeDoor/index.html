@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Three Door</title>
+	<link rel="stylesheet" href="../res/css/reset.css">
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		h1{margin:0;}
+
+		.stage{display:flex;align-items:center;justify-content:center;width:100vw;height:100vh;background-color:#444;/* perspective:800px; */}
+		.door{width:100px;height:150px;position:relative;}
+		.door div{position:absolute;}
+		.door-back{width:100%;height:100%;background-color:#000;top:0;left:0;overflow:hidden;}
+		.ilbuni{width:100px;height:100px;background-repeat:no-repeat;background-position:50% 100%;background-size:contain;left:0;bottom:0;transition:.5s .3s;transform:translate3d(100%,0px,0px);}
+		.door:nth-child(1) .ilbuni{background-image:url(../res/img/ilbuni_0.png);}
+		.door:nth-child(2) .ilbuni{background-image:url(../res/img/ilbuni_1.png);}
+		.door:nth-child(3) .ilbuni{background-image:url(../res/img/ilbuni_2.png);}
+		.door-body{height:100%;width:100%;top:0;left:0;transition:.5s;transform-origin:0%;}
+		.door:nth-child(1) .door-body{background-color:rgba(255,0,0,0.7);}
+		.door:nth-child(2) .door-body{background-color:rgba(0,255,0,0.7);}
+		.door:nth-child(3) .door-body{background-color:rgba(0,0,255,0.7);}
+		.door-opened .door-body{transform:perspective(800px) rotateY(-110deg);}
+		.door-opened .ilbuni{transform:translate3d(0px,0px,0px);}
+	</style>
+</head>
+<body>
+	<h1>Three Door</h1>
+	<div class="stage">
+		<div class="door">
+			<div class="door-back">
+				<div class="ilbuni"></div>
+			</div>
+			<div class="door-body"></div>
+		</div>
+		<div class="door">
+			<div class="door-back">
+				<div class="ilbuni"></div>
+			</div>
+			<div class="door-body"></div>
+		</div>
+		<div class="door">
+			<div class="door-back">
+				<div class="ilbuni"></div>
+			</div>
+			<div class="door-body"></div>
+		</div>
+	</div>
+	<script>
+		(function(){
+			// 1. 열리게만
+			// const stageElem = document.querySelector('.stage');
+			// function doorHandler(e){
+			// 	const targetElem = e.target;
+			// 	if(targetElem.classList.contains('door-body')){
+			// 		targetElem.parentNode.classList.add('door-opened');
+			// 	}
+			// }
+			// stageElem.addEventListener('click',doorHandler);
+
+			// 2. 하나만 열리게
+			// const stageElem = document.querySelector('.stage');
+			// function doorHandler(e){
+			// 	const targetElem = e.target;
+			// 	const currentItem = document.querySelector('.door-opened');
+			// 	if(currentItem){	// currentItem만 쓰면 currentItem에 값이 들어있다면으로 해석됨
+			// 		currentItem.classList.remove('door-opened');
+			// 	}
+			// 	if(targetElem.classList.contains('door-body')){
+			// 		targetElem.parentNode.classList.add('door-opened');
+			// 	}
+			// }
+			// stageElem.addEventListener('click',doorHandler);
+
+			// 3. 하나만 열리게(document를 쓰지 않고)
+			// const stageElem = document.querySelector('.stage');
+			// let currentItem;	//현재 활성화된 아이템이 들어갈 변수
+			// function doorHandler(e){
+			// 	const targetElem = e.target;
+			// 	// const currentItem = document.querySelector('.door-opened');
+			// 	// document를 사용하면 DOM을 처음부터 다시 찾기 때문에 느림
+			// 	if(currentItem){
+			// 		currentItem.classList.remove('door-opened');
+			// 	}// 비활성화
+			// 	if(targetElem.classList.contains('door-body')){
+			// 		targetElem.parentNode.classList.add('door-opened');
+			// 		currentItem = targetElem.parentNode;
+			// 	}// 활성화
+			// }
+			// stageElem.addEventListener('click',doorHandler);
+
+			// 4. Event Listener 함수는 간단해야함(기능을 쪼개면 코드가 유연해짐)
+			// const stageElem = document.querySelector('.stage');
+			// let currentItem;
+
+			// function inactivate(elem){
+			// 	elem.classList.remove('door-opened');
+			// }// 비활성화
+			// function activate(elem){
+			// 	elem.classList.add('door-opened');
+			// 	currentItem = elem;
+			// }// 활성화
+
+			// function doorHandler(e){
+			// 	const targetElem = e.target;
+			// 	if(currentItem){
+			// 		inactivate(currentItem);
+			// 	}// 비활성화
+			// 	if(targetElem.classList.contains('door-body')){
+			// 		activate(targetElem.parentNode);
+			// 	}// 활성화
+			// }
+			// stageElem.addEventListener('click',doorHandler);
+
+			// activate(document.querySelector('.door'));
+			// // activate(document.querySelector('.door:nth-child(2)'));
+
+
+			// 5. activate에 숫자만 넣어도 될 수 있게 // 내가 한거
+			const stageElem = document.querySelector('.stage');
+			const doorElem = document.querySelectorAll('.door');
+			let currentItem;
+
+			function inactivate(elem){
+				elem.classList.remove('door-opened');
+			}// 비활성화
+			function activate(elem){
+				if(typeof elem == 'number'){
+					doorElem[elem].classList.add('door-opened');
+					currentItem = doorElem[elem];
+				}else{
+					elem.classList.add('door-opened');
+					currentItem = elem;
+				}
+			}// 활성화
+
+			function doorHandler(e){
+				const targetElem = e.target;
+				if(currentItem){
+					inactivate(currentItem);
+				}// 비활성화
+				if(targetElem.classList.contains('door-body')){
+					activate(targetElem.parentNode);
+				}// 활성화
+			}
+			stageElem.addEventListener('click',doorHandler);
+
+			activate(1);
+		})();
+
+		// 내가 한거(여러개 열리게)
+		// (function(){
+		// 	const stage = document.querySelector('.stage');
+		// 	function doorHandler(e){
+		// 		let elem = e.target;
+		// 		while(!elem.classList.contains('door')){
+		// 			elem = elem.parentNode;
+		// 			if(elem.nodeName == 'BODY'){
+		// 				elem = null;
+		// 				return;
+		// 			}
+		// 		}
+		// 		elem.classList.toggle('door-opened');
+		// 	}
+		// 	stage.addEventListener('click',doorHandler);
+		// })();
+	</script>
+</body>
+</html>

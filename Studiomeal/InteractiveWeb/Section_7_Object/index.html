@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Object</title>
+	<link rel="stylesheet" href="../res/css/reset.css">
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		h1{margin:0;}
+	</style>
+</head>
+<body>
+	<!-- <h1>Object</h1> -->
+	<script>
+		(function(){
+			// Step 1
+			// 1.
+			// const person = {};
+			// // const person = new object();	// 잘 안 씀
+			// person.name = '일분이';
+			// person.age = '3';
+			// person.introduce = function(){
+			// 	console.log('안녕하세요?')
+			// };
+			// person.introduce();
+			// // console.log(person);
+
+			// 2.
+			// const person = {
+			// 	name : '일분이',
+			// 	age : '10',
+			// 	introduce : function(){
+			// 		console.log('안녕하세요?');
+			// 	}
+			// };
+			// person.introduce();
+
+			// Step 2
+			const person = {
+				name : '일분이',
+				age : '10',
+				introduce : function(){
+					console.log('안녕하세요? ' + person.age + '살, ' + person.name + '입니다.');
+				}
+			};
+			const person2 = {
+				name : '이분이',
+				age : '8',
+				introduce : function(){
+					console.log('안녕하세요? ' + person2.age + '살, ' + person2.name + '입니다.');
+				}
+			};
+			person.introduce();
+			person2.introduce();
+		})();
+	</script>
+</body>
+</html>
