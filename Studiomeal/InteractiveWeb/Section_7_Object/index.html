@@ -37,21 +37,52 @@
 			// person.introduce();
 
 			// Step 2
-			const person = {
-				name : '일분이',
-				age : '10',
-				introduce : function(){
-					console.log('안녕하세요? ' + person.age + '살, ' + person.name + '입니다.');
-				}
-			};
-			const person2 = {
-				name : '이분이',
-				age : '8',
-				introduce : function(){
-					console.log('안녕하세요? ' + person2.age + '살, ' + person2.name + '입니다.');
-				}
-			};
-			person.introduce();
+			// const person = {
+			// 	name : '일분이',
+			// 	age : '10',
+			// 	introduce : function(){
+			// 		console.log('안녕하세요? ' + person.age + '살, ' + person.name + '입니다.');
+			// 	}
+			// };
+			// const person2 = {
+			// 	name : '이분이',
+			// 	age : '8',
+			// 	introduce : function(){
+			// 		console.log('안녕하세요? ' + this.age + '살, ' + this.name + '입니다.');
+			// 	}
+			// };
+			// person.introduce();
+			// person2.introduce();
+
+			// Step 3
+			// 생성자 (Constructor)	→ 생성자 함수는 관례적으로 함수 첫 글자를 대문자로 함
+			// function Person(nickname,age){
+			// 	this.nickname = nickname;
+			// 	this.age = age;
+			// 	this.introduce = function(){
+			// 		console.log('안녕하세요? ' + this.age + '살, ' + this.name + '입니다.');
+			// 	}
+			// }
+			// // 인스턴스 (Instance)
+			// const person1 = new Person('일분이',10);
+			// const person2 = new Person('이분이',8);
+
+			// person1.introduce();
+			// person2.introduce();
+
+			// Step 4
+			function Person(nickname,age){
+				this.nickname = nickname;
+				this.age = age;
+			}
+			Person.prototype.introduce = function(){
+				console.log('안녕하세요? ' + this.age + '살, ' + this.name + '입니다.');
+			}
+			// ↑ prototype 객체를 이용하면 여러개 생기지않고 공유를 하는 형식으로 하나만 있기 때문에 훨씬 효율적
+			const person1 = new Person('일분이',10);
+			const person2 = new Person('이분이',8);
+
+			person1.introduce();
 			person2.introduce();
 		})();
 	</script>
