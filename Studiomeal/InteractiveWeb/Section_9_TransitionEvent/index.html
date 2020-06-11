@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Transition/Animation Event</title>
+	<link rel="stylesheet" href="../res/css/reset.css">
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		h1{margin:0;position:absolute;}
+		/* Step 1	Transition */
+		.ball{/* margin:-15px 0 0 -15px; */width:30px;height:30px;background-color:#ccc;border-radius:50%;transition:1s;}
+		.ball.end{background-color:dodgerblue;}
+
+		/* Step 2	Animation */
+		.ball{animation:ball-ani 1s 3 alternate forwards;}
+		@keyframes ball-ani{
+			from{transform:translate(0,0);}
+			to{transform:translate(200px,200px);}
+		}
+	</style>
+</head>
+<body>
+	<h1>Transition/Animation Event</h1>
+	<div class="ball"></div>
+	<script>
+		(function(){
+			// Step 1	Transition
+			// const ballElem = document.querySelector('.ball');
+			// window.addEventListener('click',function(e){
+			// 	ballElem.style.transform = 'translate('+ (e.clientX - 15) +'px,'+ (e.clientY - 15) +'px)';
+			// 	// console.log(e.clientX, e.clientY);
+			// });
+			// ballElem.addEventListener('transitionend',function(e){
+			// 	ballElem.classList.add('end');
+			// 	// 콜백함수 어케함
+			// 	console.log(e.elapsedTime);
+			// 	console.log(e.propertyName);
+			// });
+
+			// Step 2	Animation
+		})();
+	</script>
+</body>
+</html>

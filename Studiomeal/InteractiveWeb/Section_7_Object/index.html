@@ -8,10 +8,11 @@
 	<style>
 		body{margin:0;color:#fff;background-color:#333;}
 		h1{margin:0;}
+		.card{display:inline-flex;justify-content:center;align-items:center;width:100px;height:150px;border:2px solid #000;border-radius:10px;font-size:2rem;font-weight:900;}
 	</style>
 </head>
 <body>
-	<!-- <h1>Object</h1> -->
+	<h1>Object</h1>
 	<script>
 		(function(){
 			// Step 1
@@ -71,19 +72,39 @@
 			// person2.introduce();
 
 			// Step 4
-			function Person(nickname,age){
-				this.nickname = nickname;
-				this.age = age;
-			}
-			Person.prototype.introduce = function(){
-				console.log('안녕하세요? ' + this.age + '살, ' + this.name + '입니다.');
-			}
-			// ↑ prototype 객체를 이용하면 여러개 생기지않고 공유를 하는 형식으로 하나만 있기 때문에 훨씬 효율적
-			const person1 = new Person('일분이',10);
-			const person2 = new Person('이분이',8);
+			// 1.
+			// function Person(nickname,age){
+			// 	this.nickname = nickname;
+			// 	this.age = age;
+			// }
+			// Person.prototype.introduce = function(){
+			// 	console.log('안녕하세요? ' + this.age + '살, ' + this.nickname + '입니다.');
+			// }
+			// // ↑ prototype 객체를 이용하면 여러개 생기지않고 공유를 하는 형식으로 하나만 있기 때문에 훨씬 효율적
+			// const person1 = new Person('일분이',10);
+			// const person2 = new Person('이분이',8);
 
-			person1.introduce();
-			person2.introduce();
+			// person1.introduce();
+			// person2.introduce();
+
+			// 2.
+			function Card(num,color){
+				this.num = num;
+				this.color = color;
+				this.init();
+			}
+			Card.prototype = {
+				constructor : Card,	// → prototype을 바로 쓸 경우 Constructor로 생성자를 연결시켜줘야 함
+				init : function(){
+					const mainElem = document.createElement('div');
+					mainElem.style.color = this.color;
+					mainElem.innerHTML = this.num;
+					mainElem.classList.add('card');
+					document.body.appendChild(mainElem);
+				}
+			}
+			const card1 = new Card(1,'Green');
+			const card2 = new Card(7,'Blue');
 		})();
 	</script>
 </body>
