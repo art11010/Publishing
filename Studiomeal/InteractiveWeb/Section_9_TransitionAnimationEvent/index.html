@@ -14,6 +14,7 @@
 
 		/* Step 2	Animation */
 		.ball{animation:ball-ani 1s 3 alternate forwards;}
+		.ball.end{border:5px solid #fff000}
 		@keyframes ball-ani{
 			from{transform:translate(0,0);}
 			to{transform:translate(200px,200px);}
@@ -39,6 +40,17 @@
 			// });
 
 			// Step 2	Animation
+			const ballElem = document.querySelector('.ball');
+			function ballAni(){
+				ballElem.addEventListener('animationstart',function(){
+					ballElem.classList.add('end');
+				});
+			}
+
+			ballElem.addEventListener('click',function(){
+				ballElem.style.animation = 
+				ballAni();
+			});
 		})();
 	</script>
 </body>
