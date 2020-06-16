@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>TimingControl</title>
+	<style>
+		body{margin:0;color:#fff;background-color:#333;}
+		h1{margin:0;}
+		.btn{font-size:1.5rem;}
+	</style>
+</head>
+<body>
+	<h1>TimingControl</h1>
+	<button class="btn">취소</button>
+	<script>
+		(function(){
+			// Step 1	setTimeout clearTimeout
+			// let timeId;
+			// const btn = document.querySelector('.btn');
+
+			// function sample(){
+			// 	console.log('sample!');
+			// }
+			// timeId = setTimeout(sample,3000);
+
+			// btn.addEventListener('click',function(){
+			// 	clearTimeout(timeId);
+			// });
+
+			// Step 2	setInterval clearInterval
+			// let timeId;
+			// const btn = document.querySelector('.btn');
+
+			// function sample(){
+			// 	console.log('sample!');
+			// }
+			// timeId = setInterval(sample,1000);
+
+			// btn.addEventListener('click',function(){
+			// 	clearInterval(timeId);
+			// });
+
+			// Step 3	requestAnimationFrame
+			// let timeId;
+			// let n = 0;
+			// const btn = document.querySelector('.btn');
+
+			// function sample(){
+			// 	n++;
+			// 	btn.innerHTML =n;
+			// 	if(n>=200){
+			// 		return;
+			// 	}
+			// 	timeId = requestAnimationFrame(sample);
+			// }
+
+			// sample();
+
+			// btn.addEventListener('click',function(){
+			// 	cancelAnimationFrame(timeId);
+			// });
+		})();
+	</script>
+</body>
+</html>
