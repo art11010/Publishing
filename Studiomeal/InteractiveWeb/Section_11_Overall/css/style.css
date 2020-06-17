@@ -1,2 +1,13 @@
-body{font-family:'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;-webkit-overflow-scrolling:touch;color:#fff/* 555 */;background-color:#333;}
-.world{width:100vw;height:100vh;position:fixed;top:0;left:0;perspective:1000px;}
+body{font-family:'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;-webkit-overflow-scrolling:touch;color:#555;}
+.world{width:100vw;height:100vh;position:fixed;top:0;left:0;perspective:1000px;background:linear-gradient(360deg, #333, transparent)}
+.stage{width:100vw;height:100vh;position:absolute;top:0;left:0;transform-style:preserve-3d;}
+.house{width:100vw;height:100vh;transform-style:preserve-3d;transform:translateZ(-500vw);}
+.wall{width:100vw;height:100vh;position:absolute;top:0;left:0;background-color:rgba(255,255,255,0.8);}
+.wall-left{width:1000vw;/* left:-500vw; */transform:rotateY(90deg) translateZ(-500vw)}
+.wall-right{width:1000vw;/* left:-500vw; */transform:rotateY(90deg) translateZ(-400vw);transition: 1s;}
+.wall-front-a{transform:translateZ(300vw);}
+.wall-front-b{transform:translateZ(50vw);}
+.wall-front-c{transform:translateZ(-200vw);}
+.wall-front-d{transform:translateZ(-500vw);}
+.wall-content{display:flex;height:100vh;align-items:center;justify-content:center;}
+.wall-title{font-size:5rem;}
