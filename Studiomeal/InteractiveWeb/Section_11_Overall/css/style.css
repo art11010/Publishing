@@ -1,13 +1,19 @@
-body{font-family:'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;-webkit-overflow-scrolling:touch;color:#555;}
+body{height:500vw;
+	font-family:'Apple SD Gothic Neo', 'Roboto', 'Noto Sans KR', NanumGothic, 'Malgun Gothic', sans-serif;-webkit-overflow-scrolling:touch;color:#555;}
 .world{width:100vw;height:100vh;position:fixed;top:0;left:0;perspective:1000px;background:linear-gradient(360deg, #333, transparent)}
 .stage{width:100vw;height:100vh;position:absolute;top:0;left:0;transform-style:preserve-3d;}
 .house{width:100vw;height:100vh;transform-style:preserve-3d;transform:translateZ(-500vw);}
 .wall{width:100vw;height:100vh;position:absolute;top:0;left:0;background-color:rgba(255,255,255,0.8);}
 .wall-left{width:1000vw;/* left:-500vw; */transform:rotateY(90deg) translateZ(-500vw)}
-.wall-right{width:1000vw;/* left:-500vw; */transform:rotateY(90deg) translateZ(-400vw);transition: 1s;}
+.wall-right{width:1000vw;/* left:-500vw; */transform:rotateY(90deg) translateZ(-400vw)}
 .wall-front-a{transform:translateZ(300vw);}
 .wall-front-b{transform:translateZ(50vw);}
 .wall-front-c{transform:translateZ(-200vw);}
 .wall-front-d{transform:translateZ(-500vw);}
 .wall-content{display:flex;height:100vh;align-items:center;justify-content:center;}
 .wall-title{font-size:5rem;}
+.progress-bar-con{width:100vw;height:5px;position:fixed;top:0;left:0;background-color:#555;z-index:1;}
+.progress-bar{display:block;width:0;height:100%;background-color:#fff000;}
+/* 내가 만든 Bar */
+/* .bar{width:100vw;height:5px;background-color:#fff;position:fixed;top:0;left:0;}
+.bar span{display:block;width:0;height:5px;background-color:#fff000;} */
