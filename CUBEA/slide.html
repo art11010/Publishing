@@ -40,7 +40,7 @@
 
 		const setfunt = function(){
 			hi = setInterval(slide,3000);
-			console.count('1');
+			// console.count('1');
 		}
 		setfunt();
 		// setInterval(function(){slide()},3000);
@@ -58,10 +58,10 @@
 				if(imgNum < 0){
 					imgNum = 4;
 				}
-				// slideLi.eq(imgNum - 1).css({'right':'0'}).animate({'right':'-100vw'},700);
-				// slideLi.eq(imgNum).css({'right':'100vw'}).animate({'right':'0'},700);
+				// slideLi.eq(imgNum - 1).css({'left':'0'}).animate({'left':'-100vw'},700);
+				// slideLi.eq(imgNum).css({'left':'100vw'}).animate({'left':'0'},700);
 			}
-			console.log(imgNum);
+			// console.log(imgNum);
 			clearInterval(hi);
 			setfunt();
 		}
