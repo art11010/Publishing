@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Slide</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../_js/jquery.1.12.4.js"></script>
+</head>
+<body>
+	<div class="slide_wrap">
+		<button type="button" class="prev" onclick="slideClick(this);">PREV</button>
+		<ul class="slide">
+			<li><span>1</span><img src="img/img01.jpg" alt=""></li>
+			<li><span>2</span><img src="img/img02.jpg" alt=""></li>
+			<li><span>3</span><img src="img/img03.jpg" alt=""></li>
+			<li><span>4</span><img src="img/img04.jpg" alt=""></li>
+		</ul>
+		<button type="button" class="next" onclick="slideClick(this);">NEXT</button>
+	</div>
+	<script>
+		let imgNum = 0;
+		let imgCurt;
+		let clckNum = 0;
+		let hi;
+		const slideUl = $('.slide');
+		const slideLi = slideUl.find('li');
+		function slide(){
+			if(imgNum < slideLi.length - 1){
+				imgNum ++;
+				imgCurt = (imgNum - 1) % 4;
+			}else{
+				imgNum = 0;
+				imgCurt = 3;
+			}
+			slideLi.eq(imgCurt).css({'left':'0'}).stop().animate({'left':'-100vw'},700);
+			slideLi.eq(imgNum).css({'left':'100vw'}).stop().animate({'left':'0'},700);
+		}
+
+		const setfunt = function(){
+			hi = setInterval(slide,3000);
+			console.count('1');
+		}
+		setfunt();
+		// setInterval(function(){slide()},3000);
+
+		function slideClick(e){
+			if($(e).hasClass('next')){
+				imgNum++;
+				if(imgNum == 4){
+					imgNum = 0;
+				}
+				slideLi.eq(imgNum - 1).css({'left':'0'}).stop().animate({'left':'-100vw'},700);
+				slideLi.eq(imgNum).css({'left':'100vw'}).stop().animate({'left':'0'},700);
+			}else{
+				imgNum--;
+				if(imgNum < 0){
+					imgNum = 4;
+				}
+				// slideLi.eq(imgNum - 1).css({'right':'0'}).animate({'right':'-100vw'},700);
+				// slideLi.eq(imgNum).css({'right':'100vw'}).animate({'right':'0'},700);
+			}
+			console.log(imgNum);
+			clearInterval(hi);
+			setfunt();
+		}
+	</script>
+</body>
+</html>
