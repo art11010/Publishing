@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jQuery</title>
+	<script src="../_js/jquery.1.12.4.js"></script>
+	<style>
+		body{background-color:#333;}
+		.wrapper{position:relative;width:548px;height:100px;overflow:hidden;background-color:#fff333;}
+		.img_wrap{width:1096px;position:absolute;top:0;left:0;_animation:ani 5s infinite linear;transition-timing-function:linear;}
+		.img_wrap:after{display:block;content:'';clear:both}
+		.img{float:left;display:block;width:548px;height:100px;}
+		/* @keyframes ani{
+			0%{left:0;}
+			100%{left:-100%;}
+		} */
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="img_wrap">
+			<img src="img/rolling.jpg" alt="" class="img">
+		</div>
+	</div>
+
+	<script>
+		// 내가 한거
+		$(function(){
+			var wrapper = $('.wrapper'),
+					wrapperH = $('.wrapper').html(),
+					imgWrap = $('.img_wrap'),
+					imgWrapH = $('.img_wrap').html(),
+					img = $('.img'),
+					imgW = $('.img').outerWidth(),
+					imgL = $('.img').length;
+			var num = 0;
+				// num1;
+			function hihi(){
+				imgWrap.append(imgWrapH);
+				// imgWrap.css({'width':imgW * imgL});
+				// imgWrap.css({left:0}).clearQueue().stop().animate({left:'-100%'}, 5000, 'linear',function(){
+				// 	wrapper.append(wrapperH);
+				// 	imgWrap.eq(0).remove();
+				// 	clearInterval(hi);
+				// 	setfunt();
+				// });
+			}
+			var setfunt = function(){hi = setInterval(function(){
+				num++;
+
+				imgWrap.css({left: - num + 'px'});
+				if(num==imgW){
+					num = 0;
+				}
+			},1);}
+			setfunt();
+			hihi();
+		});
+
+
+
+
+
+		// 팀장님
+		// const imgItem = $('.led_in .item').eq(0);
+		// const imgAppend= imgItem.clone();
+		// let imgWidth = imgItem.outerWidth() / 100;
+		// let contNum= 0;
+
+		// imgItem.parent().append( imgAppend );
+		// setInterval(function(){
+		// 	if( contNum <= 100 ){
+		// 		contNum++;
+		// 		let numSum = imgWidth * contNum;
+		// 		imgItem.parent().css('left', -numSum );
+		// 		if( contNum == 100 ){
+		// 			contNum = 0;
+		// 			imgItem.parent()
+		// 				.css('left',0)
+		// 				.find('.item').eq(0).parent().append();
+		// 		}
+		// 	}
+		// }, 100);
+	</script>
+</body>
+</html>
