@@ -42,3 +42,8 @@ body{height:500vw;
 .character-leg-left{left:calc(414 / 856 * 100%);top:calc(1031 / 1334 * 100%);width:calc(230 /  856 * 100%);height:calc(300 / 1334 * 100%);transform-origin:center top}
 .character-leg-left .face-front{background-image:url('../img/ilbuni_leg_1.png');}
 .character-leg-left .face-back{background-image:url('../img/ilbuni_leg_0.png');}
+
+@keyframes ani-head{
+	to{transform:rotateX(-10deg);}
+	/* from{transform:rotateX(10deg);} */
+}

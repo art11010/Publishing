@@ -1,0 +1,20 @@
+@charset 'utf-8';
+/* 공통 CSS */
+.bold{font-family: 'RenaultSamsungMotors-Bold' !important;}
+
+.ph2_wrap{width:1360px;margin:0 auto;position:relative;}
+.ph2_wrap:after{display:block;content:'';clear:both}
+strong.tit{font-size:50px;line-height:1em;position:absolute;left:215px;top:65px;z-index:3;}
+strong.tit span{color:#fff}
+
+ul.ph2_dot{width:470px;_float:left;position:absolute;bottom:0;left:0;}
+ul.ph2_dot:after{display:block;content:'';clear:both}
+ul.ph2_dot li{width:455px;font-size:32px;line-height:1.5em;margin-right:16px;padding:40px 50px 40px 0;box-sizing:border-box;border-bottom:1px solid #dedede;}
+ul.ph2_dot li button{width:100%;height:100%;text-align:right;transition:.3s;color:#b3b3b3}
+ul.ph2_dot li.on button{color:#000}
+
+ul.ph2_slide{width:890px;height:625px;float:right;position:relative;overflow:hidden;}
+ul.ph2_slide li{position:absolute;width:0;z-index:0;}
+ul.ph2_slide li.on{width:100%;z-index:1;}
+ul.ph2_slide li img{display:block;width:950px;margin-left:-25px;transition:.7s .7s;}
+ul.ph2_slide li.on img{margin-left:0}
