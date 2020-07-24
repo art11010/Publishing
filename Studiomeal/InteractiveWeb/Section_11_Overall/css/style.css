@@ -25,6 +25,9 @@ body{height:500vw;
 .character-face.face-back{transform:rotateY(180deg)}
 
 .character-head{left:calc(42 / 856 * 100%);top:0;z-index:60;width:calc(770 / 856 * 100%);height:calc(648 / 1334 * 100%);transform-origin:center bottom;animation:ani-head 0.6s infinite alternate cubic-bezier(0.46, 0.18, 0.66, 0.93)}
+@keyframes ani-head{
+	to{transform:rotateX(-10deg);}
+}
 .character-head-face.face-front{background-image:url('../img/ilbuni_head_front.png');}
 .character-head-face.face-back{background-image:url('../img/ilbuni_head_back.png');}
 .character-torso{left:calc(208 / 856 * 100%);top:calc(647 / 1334 * 100%);z-index:50;width:calc(428 / 856 * 100%);height:calc(385 / 1334 * 100%);transform-origin:center center}
@@ -42,8 +45,14 @@ body{height:500vw;
 .character-leg-left{left:calc(414 / 856 * 100%);top:calc(1031 / 1334 * 100%);width:calc(230 /  856 * 100%);height:calc(300 / 1334 * 100%);transform-origin:center top}
 .character-leg-left .face-front{background-image:url('../img/ilbuni_leg_1.png');}
 .character-leg-left .face-back{background-image:url('../img/ilbuni_leg_0.png');}
-
-@keyframes ani-head{
-	to{transform:rotateX(-10deg);}
-	/* from{transform:rotateX(10deg);} */
+.character.running .character-leg-right{animation:ani-running-leg 0.2s alternate infinite linear}
+.character.running .character-leg-left{animation:ani-running-leg 0.2s alternate-reverse infinite linear}
+.character.running .character-arm{animation:ani-running-arm 0.2s alternate infinite linear}
+@keyframes ani-running-leg{
+    from{transform:rotateX(-30deg);}
+    to{transform:rotateX(30deg);}
+}
+@keyframes ani-running-arm{
+    from{transform:rotateY(30deg);}
+    to{transform:rotateY(-30deg);}
 }
