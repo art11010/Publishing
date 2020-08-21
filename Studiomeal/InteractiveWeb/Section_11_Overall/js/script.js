@@ -32,5 +32,5 @@
 		new Character({
 			xPos : e.clientX/ window.innerWidth * 100
 		});
-	})
+	});
 })();
