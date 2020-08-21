@@ -34,7 +34,8 @@ function Character(info){   // 생성자니까 함수명 대문자로 시작
     this.lastScrollTop = 0;
     this.xPos = info.xPos;
     this.direction;
-    this.speed = 0.3;
+    this.speed = info.speed;
+    console.log(this.speed);
     // 좌우 이동 중인지 아닌지
     this.runningState = false;
     this.rafId;
