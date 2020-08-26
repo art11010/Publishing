@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 01</title>
+	<style>
+		div{box-sizing:border-box; border:1px solid #ccc; margin:10px 0 0 10px;min-height:100px; text-align:center; line-height:100px}
+		#aside{float:left; width:200px; height:350px; line-height:350px;}
+		#container{float:left; width:400px; height:350px; padding:0 10px 10px 0}
+		.bg{background-color:aqua}
+	</style>
+</head>
+<body>
+	<!-- 01 -->
+	<!-- <div id="app">
+		<h1>Hello {{str}} world!</h1>
+	</div> -->
+
+	<!-- 02 -->
+	<div id="aside">{{aside}}</div>
+	<div id="container">
+		<div id="header">{{header}}</div>
+		<div id="contents">{{contents}}</div>
+		<div id="footer" v-bind:class=' "bg" '> {{footer}} </div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		// 01
+		// var datas = {
+		// 	str: 'Vue.js'
+		// };
+		// var vueConfigOption = {
+		// 	el: '#app',
+		// 	data: datas
+		// };
+		// var app = new Vue(vueConfigOption);
+		var app = new Vue({
+			el:'#app',
+			data:{
+				str: 'Vue.js'
+			}
+		});
+
+		// 02
+		var vueConfigs = {
+			el: '#contents',
+			data: {
+				contents: '여기는 Vue 영역',
+				aside: '여기는 aside',
+				header: '여기는 header',
+				footers: '여기는 footers'
+			}
+		};
+		var app = new Vue( vueConfigs );
+		app.$el.style.backgroundColor = 'yellow';
+	</script>
+</body>
+</html>

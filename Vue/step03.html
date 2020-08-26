@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 03</title>
+</head>
+<body>
+	<!-- 01 -->
+	<!-- <div id="app">
+		<h1>반지름이 {{ radius }}cm인 둘레의 길이는 {{ circumference(radius) }}cm이고, 원의 넓이는 {{ circleArea(radius) }}cm<sup>2</sup> 입니다.</h1>
+	</div> -->
+
+	<!-- 02 -->
+	<!-- <div id="app">
+		<h1>ㅎㅇㅎㅇ</h1>
+	</div> -->
+
+	<!-- 03 -->
+	<!-- <div id="app">
+		<h1>dataPropertyIsReactive = "{{ dataPropertyIsReactive }}"</h1>
+		<button onclick="changeDate();">gdgd</button>
+	</div> -->
+
+	<!-- 04 -->
+	<div id="app">
+		<h1>{{ computedProperty }}</h1>
+		<h1>{{ computedProperty }}</h1>
+		<h1>{{ computedProperty }}</h1>
+		<button onclick="changeDate();">gdgd</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		// 01
+		// var dataOptionsObject = {radius : 10};
+		// var methodsOptionObject = {
+		// 	circumference: function(r){
+		// 		return Math.round(2*Math.PI*r*100)/100;
+		// 	},
+		// 	circleArea: function(r){
+		// 		return Math.round(Math.PI*r*r*100)/100;
+		// 	}
+		// }
+		// var vueConfigOptions = {
+		// 	el: '#app',
+		// 	data: dataOptionsObject,
+		// 	methods: methodsOptionObject
+		// }
+		// var app = new Vue(vueConfigOptions);
+
+		// 02
+		// const app = new Vue({
+		// 	el: '#app',
+		// 	data: {
+		// 		data1: 'dummy', data2: 'dummy', data3: 'dummy', data4: 'dummy', data5: 'dummy'
+		// 	},
+		// 	methods: {
+		// 		testMethod1(){
+		// 			return 'dummy'
+		// 		},
+		// 		testMethod2(){return 'dummy'}, testMethod3(){return 'dummy'}, testMethod4(){return 'dummy'}, testMethod5(){return 'dummy'}
+		// 	}
+		// });
+		// console.log(app);
+
+		// 03
+		// const app = new Vue({
+		// 	el: '#app',
+		// 	data: { dataPropertyIsReactive : 'dummy' }
+		// });
+		// function changeDate(){
+		// 	const now = new Date();
+		// 	app.dataPropertyIsReactive = now.toLocaleString();
+		// }
+
+		// 04
+		const app = new Vue({
+			el: '#app',
+			computed:{
+				computedProperty(){
+					console.log('recompute');
+					return new Date();
+				}
+			}
+		});
+		function changeDate(){
+			app.computedProperty = new Date();
+		}
+	</script>
+</body>
+</html>
