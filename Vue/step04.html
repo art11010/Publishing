@@ -3,12 +3,70 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Step 03</title>
+	<title>Step 04</title>
 </head>
 <body>
-	
+	<!-- 기존 -->
+	<!-- <div id="loginBox">
+		<p>비로그인 상태 화면</p>
+		<button type="button" onclick="login();">로그인!</button>
+	</div>
+	<div id="logoutBox" style="display:none;">
+		<p>로그인 상태 화면</p>
+		<button type="button" onclick="logout();">로그아웃!</button>
+	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
+		var loginBox = document.getElementById('loginBox');
+		var logoutBox = document.getElementById('logoutBox');
+		function login(){
+			loginBox.style.display = 'none';
+			logoutBox.style.display = 'block';
+		}
+		function logout(){
+			loginBox.style.display = 'block';
+			logoutBox.style.display = 'none';
+		}
+	</script> -->
+
+	<!-- 효율 -->
+	<!-- <div id="loginBox"></div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		// 레이아웃을 변수로 정의
+		var loginLayout = '<p>비로그인 상태 화면</p>' + '<button onclick="toggleLogin();">로그인!</button>';
+		var logoutLayout = '<p>로그인 상태 화면</p>' + '<button onclick="toggleLogin();">로그아웃!</button>';
+
+		var isLogin = false;
+		var loginBox = document.getElementById('loginBox');
+
+		loginBox.innerHTML = loginLayout;
+		function toggleLogin(){
+			isLogin = !isLogin;
+			loginBox.innerHTML = isLogin ? logoutLayout : loginLayout;
+		}
+	</script> -->
+
+	<!-- Vue -->
+	<div id="app">
+		<div v-show="isLoginBoxShow">
+			<p>비로그인 상태 화면</p>
+			<button tpye="button" onclick="login();">로그인!</button>
+		</div>
+		<div v-show="isLoginBoxShow">
+			<p>로그인 상태 화면</p>
+			<button tpye="button" onclick="login();">로그아웃!</button>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: { isLoginBoxShow : ture }
+		});
+		function login(){
+			console.log
+		}
 	</script>
 </body>
 </html>
