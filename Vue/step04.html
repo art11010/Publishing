@@ -47,25 +47,77 @@
 		}
 	</script> -->
 
-	<!-- Vue -->
-	<div id="app">
+	<!-- Vue v-show -->
+	<!-- <div id="app">
 		<div v-show="isLoginBoxShow">
 			<p>비로그인 상태 화면</p>
 			<button tpye="button" onclick="login();">로그인!</button>
 		</div>
-		<div v-show="isLoginBoxShow">
+		<div v-show="!isLoginBoxShow">
 			<p>로그인 상태 화면</p>
-			<button tpye="button" onclick="login();">로그아웃!</button>
+			<button tpye="button" onclick="logout();">로그아웃!</button>
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
 		const app = new Vue({
 			el: '#app',
-			data: { isLoginBoxShow : ture }
+			data: { isLoginBoxShow : true }
 		});
 		function login(){
-			console.log
+			app.isLoginBoxShow = false;
+		};
+		function logout(){
+			app.isLoginBoxShow = true;
+		};
+	</script> -->
+
+	<!-- Vue v-if -->
+	<!-- <div id="app">
+		<div v-if="isLoginBoxShow">
+			<p>비로그인 상태 화면</p>
+			<button type="button" onclick="toggle();">로그인!</button>
+		</div>
+		<div v-else>
+			<p>로그인 상태 화면</p>
+			<button type="button" onclick="toggle();">비로그인!</button>
+		</div>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data:{ isLoginBoxShow:true }
+		});
+		function toggle(){
+			app.isLoginBoxShow = !app.isLoginBoxShow;
+		}
+	</script> -->
+
+	<!-- Vue v-if -->
+	<div id="app">
+		<p>
+			오늘은
+			<span v-if='dayOfWeek==1'>월요일!</span>
+			<span v-else-if='dayOfWeek==2'>화요일!</span>
+			<span v-else-if='dayOfWeek==3'>수요일!</span>
+			<span v-else-if='dayOfWeek==4'>목요일!</span>
+			<span v-else-if='dayOfWeek==5'>금요일!</span>
+			<span v-else-if='dayOfWeek==6'>토요일!</span>
+			<span v-else-if='dayOfWeek==7'>일요일!</span>
+			<span v-else>먹어요?</span>
+			진짜?
+		</p>
+		<button type="button" onclick="rand();">다른 날?</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data:{ dayOfWeek : (new Date()).getDay() }
+		});
+		function rand(){
+			app.dayOfWeek = Math.floor(Math.random()*7);
 		}
 	</script>
 </body>
