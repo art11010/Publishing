@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 05</title>
+</head>
+<body>
+	<!-- v-on event -->
+	<ul id="app">
+		<li><a v-bind:href=" url " href="https://google.com/">{{ url }}</a></li>
+		<li><a href="https://google.com/" :href=' getUrl("google") '>google</a></li>
+	</ul>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: {url : "https://start-vue.js-web.app"},
+			methods:{
+				getUrl: function(name){
+					return "http://" + name + ".com";
+				}
+			}
+		});
+	</script>
+</body>
+</html>

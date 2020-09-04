@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 05</title>
+</head>
+<body>
+	<!-- v-on event -->
+	<!-- <div id="app">
+		<h1>{{ value }}</h1>
+		<button type="button" v-on:click='setValue("왼쪽")'>클릭!</button>
+		<button type="button" @click='setValue("오른쪽")'>클릭!</button>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: { value : '클릭해보세요' },
+			methods: {
+				setValue: function(str){
+					this.value = str + " 클릭";
+				}
+			}
+		});
+	</script> -->
+
+	<!-- keyUp.enter event -->
+	<!-- <div id="app">
+		<h1>{{ value }}</h1>
+		<input id="INPUT" type="text" @keyUp.enter='setValue()'>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: {value: "value"},
+			methods: {
+				setValue: function(){
+					this.value = document.getElementById("INPUT").value;
+				}
+			}
+		})
+	</script> -->
+
+	<!-- keyUp.shift.enter event -->
+	<div id="app">
+		<h1>{{ value }}</h1>
+		<!-- <input id="INPUT" type="text" @keyUp.shift.enter='setValue()'> -->
+		<!-- 다른 키를 같이 눌러도 실행됨 -->
+		<input id="INPUT" type="text" @keyUp.shift.enter.exact='setValue()'>
+		<!-- exact를 넣음으로 정확한 키를 눌러야 실행되게 함 -->
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script>
+		const app = new Vue({
+			el: '#app',
+			data: {value: "value"},
+			methods: {
+				setValue: function(){
+					this.value = document.getElementById("INPUT").value;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

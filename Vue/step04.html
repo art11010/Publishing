@@ -98,13 +98,13 @@
 	<div id="app">
 		<p>
 			오늘은
-			<span v-if='dayOfWeek==1'>월요일!</span>
-			<span v-else-if='dayOfWeek==2'>화요일!</span>
-			<span v-else-if='dayOfWeek==3'>수요일!</span>
-			<span v-else-if='dayOfWeek==4'>목요일!</span>
-			<span v-else-if='dayOfWeek==5'>금요일!</span>
-			<span v-else-if='dayOfWeek==6'>토요일!</span>
-			<span v-else-if='dayOfWeek==7'>일요일!</span>
+			<span v-if='dayOfWeek==0'>월요일!</span>
+			<span v-else-if='dayOfWeek==1'>화요일!</span>
+			<span v-else-if='dayOfWeek==2'>수요일!</span>
+			<span v-else-if='dayOfWeek==3'>목요일!</span>
+			<span v-else-if='dayOfWeek==4'>금요일!</span>
+			<span v-else-if='dayOfWeek==5'>토요일!</span>
+			<span v-else-if='dayOfWeek==6'>일요일!</span>
 			<span v-else>먹어요?</span>
 			진짜?
 		</p>
@@ -117,7 +117,8 @@
 			data:{ dayOfWeek : (new Date()).getDay() }
 		});
 		function rand(){
-			app.dayOfWeek = Math.floor(Math.random()*7);
+			app.dayOfWeek = Math.floor(Math.random()*8);
+			console.log(app.dayOfWeek);
 		}
 	</script>
 </body>
