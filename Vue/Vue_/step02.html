@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 02</title>
+	<style>
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<h2>HTML로 표시하는 예제</h2>
+	<div id="app_1">
+		<p>{{ mytext }}</p>
+		<p v-text="mytext"></p>
+		<p v-html="mytext"></p>
+	</div>
+	<script>
+		const app_1 = new Vue({
+			el: "#app_1",
+			data: {mytext : '<h1>hello</h1>'}
+		});
+	</script>
+
+	<hr>
+	<h2>여러가지 데이터형을 표시하는 예제</h2>
+	<div id="app_2">
+		<p>{{ myNumber }}</p>
+		<p>{{ mytext }}</p>
+		<p>{{ myBool }}</p>
+		<p>{{ myPrice * 1.08 }}</p>
+		<p>{{ "안녕하세요~ " + myName + "님" }}</p>
+		<p>{{ myName.substr(0,1) }}</p>
+	</div>
+	<script>
+		const app_2 = new Vue({
+			el: "#app_2",
+			data: {
+				myNumber: 12345,
+				mytext: 'hello',
+				myBool: true,
+				myPrice: 500,
+				myName: '홍길동'
+			}
+		});
+	</script>
+
+	<hr>
+	<h2>배열 데이터를 표시하는 예제</h2>
+	<div id="app_3">
+		<p>{{ myArray }}</p>
+		<p>{{ myArray[0] }}</p>
+	</div>
+	<script>
+		const app_3 = new Vue({
+			el: "#app_3",
+			data: {
+				myArray: ['얼그레이', '다즐링', '어썸']
+			}
+		});
+	</script>
+
+	<hr>
+	<h2>객체 데이터를 표시하는 예제</h2>
+	<div id="app_4">
+		<p>{{ myTea }}</p>
+		<p>{{ myTea.name }} {{ myTea.price }} 원</p>
+	</div>
+	<script>
+		const app_4 = new Vue({
+			el: "#app_4",
+			data: {
+				myTea: {name: '다즐링', price: 600}
+			}
+		});
+	</script>
+
+	<hr>
+	<h2>준비한 데이터를 표시하는 예제</h2>
+	<div id="app_5">
+		<p>{{ myTea }}</p>
+		<p>{{ myTea[1].name }} {{ myTea[1].price }}</p>
+	</div>
+	<script>
+		const teaList = [
+			{name: '다즐링', price:600},
+			{name: '얼그레이', price:500},
+			{name: '어썸', price:400}
+		]
+		const app_5 = new Vue({
+			el: "#app_5",
+			data: {myTea: teaList}
+		});
+	</script>
+
+	<hr>
+	<h2>전체 데이터를 표시하는 예제</h2>
+	<div id="app_6">
+		<p>{{ $data }}</p>
+		<li v-for="(item,key) in $data">{{ key }} : {{ item }}</li>
+	</div>
+	<script>
+		const app_6 = new Vue({
+			el: "#app_6",
+			data: {
+				myText: 'Hello',
+				myNumber: 12345,
+				myBool: true,
+				myArray: [1,2,3,4,5]
+			}
+		});
+	</script>
+
+	<!-- Arrange -->
+	<hr>
+	<div id="app_7">
+		<p>{{ myText }}</p>
+		<p v-text="myText"></p>
+		<p v-html="myText"></p>
+		<p>{{ myNumder }}</p>
+		<p>{{ myBool }}</p>
+		<p>{{ myArray }}</p>
+		<p>{{ myArray[1] }}</p>
+		<p>{{ myObject }}</p>
+		<p>{{ myObject.name }}</p>
+		<p>{{ myArrOb[0].name }} {{ myArrOb[0].birth }}</p>
+	</div>
+	<script>
+		const myArrObList = [
+			{name: 'Ye Ji', birth: 1010}
+		]
+		const app_7 = new Vue({
+			el: "#app_7",
+			data: {
+				myText: '<h1>hello</h1>',
+				myNumder: 12345,
+				myBool: true,
+				myArray: [ '얼그레이', '녹차', '어썸' ],
+				myObject: { name:'얼그레이', price: '600' },
+				myArrOb: myArrObList
+			}
+		});
+	</script>
+
+	<!-- Practice -->
+	<hr>
+	<h2>다양한 데이터의 출력</h2>
+	<div id="app_8">
+		<p>{{ myText }}</p>
+		<p v-html="myHTML"></p>
+		<p>{{ myNumber }}</p>
+		<p>{{ myBool }}</p>
+		<p>{{ myArray }}</p>
+		<p>{{ myObject }}</p>
+		<p style="color:blueviolet">{{ myArrOb[0].name }}</p>
+		<p>{{ $data }}</p>
+	</div>
+	<script>
+		const myArrObList2 = [
+			{name: 'Ye Ji', birth: 1010}
+		]
+		const app_8 = new Vue({
+			el: "#app_8",
+			data: {
+				myText: 'Vue를 배워 봅시다. 이렇게 그냥 출력할 수 도 있고',
+				myHTML: '<h3>태그를 넣어서 출력할 수 도 있습니다.</h3>',
+				myNumber: 12345,
+				myBool: true,
+				myArray: [1,2,3,4,5],
+				myObject: {name: 'Ye Ji', birth: '1010'},
+				myArrOb: myArrObList2
+			}
+		});
+	</script>
+</body>
+</html>

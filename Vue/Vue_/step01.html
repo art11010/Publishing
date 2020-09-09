@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 01</title>
+	<style>
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<h2>클릭하면 카운터가 올라갑니다.</h2>
+	<div id="app_1">
+		<p>{{ count }}회</p>
+		<button type="button" v-on:click="countUp">카운터</button>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {
+				count:0
+			},
+			methods: {
+				countUp: function(){
+					this.count++;
+				}
+			}
+		});
+	</script>
+
+	<!-- Arrange -->
+	<hr>
+	<div id="app_2">
+		<p>{{ mytext }}</p>
+		<p v-text="mytext"></p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data: {mytext:'Hello'}
+		});
+	</script>
+
+	<!-- Practice -->
+	<hr>
+	<div id="app_3">
+		<h2>클릭하면 카운터가 올라가고 내려갑니다.</h2>
+		<p>{{ count }}회</p>
+		<button type="button" v-on:click="countUp">카운트 업</button>
+		<button type="button" v-on:click="countDown">카운트 다운</button>
+	</div>
+	<script>
+		new Vue({
+			el: '#app_3',
+			data: {count:0},
+			methods: {
+				countUp: function(){
+					this.count++;
+				},
+				countDown: function(){
+					this.count--;
+				}
+			}
+		})
+	</script>
+</body>
+</html>
