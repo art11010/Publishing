@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 04</title>
+	<style>
+		label{display:block;}
+		button{display:block;}
+		img{width:100px;}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<div id="app_1">
+		<!-- input text -->
+		<input v-model="myName" :placeholder="inputP">
+		<p>나는 {{ myName }} 입니다.</p>
+		<!-- textarea -->
+		<textarea v-model="myText"></textarea>
+		<p>문장은, {{ myText }}</p>
+		<p>문자 수는 {{ myText.length }}자 입니다.</p>
+		<!-- input checkbox -->
+		<label><input :type="inputC" v-model="myCheck">체크박스 상태 : {{ myCheck }}</label>
+		<!-- input checkbox array -->
+		<label><input :type="inputC" value="값1" v-model="myChecks">red</label>
+		<label><input :type="inputC" value="값2" v-model="myChecks">green</label>
+		<label><input :type="inputC" value="값3" v-model="myChecks">blue</label>
+		{{ myChecks }}
+		<!-- button -->
+		<label><input :type="inputC" v-model="myAgree">동의합니다.</label>
+		<button type="button" v-bind:disabled="myAgree==false">송신</button>
+		<button type="button" v-bind:disabled="!myAgree">송신</button>
+		<!-- input radio -->
+		<label><input :type="inputR" value="red" v-model="picked">red</label>
+		<label><input :type="inputR" value="green" v-model="picked">green</label>
+		<label><input :type="inputR" value="blue" v-model="picked">blue</label>
+		{{ picked }}
+		<!-- input img -->
+		<label><input :type="inputR" value="Vue.png" v-model="imgName">Vue green</label>
+		<label><input :type="inputR" value="Vue2.png" v-model="imgName">Vue blue</label>
+		<p>{{ imgName }}</p>
+		<img :src="imgName">
+		<!-- select -->
+		<select v-model="optionC" multiple>
+			<option disabled value="">선택해주세요.</option>
+			<option>red</option>
+			<option>green</option>
+			<option>blue</option>
+		</select>
+		<p :style="{color:optionC}">선택한 컬러는 {{ optionC }} 입니다.</p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {
+				myName: '',
+				inputP: '이름',
+				myText: '오늘 날씨 좋습니다.',
+				inputC: 'checkbox',
+				myCheck: true,
+				myChecks: [],
+				myAgree: false,
+				inputR: 'radio',
+				picked: 'red',
+				imgName: '',
+				optionC: []
+			}
+		});
+	</script>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>

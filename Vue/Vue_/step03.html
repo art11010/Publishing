@@ -5,18 +5,107 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Step 03</title>
 	<style>
-		a{display:block;width:100px;height:100px;background-color:pink;border:1px solid #000;}
+		a{display:block}
+		img{display:block;width:100px;}
+		.deco{text-decoration-line:line-through;text-decoration-color:blueviolet;}
+		.dark{background-color:gray;}
+		.blue{text-decoration-line:underline;text-decoration-color:slateblue;}
+		.through{text-decoration-line:line-through;text-decoration-color:slateblue;}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<!-- Together -->
-	<a href="Javascript:;"></a>
-	<a v-bind:href="url"></a>
-	<a :href="url"></a>
+	<div id="app_1">
+		<!-- href -->
+		<a href="https://google.com/">직접 지정</a>
+		<a v-bind:href="aURL">Vue url</a>
+		<a :href="aURL">Vue url</a>
+		<!-- src -->
+		<img src="Vue.png" alt="직접 지정">
+		<img v-bind:src="imgSrc" alt="Vue src">
+		<img :src="imgSrc" alt="Vue src">
+		<!-- align -->
+		<p align="right">직접 지정</p>
+		<p v-bind:align="pAlign">Vue align</p>
+		<p :align="pAlign">Vue align</p>
+		<!-- style -->
+		<p style="color:blueviolet">직접 지정</p>
+		<p v-bind:style="{color:pViolet}">Vue blueviolet</p>
+		<p :style="{'background-color':pViolet,color:pWhite}">Vue blueviolet</p>
+		<!-- class -->
+		<p class="deco">직접 지정</p>
+		<p v-bind:class="pDeco">Vue Class</p>
+		<p v-bind:class="[pDeco, pDark]">Vue Class</p>
+		<p :class="{'deco':isON}">Vue Class</p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {
+				aURL: 'https://google.com/',
+				imgSrc: 'Vue.png',
+				pAlign: 'right',
+				pViolet: 'blueviolet',
+				pWhite: '#fff',
+				pDeco: 'deco',
+				pDark: 'dark',
+				isON: true
+			}
+		});
+	</script>
 	<!-- Arrange -->
 	<hr>
+	<div id="app_2">
+		<img v-bind:src="imgSrc" alt="Vue src">
+		<a v-bind:href="aURL">url</a>
+		<p v-bind:align="pViolet">Vue blueviolet</p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data: {
+				imgSrc: 'Vue.png',
+				aURL: 'https://google.com/',
+				pViolet: 'right'
+			}
+		});
+	</script>
 	<!-- Practice -->
 	<hr>
+	<div id="app_3">
+		<p><a :href="aHref" :target="aTarget">네이버로 연결</a></p>
+		<p><img :src="imgSrc" alt="Vue src"></p>
+		<p :align="alignL">왼쪽 정렬</p>
+		<p :align="alignR">오른쪽 정렬</p>
+		<p :align="alignC">가운데 정렬</p>
+		<p :style="{color:styleC}">빨간색</p>
+		<p :style="{fontSize:styleS}">150%</p>
+		<p :style="{color:styleC, fontSize:styleS}">빨간색 150%</p>
+		<p :style="{color:styleC, fontSize:styleS, 'background-color':styleB}">빨간색 150% 노랑배경</p>
+		<p :class="classB">blue line</p>
+		<p :class="classT">blue line through</p>
+		<p :class="[classB, classT]">blue line through</p>
+		<p :class="{'blue':isON}">blue line through</p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_3",
+			data: {
+				aHref: 'https://naver.com/',
+				aTarget: '_blank',
+				imgSrc: 'Vue.png',
+				alignL: 'left',
+				alignR: 'right',
+				alignC: 'center',
+				styleC: 'red',
+				styleS: '150%',
+				styleB: 'yellow',
+				classB: 'blue',
+				classT: 'through',
+				isON: true
+			}
+		});
+	</script>
 </body>
 </html>
