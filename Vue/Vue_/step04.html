@@ -50,6 +50,13 @@
 			<option>blue</option>
 		</select>
 		<p :style="{color:optionC}">선택한 컬러는 {{ optionC }} 입니다.</p>
+		<!-- v-model property -->
+		<input :type="inputP" v-model.lazy="myName">
+		<p>{{ myName }}</p>
+		<input :type="inputN" v-model.lazy.number="myNumder">
+		<p>100을 더해서 표시 {{ myNumder+100 }}</p>
+		<input v-model="myText">
+		<p>앞뒤 공백을 제거{{ myText }}</p>
 	</div>
 	<script>
 		new Vue({
@@ -57,7 +64,7 @@
 			data: {
 				myName: '',
 				inputP: '이름',
-				myText: '오늘 날씨 좋습니다.',
+				myText: '',
 				inputC: 'checkbox',
 				myCheck: true,
 				myChecks: [],
@@ -65,12 +72,50 @@
 				inputR: 'radio',
 				picked: 'red',
 				imgName: '',
-				optionC: []
+				optionC: [],
+				inputN: 'numder',
+				myNumder: 0
 			}
 		});
 	</script>
 	<!-- Arrange -->
 	<hr>
+	<div id="app_2">
+		<!-- input text -->
+		<input v-model="myName">
+		<p>나는, {{ myName }}입니다.</p>
+		<!-- textarea -->
+		<textarea v-model="mytext"></textarea>
+		<p>복수행 텍스트 {{ mytext }}</p>
+		<!-- input checkbox -->
+		<label><input :type="inputC" v-model="checked">값</label>
+		<p>{{ checked }}</p>
+		<!-- input radio -->
+		<label><input :type="inputR" value="red" v-model="picked">red</label>
+		<label><input :type="inputR" value="green" v-model="picked">green</label>
+		<label><input :type="inputR" value="blue" v-model="picked">blue</label>
+		<p>{{ picked }}</p>
+		<!-- select -->
+		<select v-model="myColor">
+			<option>red</option>
+			<option>green</option>
+			<option>blue</option>
+		</select>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data:{
+				inputC: 'checkbox',
+				inputR: 'radio',
+				myName: '',
+				mytext: '',
+				checked: false,
+				picked: 'red',
+				myColor:''
+			}
+		});
+	</script>
 	<!-- Practice -->
 	<hr>
 </body>
