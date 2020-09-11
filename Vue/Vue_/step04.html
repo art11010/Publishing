@@ -96,11 +96,12 @@
 		<label><input :type="inputR" value="blue" v-model="picked">blue</label>
 		<p>{{ picked }}</p>
 		<!-- select -->
-		<select v-model="myColor">
+		<select v-model="myColor" multiple>
 			<option>red</option>
 			<option>green</option>
 			<option>blue</option>
 		</select>
+		<p>{{ myColor }}</p>
 	</div>
 	<script>
 		new Vue({
@@ -112,7 +113,7 @@
 				mytext: '',
 				checked: false,
 				picked: 'red',
-				myColor:''
+				myColor:[]
 			}
 		});
 	</script>
