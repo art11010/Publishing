@@ -119,5 +119,29 @@
 	</script>
 	<!-- Practice -->
 	<hr>
+	<div id="app_3">
+		이름 : <input :type="inputT" v-model.lazy="myText">
+		<label><input :type="inputR" value="red" v-model="myColor">빨강</label>
+		<label><input :type="inputR" value="green" v-model="myColor">녹색</label>
+		<label><input :type="inputR" value="blue" v-model="myColor">파랑</label>
+		<label><input :type="inputR" value="yellow" v-model="myColor">노랑</label>
+		<label><input :type="inputR" value="gray" v-model="myColor">회색</label>
+		<p v-bind:style="{color: myColor}">내이름은 {{ myText }}이고, 좋아하는 색은 {{ myColor }}입니다.</p>
+		<label><input :type="inputC" v-model="complete">작성 완료</label>
+		<button type="button" v-bind:disabled="!complete">전송</button>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_3",
+			data: {
+				inputT: 'text',
+				myText: '',
+				inputR: 'radio',
+				myColor: '',
+				inputC: 'checkbox',
+				complete: false
+			}
+		});
+	</script>
 </body>
 </html>

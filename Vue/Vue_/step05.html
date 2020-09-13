@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 05</title>
+	<style>
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<div id="app_1">
+		<p>{{ count }}</p>
+		<button v-on:click="countUp">Click</button>
+	</div>
+	<script>
+		const app_1 = new Vue({
+			el: "#app_1",
+			data: {count:0},
+			methods: {
+				countUp: function(){
+					this.count++;
+				}
+			}
+		});
+	</script>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>
