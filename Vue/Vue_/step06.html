@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 06</title>
+	<style>
+		button{display:block;}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<div id="app_1">
+		<label><input :type="inputC" v-model="myVisible">표시</label>
+		<p v-if="myVisible">체크박스가 on</p>
+		<button :type="buttonT" v-if="isShow" v-on:click="good">GOOD</button>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {
+				inputC: 'checkbox',
+				myVisible: false,
+				buttonT: 'button',
+				isShow: true
+			},
+			methods: {
+				good: function(){
+					this.isShow = false
+				}
+			}
+		});
+	</script>
+	<div id="app_2">
+		
+	</div>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>

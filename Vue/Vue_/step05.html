@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Step 05</title>
 	<style>
+		button{display:block;}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
@@ -13,21 +14,137 @@
 	<div id="app_1">
 		<p>{{ count }}</p>
 		<button v-on:click="countUp">Click</button>
+		<button v-bind:disabled="isClick" v-on:click="oneClick">GOOD</button>
 	</div>
 	<script>
 		const app_1 = new Vue({
 			el: "#app_1",
-			data: {count:0},
+			data: {
+				count:0,
+				isClick:false
+			},
 			methods: {
 				countUp: function(){
 					this.count++;
+				},
+				oneClick: function(){
+					this.isClick = true;
+				}
+			}
+		});
+	</script>
+	<div id="app_2">
+		<p>{{ count }}</p>
+		<button v-on:click="countUp(3)">3</button>
+		<button v-on:click="countUp(10)">10</button>
+		<button v-on:click="countUp(100)">100</button>
+	</div>
+	<script>
+		const app_2 = new Vue({
+			el: "#app_2",
+			data: {
+				count:0,
+			},
+			methods: {
+				countUp: function(value){
+					this.count += value;
+				}
+			}
+		});
+	</script>
+	<div id="app_3">
+		<input v-on:keyup.enter.shift="showAlert" v-model="myText">
+	</div>
+	<script>
+		const app_3 = new Vue({
+			el: "#app_3",
+			data: {
+				myText:'hello',
+			},
+			methods: {
+				showAlert: function(){
+					alert('안녕');
 				}
 			}
 		});
 	</script>
 	<!-- Arrange -->
 	<hr>
+	<div id="app_4">
+		<p>{{ count }}</p>
+		<button v-on:click="clickUp">click</button>
+		<button v-on:click="clickUP(3)">click</button>
+		<input v-on:keyup.enter.exact="showConsole" v-model="myText">
+	</div>
+	<script>
+		const app_4 = new Vue({
+			el: "#app_4",
+			data:{
+				count: 0,
+				myText: 'Hello'
+			},
+			methods:{
+				clickUp:function(){
+					this.count++;
+				},
+				clickUP:function(value){
+					this.count += value;
+				},
+				showConsole:function(){
+					console.log('안녕');
+				}
+			}
+		});
+	</script>
+	<div id="app_5">
+		<input v-on:keyup.enter.shift.exact="showConsole" v-model="inputText">
+	</div>
+	<script>
+		const app_5 = new Vue({
+			el: "#app_5",
+			data:{
+				inputText: '안녕'
+			},
+			methods: {
+				showConsole: function(){
+					console.log('showConsole');
+				}
+			}
+		});
+	</script>
 	<!-- Practice -->
 	<hr>
+	<div id="app_6">
+		<input :type="inputT" value="100">
+		<input :type="inputT" :value="number">
+		<button v-on:click="plus(100)">더하기</button>
+		<button v-on:click="minus(50)">뺴기</button>
+		<button v-on:click="multiply(2)">곱하기</button>
+		<button v-on:click="division(2)">나누기</button>
+		<p>결과는 {{ number }} 입니다.</p>
+	</div>
+	<script>
+		const app_6 = new Vue({
+			el: "#app_6",
+			data: {
+				inputT: 'text',
+				number: 100
+			},
+			methods: {
+				plus: function(value){
+					this.number += value
+				},
+				minus: function(value){
+					this.number -= value
+				},
+				multiply: function(value){
+					this.number *= value
+				},
+				division: function(value){
+					this.number /= value
+				}
+			}
+		});
+	</script>
 </body>
 </html>
