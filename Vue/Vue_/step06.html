@@ -33,8 +33,29 @@
 		});
 	</script>
 	<div id="app_2">
-		
+		<ul>
+			<li v-for="item in Array">{{ item }}</li>
+			<li v-for="item in objArray">{{ item.name }} {{ item.price }}</li>
+			<li v-for="n in 10">{{n}} x 5 = {{n*5}}</li>
+			<li v-for="(item, index) in iiArray">{{index + 1}} : {{item}}</li>
+		</ul>
 	</div>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data: {
+				Array: ['아','이','오'],
+				objArray: [
+					{name:'안녕',price:500},
+					{name:'안녕2',price:1500},
+					{name:'안녕3',price:2500}
+				],
+				iiArray:[
+					'음','엄','에','또'
+				]
+			}
+		});
+	</script>
 	<!-- Arrange -->
 	<hr>
 	<!-- Practice -->
