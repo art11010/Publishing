@@ -11,6 +11,7 @@
 </head>
 <body>
 	<!-- Together -->
+	<!-- v-if -->
 	<div id="app_1">
 		<label><input :type="inputC" v-model="myVisible">표시</label>
 		<p v-if="myVisible">체크박스가 on</p>
@@ -32,6 +33,7 @@
 			}
 		});
 	</script>
+	<!-- v-for -->
 	<div id="app_2">
 		<ul>
 			<li v-for="item in Array">{{ item }}</li>
@@ -52,6 +54,33 @@
 				],
 				iiArray:[
 					'음','엄','에','또'
+				]
+			}
+		});
+	</script>
+	<div id="app_3">
+		<table>
+			<thead>
+				<th v-for="item in header">{{ item }}</th>
+			</thead>
+			<tbody>
+				<tr v-for="line in ranking">
+					<td v-for="item in line">{{ item }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_3",
+			data: {
+				header: ['프로그램 언어', 2018, 2013, 2008, 2003, 1998],
+				ranking: [
+					['Java',1,2,1,1,16],
+					['C',2,1,2,2,1],
+					['C++',3,2,3,3,2],
+					['Python',4,7,6,11,23],
+					['JavaScript',7,10,8,7,20]
 				]
 			}
 		});
