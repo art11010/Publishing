@@ -146,5 +146,41 @@
 			}
 		});
 	</script>
+	<div id="app_7">
+		<input type="text" v-model.number="firstC">
+		<input type="text" v-model.number="secondC">
+		<button @click="calc('+')">더하기</button>
+		<button @click="calc('-')">뺴기</button>
+		<button @click="calc('*')">곱하기</button>
+		<button @click="calc('/')">나누기</button>
+		<p>결과는 {{ number }}</p>
+	</div>
+	<script>
+		const app_7 = new Vue({
+			el: "#app_7",
+			data: {
+				firstC: '',
+				secondC: '',
+				number:''
+			},
+			methods: {
+				calc: function(c){
+					this.number = eval(this.firstC + c +  this.secondC)
+				},
+				// plus: function(){
+				// 	this.number = this.firstC + this.secondC
+				// },
+				// minus: function(){
+				// 	this.number = this.firstC - this.secondC
+				// },
+				// multiply: function(){
+				// 	this.number = this.firstC * this.secondC
+				// },
+				// division: function(){
+				// 	this.number = this.firstC / this.secondC
+				// }
+			}
+		});
+	</script>
 </body>
 </html>

@@ -5,17 +5,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Step 06</title>
 	<style>
-		button{display:block;}
+		body > div{margin:10px 0;padding:10px;border:1px dashed #9a9a9a}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<!-- Together -->
 	<!-- v-if -->
+	<h2>v-if</h2>
 	<div id="app_1">
 		<label><input :type="inputC" v-model="myVisible">표시</label>
-		<p v-if="myVisible">체크박스가 on</p>
-		<button :type="buttonT" v-if="isShow" v-on:click="good">GOOD</button>
+		<p v-if="myVisible">체크박스 ON</p>
+		<p v-else>체크박스 OFF</p>
+		<button :type="btnB" v-if="isShow" v-on:click="good">CLICK</button>
 	</div>
 	<script>
 		new Vue({
@@ -23,7 +25,7 @@
 			data: {
 				inputC: 'checkbox',
 				myVisible: false,
-				buttonT: 'button',
+				btnB: 'button',
 				isShow: true
 			},
 			methods: {
@@ -34,31 +36,15 @@
 		});
 	</script>
 	<!-- v-for -->
+	<h2>v-for</h2>
 	<div id="app_2">
 		<ul>
 			<li v-for="item in Array">{{ item }}</li>
-			<li v-for="item in objArray">{{ item.name }} {{ item.price }}</li>
+			<li v-for="item in objArray">{{ item.name }}</li>
+			<li>{{ objArray[0].name }}</li>
 			<li v-for="n in 10">{{n}} x 5 = {{n*5}}</li>
-			<li v-for="(item, index) in iiArray">{{index + 1}} : {{item}}</li>
+			<li v-for="(item,index) in Array">{{ index }}:{{ item }}</li>
 		</ul>
-	</div>
-	<script>
-		new Vue({
-			el: "#app_2",
-			data: {
-				Array: ['아','이','오'],
-				objArray: [
-					{name:'안녕',price:500},
-					{name:'안녕2',price:1500},
-					{name:'안녕3',price:2500}
-				],
-				iiArray:[
-					'음','엄','에','또'
-				]
-			}
-		});
-	</script>
-	<div id="app_3">
 		<table>
 			<thead>
 				<th v-for="item in header">{{ item }}</th>
@@ -69,25 +55,215 @@
 				</tr>
 			</tbody>
 		</table>
+		<ul>
+			<li v-for="line in ranking">
+				<a href="javascript:;" v-for="item in line" style="display:inline-block;margin-right:10px;">{{ item }}</a>
+			</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data: {
+				Array: ['일', '이', '삼'],
+				objArray: [
+					{name: '예지', age: 26},
+					{name: 'YEJI', age: 25},
+					{name: 'LEEYEJI', age: 24}
+				],
+				header: ['프로그램 언어', 2018, 2013, 2008, 2003, 1998],
+				ranking: [
+					['Java',1,2,1,1,16],
+					['C',2,1,2,2,1],
+					['C++',3,4,3,3,2],
+					['Python',4,7,6,11,23],
+					['JavaScript',7,10,8,7,20]
+				]
+			},
+			methods: {
+				Console: function(){
+					console.log(this.line);
+				}
+			},
+			// created() {
+			// 	this.Console();
+			// },
+		});
+	</script>
+	<div id="app_3">
+		<h4>배열 리스트 추가 / 삭제</h4>
+		<ul>
+			<li v-for="item in Array">{{ item }}</li>
+		</ul>
+		<button type="button" @click="addList">add list</button>
+		<button type="button" @click="addObj(3)">add obj</button>
+		<button type="button" @click="changeObj(0)">change obj</button>
+		<button type="button" @click="deleteObj(2)">delete obj</button>
 	</div>
 	<script>
 		new Vue({
 			el: "#app_3",
 			data: {
-				header: ['프로그램 언어', 2018, 2013, 2008, 2003, 1998],
-				ranking: [
-					['Java',1,2,1,1,16],
-					['C',2,1,2,2,1],
-					['C++',3,2,3,3,2],
-					['Python',4,7,6,11,23],
-					['JavaScript',7,10,8,7,20]
+				Array: [
+					'일', '이', '삼', '사', '오'
 				]
+			},
+			methods: {
+				addList: function(){
+					this.Array.push('addList')
+				},
+				addObj: function(index){
+					this.Array.splice(index, 0, 'addObj')
+				},
+				changeObj: function(index){
+					this.Array.splice(index, 1, 'changeObj')
+				},
+				deleteObj: function(index){
+					this.Array.splice(index, 1)
+				}
+			}
+		});
+	</script>
+	<div id="app_4">
+		<h4>배열 정렬 후 배열 반환</h4>
+		<ul>
+			<li v-for="item in Array">{{ item }}</li>
+		</ul>
+		<button @click="sortDate(Array)">SORT</button>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_4",
+			data: {
+				Array: ['일', '이', '삼', '사', '오']
+			},
+			methods: {
+				sortDate: function(listdata){
+					listdata.sort(function(a,b){
+						return(a < b ? -1 : 1);
+					})
+				}
+			}
+		});
+	</script>
+	<h2>v-if v-for 응용</h2>
+	<div id="app_5">
+		<ul>
+			<li v-for="item in Array" v-if="item % 2 == 0">{{ item }}</li>
+		</ul>
+		<ul>
+			<li v-for="item in Array">{{ item }}</li>
+			<button type="button" @click="eventData()">짝수</button>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_5",
+			data: {
+				Array: [1,2,3,4,5,6]
+			},
+			methods: {
+				eventData: function(){
+					this.Array = this.Array.filter(
+						function(value){return value % 2 == 0;}
+					)
+				}
 			}
 		});
 	</script>
 	<!-- Arrange -->
 	<hr>
+	<div id="app_6">
+		<label><input type="checkbox" v-model="Visible"></label>
+		<p v-if="Visible">ON</p>
+		<p v-else>OFF</p>
+		<ul>
+			<li v-for="item in Arrays">{{ item }}</li>
+			<li v-for="item in objArray">{{ item.name }}</li>
+			<li v-for="item in objArray">{{ item.age }}</li>
+			<li v-for="sample in 10">{{ sample }}</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_6",
+			data: {
+				Visible: true,
+				Arrays: [1, 2, 3, 4, 5],
+				objArray: [
+					{name: '예지', age: 26},
+					{name: 'YEJI', age: 25},
+					{name: 'LEEYEJI', age: 24}
+				],
+			}
+		});
+	</script>
 	<!-- Practice -->
 	<hr>
+	<div id="app_7">
+		<ul>
+			<li v-for="item in Array">{{ item }}</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_7",
+			data: {
+				Array: [1, 2, 3, 4, 5]
+			}
+		});
+	</script>
+	<div id="app_8">
+		<ul>
+			<li v-for="(item, index) in Arrays">
+				{{ item }}
+				<button type="button" @click="changeObj(item,index)">변경</button>
+				<button type="button" @click="deleteObj(index)">삭제</button>
+			</li>
+		</ul>
+		<button type="button" @click="addList">추가</button>
+		<button type="button" @click="sortDate(Arrays)">소트</button>
+		<button type="button" @click="showCalc">구구단 보이기</button>
+		<ul v-if="isShow" v-for="item in Arrays">
+			<li v-for="n in 9">{{ item }} x {{n}} = {{n*item}}</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_8",
+			data: {
+				Arrays:[4, 5, 5, 3, 6, 7, 8, 9],
+				isShow: false
+			},
+			methods: {
+				addList: function(){
+					this.Arrays.push(1)
+				},
+				deleteObj: function(index){
+					this.Arrays.splice(index, 1)
+				},
+				changeObj: function(item,index){
+					this.Arrays.splice(index,1,item += 1)
+				},
+				sortDate: function(listdata){
+					listdata.sort(function(a,b){
+						if(a == b){
+							var ji = listdata.indexOf(a)
+							console.log(listdata)
+							listdata.splice(ji, 1)
+							console.log(listdata)
+							return this.Arrays = listdata
+							console.log(this.Arrays)
+						}else{
+							return(a < b ? -1 : 1);
+						}
+					})
+				},
+				showCalc: function(){
+					this.isShow = true
+				}
+			}
+		});
+	</script>
 </body>
 </html>
