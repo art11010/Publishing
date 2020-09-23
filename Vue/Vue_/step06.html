@@ -222,7 +222,7 @@
 			</li>
 		</ul>
 		<button type="button" @click="addList">추가</button>
-		<button type="button" @click="sortDate(Arrays)">소트</button>
+		<button type="button" @click="sortDate()">소트</button>
 		<button type="button" @click="showCalc">구구단 보이기</button>
 		<ul v-if="isShow" v-for="item in Arrays">
 			<li v-for="n in 9">{{ item }} x {{n}} = {{n*item}}</li>
@@ -245,18 +245,42 @@
 				changeObj: function(item,index){
 					this.Arrays.splice(index,1,item += 1)
 				},
-				sortDate: function(listdata){
-					listdata.sort(function(a,b){
-						if(a == b){
-							var ji = listdata.indexOf(a)
-							console.log(listdata)
-							listdata.splice(ji, 1)
-							console.log(listdata)
-							return this.Arrays = listdata
-							console.log(this.Arrays)
-						}else{
-							return(a < b ? -1 : 1);
-						}
+				sortDate: function(){
+					this.Arrays.filter(function(a,b,c){
+						// console.log(a,b,c);
+						var aIndex = c.indexOf(a)
+						var bIndex = c.indexOf(a-1)
+						c.indexOf(curr) > -1 ? acc : acc.push(curr);
+						console.log(aIndex,bIndex);
+
+						// if(a == b){
+						// 	var ji = this.Arrays.indexOf(a)
+						// 	console.log(this.Arrays)
+						// 	this.Arrays.splice(ji, 1)
+						// 	console.log(this.Arrays)
+						// 	return this.Arrays
+						// }
+						// var ji = c.indexOf(a)
+						// var ji2 = c.indexOf(b)
+						// console.log(a,b)
+						// console.log(c[ji],c[ji2],a,b)
+						// if(ji == ji2){
+						// 	this.Arrays.splice(ji, 1)
+						// 	return this.Arrays
+						// }
+						// console.log(ji,ji2)
+						// c.splice(ji, 1)
+						// console.log(c)
+						// this.Arrays.splice(ji, 1)
+						// console.log(this.Arrays)
+						// return this.Arrays
+					});
+					// this.Arrays.filter (function (item, idx, array) {
+					// 	console.log(array.indexOf(item), idx)
+					// 	return array.indexOf(item) === idx;
+					// });
+					this.Arrays.sort(function(a,b){
+						return(a < b ? -1 : 1);
 					})
 				},
 				showCalc: function(){
