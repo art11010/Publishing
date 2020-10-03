@@ -61,21 +61,24 @@
 	<div id="chart_div2" style="height:500px;"></div>
 	<div id="app_2">
 		<ul>
-			<li v-for="(item, idx) in newArray"></li>
+			<li v-for="(item, idx) in dataArray" v-if="idx > 0">
+				{{item[0]}} : {{item[1]}}
+				<button type="button" @click="addOne(idx)">UP</button>
+			</li>
 		</ul>
 	</div>
 	<script>
 		// 그래프에 사용할 데이터
-		var orgdata = [
+		var newArray = [
 			['종류','개수'],
 			['도시락',3], ['갈비탕',4], ['오므라이스',5], ['짬뽕',1], ['비빔밥',3], ['메밀소바',1]
 		];
 		google.charts.load('current', {packages: ['corechart']});
-		google.charts.setOnLoadCallback(drawBasic);
+		google.charts.setOnLoadCallback(drawNew);
 
 		// 그래프를 그리는 함수
-		function drawBasic(){
-			var data = google.visualization.arrayToDataTable(orgdata);
+		function drawNew(){
+			var data = google.visualization.arrayToDataTable(newArray);
 			var options = {title: '선호하는 점심', "is3D":true};
 			var chart = new google.visualization.PieChart(
 				document.getElementById('chart_div2')
@@ -85,11 +88,71 @@
 		new Vue({
 			el: "#app_2",
 			data: {
-				newArray: orgdata
+				dataArray: newArray
+			},
+			methods: {
+				addOne: function(val){
+					var obj = this.dataArray[val];
+					obj[1]++;
+					this.dataArray.splice(val, 1, obj);
+					drawNew();
+				}
 			}
 		});
 	</script>
 	<!-- Practice -->
+	<div id="chart_div3" style="height:500px;"></div>
+	<div id="app_3">
+		<ul>
+			<li v-for="(item, idx) in dataArray" v-if="idx > 0">
+				{{item[0]}} : {{item[1]}}
+				<button type="button" @click="addOne(idx)">UP</button>
+				<button type="button" @click="minOne(idx)">DOWN</button>
+			</li>
+		</ul>
+	</div>
+	<script>
+		// 그래프에 사용할 데이터
+		var newArray2 = [
+			['종류','개수'],
+			['도시락',3], ['갈비탕',4], ['오므라이스',5], ['짬뽕',1], ['비빔밥',3], ['메밀소바',1]
+		];
+		google.charts.load('current', {packages: ['corechart']});
+		google.charts.setOnLoadCallback(drawNew2);
+
+		// 그래프를 그리는 함수
+		function drawNew2(){
+			var data = google.visualization.arrayToDataTable(newArray2);
+			var options = {title: '선호하는 점심', "is3D":true};
+			var chart = new google.visualization.BarChart(
+				document.getElementById('chart_div3')
+			);
+			chart.draw(data, options);
+		}
+		new Vue({
+			el: "#app_3",
+			data: {
+				dataArray : newArray2
+			},
+			methods: {
+				addOne : function(val){
+					var obj = this.dataArray[val];
+					console.log(obj)
+					obj[1]++;
+					this.dataArray.splice(val, 1, obj);
+					drawNew2();
+				},
+				minOne : function(val){
+					var obj = this.dataArray[val];
+					console.log(obj);
+					if(obj[1] == 0){ return }
+					else{obj[1]--;}
+					this.dataArray.splice(val, 1, obj);
+					drawNew2();
+				}
+			}
+		});
+	</script>
 	<hr>
 </body>
 </html>
