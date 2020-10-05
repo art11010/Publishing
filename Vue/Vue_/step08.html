@@ -10,6 +10,66 @@
 </head>
 <body>
 	<!-- Together -->
+	<div id="app_1">
+		<!-- 금액 계산 -->
+		<input :type="inputN" v-model.numder="price">원 x
+		<input :type="inputN" v-model.numder="count">개
+		<p>합계 {{ sum }} 원</p>
+		<p>소비세 포함 금액 {{ taxIncluded }} 원</p>
+		<!-- 문자열 계산 -->
+		<p>감상은 140자 이내로 입력해 주세요.</p>
+		<textarea v-model="myText"></textarea>
+		<p :style="{color: compColor}">남은 글자는 {{ remaining }} 입니다.</p>
+		<!-- 배열 계산 -->
+		<input :type="inputT" v-model="findWord">
+		<ul>
+			<li v-for="item in findItems">{{ item }}</li>
+		</ul>
+	</div>
+	<script>
+		const app_1 = new Vue({
+			el: "#app_1",
+			data: {
+				inputN: 'number',
+				price: 100,
+				count: 1,
+				myText: '오늘은 날씨가 좋다.',
+				inputT: 'text',
+				findWord: '',
+				items: ['산1', '산2', '산3', '산4', '산5']
+			},
+			computed: {
+				sum: function(){
+					return this.price * this.count
+				},
+				taxIncluded: function(){
+					return this.sum * 1.08;
+				},
+				remaining: function(){
+					return 140 - this.myText.length;
+				},
+				compColor: function(){
+					col = "green";
+					if(this.remaining < 20){
+						col = "orange";
+					}
+					if(this.remaining < 1){
+						col = "red";
+					}
+					return col;
+				},
+				findItems: function(){
+					if(this.findWord){
+						return this.items.filter(function(value){
+							return (value.indexOf(this.findWord) > -1);
+						}, this);
+					}else{
+						return this.items;
+					}
+				}
+			}
+		});
+	</script>
 	<!-- Arrange -->
 	<hr>
 	<!-- Practice -->
