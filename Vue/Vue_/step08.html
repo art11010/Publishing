@@ -36,7 +36,7 @@
 				myText: '오늘은 날씨가 좋다.',
 				inputT: 'text',
 				findWord: '',
-				items: ['산1', '산2', '산3', '산4', '산5']
+				items: ['설악산', '한라산', '북한산', '백두산', '지리산']
 			},
 			computed: {
 				sum: function(){
@@ -59,11 +59,14 @@
 					return col;
 				},
 				findItems: function(){
+					// this.findWord가 변하면 그 문자가 포함된 리스트 계산
 					if(this.findWord){
 						return this.items.filter(function(value){
+							console.log(value.indexOf(this.findWord))
 							return (value.indexOf(this.findWord) > -1);
 						}, this);
 					}else{
+						// this.findWord가 공백일 땐 리스트를 그대로 반환
 						return this.items;
 					}
 				}
