@@ -5,11 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Step 08</title>
 	<style>
+		.bg{background-color:rgb(red, green, blue)}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<!-- Together -->
+	<!-- computed -->
 	<div id="app_1">
 		<!-- 금액 계산 -->
 		<input :type="inputN" v-model.numder="price">원 x
@@ -20,11 +22,6 @@
 		<p>감상은 140자 이내로 입력해 주세요.</p>
 		<textarea v-model="myText"></textarea>
 		<p :style="{color: compColor}">남은 글자는 {{ remaining }} 입니다.</p>
-		<!-- 배열 계산 -->
-		<input :type="inputT" v-model="findWord">
-		<ul>
-			<li v-for="item in findItems">{{ item }}</li>
-		</ul>
 	</div>
 	<script>
 		const app_1 = new Vue({
@@ -33,10 +30,7 @@
 				inputN: 'number',
 				price: 100,
 				count: 1,
-				myText: '오늘은 날씨가 좋다.',
-				inputT: 'text',
-				findWord: '',
-				items: ['설악산', '한라산', '북한산', '백두산', '지리산']
+				myText: '오늘은 날씨가 좋다.'
 			},
 			computed: {
 				sum: function(){
@@ -57,17 +51,132 @@
 						col = "red";
 					}
 					return col;
-				},
+				}
+			}
+		});
+	</script>
+	<div id="app_2">
+		<!-- 배열 계산 -->
+		<input :type="inputT" v-model.lazy="findWord">
+		<ul>
+			<li v-for="item in findItems">{{ item }}</li>
+		</ul>
+	</div>
+	<script>
+		const app_2 = new Vue({
+			el: "#app_2",
+			data: {
+				inputT: 'text',
+				findWord: '',
+				items: ['설악산', '한라산', '북한산', '백두산', '지리산']
+			},
+			computed: {
 				findItems: function(){
 					// this.findWord가 변하면 그 문자가 포함된 리스트 계산
 					if(this.findWord){
 						return this.items.filter(function(value){
-							console.log(value.indexOf(this.findWord))
+							console.log(value.indexOf(this.findWord));
 							return (value.indexOf(this.findWord) > -1);
 						}, this);
 					}else{
 						// this.findWord가 공백일 땐 리스트를 그대로 반환
 						return this.items;
+					}
+				}
+			}
+		});
+	</script>
+	<div id="app_3">
+		<!-- 복수의 데이터에서 하나의 값 산출 -->
+		<p :style="{backgroundColor : mixColor}">{{ mixColor }}</p>
+		<input :type="inputR" v-model="R" min="0" max="255"><br>
+		<input :type="inputR" v-model="G" min="0" max="255"><br>
+		<input :type="inputR" v-model="B" min="0" max="255"><br>
+	</div>
+	<script>
+		const app_3 = new Vue({
+			el: "#app_3",
+			data: {
+				inputR: 'range',
+				R:255,
+				G:150,
+				B:100
+			},
+			computed: {
+				// RGB의 값이 변하면 색을 계산
+				mixColor: function(){
+					console.log(this.R);
+					var ans = "RGB( "+this.R+" , "+this.G+" , "+this.B+" )";
+					return ans;
+				}
+			}
+		});
+	</script>
+	<!-- watch -->
+	<div id="app_4">
+		<p>금지 문자는 {{ forbiddenText }}</p>
+		<textarea v-model="inputText"></textarea>
+	</div>
+	<script>
+		const app_4 = new Vue({
+			el: "#app_4",
+			data: {
+				forbiddenText: '안돼',
+				inputText: '오늘은 날씨가 좋다.'
+			},
+			watch: {
+				// 입력할 문자 감지
+				inputText: function(){
+					var pos = this.inputText.indexOf(this.forbiddenText);
+					console.log(pos)
+					if( pos>=0 ){
+						alert(this.forbiddenText + "는 입력할 수 없습니다.");
+						//입력한 문자에서 금지 문자 삭제
+						this.inputText = this.inputText.substr(0,pos);
+					}
+				}
+			}
+		});
+	</script>
+	<div id="app_5">
+		<!-- 시간 감지 -->
+		<h2>남은 시간이 0초가 되면 얼럿을 띄우는 예제</h2>
+		<button onclick="startTimer()">START</button>
+		<p>앞으로 {{ restSec }}초</p>
+		<button type="button" @click="startTimer">START</button>
+	</div>
+	<script>
+		function startTimer(){
+			// 남은 시간 5초
+			this.restSec = 5;
+			// 타이머 시작, 1초에 한번씩 countDown()을 실행
+			this.timeObj = setInterval(() => { countDown() }, 1000)
+		}
+		function countDown(){
+			// 1초 감소
+			this.restSec--;
+			// 0초 이하가 되면 얼럿을 띄우고 타이머 중지
+			if( this.restSec <= 0 ){
+				alert('제한 시간 입니다.');
+				clearInterval(this.timeObj);
+			}
+		}
+		const app_5 = new Vue({
+			el: "#app_5",
+			data: {
+				restSec: 5
+			},
+			methods: {
+				startTimer: function(){
+					this.restSec = 5;
+					this.timeObj = setInterval(() => { countDown() }, 1000);
+				}
+			},
+			watch: {
+				restSec: function(){
+					if( this.restSec <= 0 ){
+						dalert('제한 시간 입니다.');
+						clearInterval(this.timeObj);
 					}
 				}
 			}
