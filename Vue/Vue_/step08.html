@@ -105,7 +105,7 @@
 			computed: {
 				// RGB의 값이 변하면 색을 계산
 				mixColor: function(){
-					console.log(this.R);
+					// console.log(this.R);
 					var ans = "RGB( "+this.R+" , "+this.G+" , "+this.B+" )";
 					return ans;
 				}
@@ -164,24 +164,28 @@
 		const app_5 = new Vue({
 			el: "#app_5",
 			data: {
-				restSec: 5
+				restSec: 5,
+				timeObj: null
 			},
 			methods: {
 				startTimer: function(){
 					this.restSec = 5;
-					this.timeObj = setInterval(() => { countDown() }, 1000);
+					this.timeObj = setInterval(() => { this.restSec-- }, 1000);
 				}
 			},
 			watch: {
 				restSec: function(){
 					if( this.restSec <= 0 ){
-						dalert('제한 시간 입니다.');
+						alert('제한 시간 입니다.');
 						clearInterval(this.timeObj);
 					}
 				}
 			}
 		});
 	</script>
+	<div id="app_6"></div>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script></script>
 	<!-- Arrange -->
 	<hr>
 	<!-- Practice -->
