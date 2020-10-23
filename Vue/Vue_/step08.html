@@ -220,7 +220,7 @@
 	<hr>
 	<div id="app_7">
 		<input type="number" v-model.nember="price">원
-		<p>소비세 포함 금액 {{taxtIncluded}}원</p>
+		<p>소비세 포함 금액 {{ taxtIncluded }}원</p>
 		<textarea v-model="inputText"></textarea>
 	</div>
 	<script>
@@ -228,7 +228,7 @@
 			el: "#app_7",
 			data: {
 				price: 100,
-				inputText: '오늘은 날씨가 좋다',
+				inputText: '',
 				forbiddenText: 'ㅇㅇ'
 			},
 			computed: {
@@ -236,10 +236,11 @@
 					return this.price * 1.08;
 				}
 			},
-			wacth: {
+			watch: {
 				inputText: function(){
 					var pos = this.inputText.indexOf(this.forbiddenText);
-					if(pos > 0){
+					console.log(pos)
+					if(pos >= 0){
 						alert(this.forbiddenText + '는 입력할 수 없습니다.');
 						this.inputText = this.inputText.substr(0, pos);
 					}
@@ -247,7 +248,54 @@
 			}
 		});
 	</script>
+	<div id="app_8">
+		<input type="number" v-model="orgPrice">원
+		<p> 할인 금액은 {{ discountPrice }}입니당</p>
+		<textarea v-model="inputText"></textarea>
+	</div>
+	<script>
+		const app_8 = new Vue({
+			el: '#app_8',
+			data: {
+				orgPrice: '',
+				inputText: '',
+				forbiddenText: 'dd',
+			},
+			computed: {
+				discountPrice: function(){
+					return this.$data.orgPrice * 0.8
+				}
+			},
+			watch: {
+				inputText: function(){
+					var curtTxt = this.inputText.indexOf(this.forbiddenText);
+					console.log(this.inputText.indexOf('안녕'))
+					if(curtTxt >= 0){
+						alert(this.forbiddenText + '는 금기어 입니다.');
+						this.inputText = this.inputText.substr(0,curtTxt)
+					}
+				}
+			}
+		});
+	</script>
 	<!-- Practice -->
 	<hr>
+	<div id="app_9">
+		<h2>제한 시간 내에 문자 입력하기</h2>
+		<label style="display:block;">금지문자(,로 나누어 복수 입력 가능) <input type="text" v-model="prohibiTxt"></label>
+		<label style="display:block;">제한시간을 입력하세요(초) <input type="text"> <button type="button">start</button></label>
+		<p>남은 시간 {{  }}초</p>
+		<textarea></textarea>
+		<p>{{  }}개의 문자를 입력하였습니다.</p>
+		<p>벌점 : {{  }} (금지문자 1개당 12점)</p>
+	</div>
+	<script>
+		const app_9 = new Vue({
+			el: "#app_9",
+			data: {
+				prohibiTxt: ''
+			}
+		});
+	</script>
 </body>
 </html>

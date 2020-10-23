@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 11</title>
+	<style>
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<div id="app_1">
+		<h2>ToDo List</h2>
+		<div v-for="todo in todos">
+			<label>
+				<input type="checkbox" v-model="todo.done">
+				<span v-bind:class="{donestyle:todo.done}">{{ todo.text }}</span>
+			</label>
+		</div>
+		<!-- 삭제 -->
+		<input type="text" v-model.trim="addText" v-on:keyup.enter="addToDo" placeholder="할일">
+		<button type="button" :style="{'display':'block'}" v-on:click="cleanToDo">처리완료삭제</button>
+		<!-- 삭제 -->
+		<p>{{ remaining }} / {{ todos.length }}건 처리</p>
+	</div>
+	<style>
+		.donestyle{text-decoration: line-through;color: lightgray}
+	</style>
+	<script>
+		const app_1 = new Vue({
+			el: "#app_1",
+			data: {
+				todos: [
+					{done: false, text: '빵사기'},
+					{done: false, text: '커피사기'}
+				],
+				addText: ''
+			},
+			methods: {
+				addToDo: function(){
+					if(this.addText){
+						this.todos.push({done:false, text:this.addText});
+						this.addText = '';
+					}
+				},
+				cleanToDo: function(){
+					this.todos = this.todos.filter(function(val){
+						return val.done == false;
+					})
+				}
+			},
+			computed: {
+				remaining: function(){
+					return this.todos.filter(function(val){
+						return val.done;
+					}).length;
+				}
+			}
+		});
+	</script>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 10</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<div id="app_1">
+		<!-- transition -->
+		<label><input type="checkbox" v-model="isOK">변경</label>
+		<transition>
+			<p v-if="isOK">표시 / 비표시의 변경</p>
+		</transition>
+	</div>
+	<style>
+		#app_1 .v-enter-action, #app_1 .v-leave-active{transition:0.5s;}
+		#app_1 .v-enter, #app_1 .v-leave-active{opacity:0;transform:translateY(20px);}
+	</style>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {
+				isOK: false
+			}
+		});
+	</script>
+	<div id="app_2">
+		<!-- list transition -->
+		<transition-group>
+			<li v-for="item in dataArray" v-bind:key="item">{{ item }}</li>
+		</transition-group>
+		<label><input v-model="addItem" placeholder="추가할 리스트"></label>
+		<button type="button" v-on:click="addList">추가</button>
+		<button type="button" v-on:click="removeList">삭제</button>
+	</div>
+	<style>
+		#app_2 .v-enter-active, #app_2 .v-leave-active{transition:0.5s;}
+		#app_2 .v-enter, #app_2 .v-leave-to{transform:translateX(50px);opacity:0;}
+	</style>
+	<script>
+		new Vue({
+			el: "#app_2",
+			data: {
+				dataArray: ['벚꽃', '산수유', '진달래', '철죽'],
+				addItem: ''
+			},
+			methods: {
+				addList: function(){
+					this.dataArray.push(this.addItem);
+					this.addItem = ''
+				},
+				removeList: function(){
+					var lastIdx = this.dataArray.length-1;
+					this.dataArray.splice(lastIdx, 1);
+				}
+			}
+		});
+	</script>
+	<button onclick="shuffleData()">셔플</button>
+	<script>
+		var dataArray = ['one','two','three','four','five'];
+		function shuffleData(){
+			// 임시 배열 저장 공간
+			var buffer = [];
+			// 원본 배열 개수
+			var len = this.dataArray.length;
+			for(var i = len; len > 0; len--){
+				// r은 랜덤 수를 뽑아 개수를 곱한 후 소수점을 제거한 값
+				var r = Math.floor(Math.random() * len);
+				// 원본 배열에서 랜덤으로 하나씩 뽑아서 임시 배열에 추가
+				buffer.push(this.dataArray[r]);
+				this.dataArray.splice(r,1);
+			}
+			this.dataArray = buffer;
+			console.log(dataArray);
+		}
+	</script>
+	<div id="app_3">
+		<transition-group>
+			<li v-for="item in dataArray" v-bind:key="item">{{ item }}</li>
+		</transition-group>
+		<button type="button" v-on:click="sortData">소트</button>
+		<button type="button" v-on:click="shuffleData">셔플</button>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_3",
+			data: {
+				dataArray: ['one','two','three','four','five']
+			},
+			methods: {
+				sortData: function(){
+					this.dataArray.sort(function(a,b){
+						if (a > b) return -1;
+						if (a < b) return 1;
+						return 0;
+					})
+				},
+				shuffleData: function(){
+					var buffer = [];
+					var len = this.dataArray.length;
+					for(var i=len; len > 0; len--){
+						var r = Math.floor(Math.random() * len);
+						buffer.push(this.dataArray[r]);
+						this.dataArray.splice(r,1);
+					}
+					this.dataArray = buffer;
+				}
+			}
+		});
+	</script>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>
