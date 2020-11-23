@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Step 13</title>
+	<style>
+		body{color:#fff;background:#333;}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Together -->
+	<h2>JSON을 잃어 들이는 예제(JavaScript)</h2>
+	<input type="file" id="loader">
+	<script>
+		var obj1 = document.getElementById("loader");
+		obj1.addEventListener("change,loadFile,false");
+		function loadFile(e){
+			file = e.target.files[0]
+			if(file){
+				var reader = new FileReader();
+				reader.onload = function(e){
+					console.log(">>>" + e.target.result);
+					json = JSON.parse(e.target.result);
+					console.log(">>>" + json[0].title);
+					console.log(">>>" + json[0].body);
+				}
+				reader.readAsText(file);
+			}
+		}
+	</script>
+	<!-- Arrange -->
+	<hr>
+	<!-- Practice -->
+	<hr>
+</body>
+</html>
