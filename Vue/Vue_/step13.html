@@ -6,6 +6,7 @@
 	<title>Step 13</title>
 	<style>
 		body{color:#fff;background:#333;}
+		.v-move{transition:transform 1s}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
@@ -15,7 +16,7 @@
 	<input type="file" id="loader">
 	<script>
 		var obj1 = document.getElementById("loader");
-		obj1.addEventListener("change,loadFile,false");
+		obj1.addEventListener("change",loadFile,false);
 		function loadFile(e){
 			file = e.target.files[0]
 			if(file){
@@ -29,6 +30,94 @@
 				reader.readAsText(file);
 			}
 		}
+	</script>
+	<div id="app_1">
+		<input type="file" v-on:change="onFileChange">
+		<p>읽어 들인 데이터 = {{ loadDate }}</p>
+	</div>
+	<script>
+		new Vue({
+			el: "#app_1",
+			data: {loadDate:''},
+			methods: {
+				onFileChange: function(e){
+					file = e.target.files[0]
+					if(file){
+						var reader = new FileReader();
+						console.log(reader)
+						var vm = this;
+						reader.onload = function(e){
+							json = JSON.parse(e.target.result);
+							vm.loadDate = json;
+						}
+						reader.readAsText(file);
+					}
+				}
+			}
+		});
+	</script>
+	<div id="app_2">
+		<transition-group>
+			<div v-for="item in dataArray" v-bind:key="item.title">
+				<my-product v-bind:object="item"></my-product>
+			</div>
+		</transition-group>
+		<button type="buttton" v-on:click="sortData">소트</button>
+		<button type="buttton" v-on:click="shuffleData">셔플</button>
+		<p><input type="file" v-on:change="loadData"></p>
+	</div>
+	<script>
+		var MyComponent = {
+			props: ["object"],
+			template: `
+				<div style="width:300px;backgroundColor:#ffddaa;color:#333">
+					<p style="backgroundColor:#ffa95e;color:#fff">{{ object.title }}</p>
+					<p>해설 : {{ object.body }}</p>
+				</div>
+			`
+		}
+		new Vue({
+			el: "#app_2",
+			data: {
+				dataArray: [
+					{title: 'AAA', body: 'aaa'},
+					{title: 'BBB', body: 'bbb'},
+					{title: 'CCC', body: 'ccc'},
+				]
+			},
+			components: {
+				'my-product': MyComponent
+			},
+			methods: {
+				sortData: function(){
+					this.dataArray.sort(function(a,b){
+						return (a.title < b.title ? -1 : 1);
+						return 0
+					})
+				},
+				shuffleData: function(){
+					var buffer = [];
+					var len = this.dataArray.length;
+					for(var i=len; len>0; len--){
+						var r = Math.floor(Math.random()*len);
+						buffer.push(this.dataArray[r]);
+						this.dataArray.splice(r, 1);
+					}
+					this.dataArray = buffer;
+				},
+				loadData: function(e){
+					file = e.target.files[0];
+					if(file){
+						var reader = new FileReader();
+						var vm = this;
+						reader.onload = function(e){
+							vm.dataArray = JSON.parse(e.target.result);
+						}
+						reader.readAsText(file);
+					}
+				}
+			}
+		});
 	</script>
 	<!-- Arrange -->
 	<hr>
