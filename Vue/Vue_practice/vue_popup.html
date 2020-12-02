@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Popup</title>
+	<style>
+		body{color:#fff;background:#333;}
+		button:focus{outline:none}
+		#app{text-align:center;}
+		/* btn */
+		.btn{display:block;margin:0 auto;padding:15px 40px;font-size:16px;border:2px solid;background:none;transition:0.25s;}
+		.btn.open{margin-top:50px;border-color:#e5ff60;color:#e5ff60;}
+		.btn.open:hover{box-shadow:0 7px 5px -3px #e5ff60;transform:translateY(-7px);cursor:grabbing}
+		.btn.close{margin-top:20px;border-color:#a30eff;color:#a30eff;}
+		.btn.close:hover{animation:close .7s;box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);}
+		@keyframes close {
+			0% {box-shadow: 0 0 0 0 #a30eff;}
+		}
+		/* layer_pop */
+		.layer_pop{opacity:0;padding:20px;box-sizing:border-box;width:50%;height:50%;text-align:center;color:#333;background-color:#fff;position:absolute;top:55%;left:50%;transform:translate(-50%,-50%);transition:0.3s;z-index:2;}
+		.layer_pop.on{opacity:1;top:50%;}
+		/* backBg */
+		#backBg{position:fixed;top:0;left:0;width:100%;height:100%;background-color:#000;opacity:0.5;z-index:1;}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Practice -->
+	<div id="app">
+		<button class="btn open" type="button" v-on:click="layerBlock">OPEN</button>
+		<div class="layer_pop" :class="{'on':isOn}">
+			<h1>Layer Popup</h1>
+			Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto nulla earum quod sint pariatur animi labore ea esse ab officia delectus id harum vero debitis enim eligendi facere aspernatur beatae nostrum, accusamus praesentium. Dolor nisi rem veniam eos excepturi alias amet, dicta tempore cupiditate cum architecto ipsum facilis inventore possimus non ea accusamus magnam eius officiis eum atque. Autem officiis deleniti magnam libero amet voluptatum ea laboriosam nulla velit sapiente illo nostrum consectetur vero cum tenetur exercitationem debitis, ad inventore! Quos inventore accusamus et? Est culpa neque doloribus cumque id voluptatem veritatis atque error! Repudiandae alias doloribus maxime est suscipit!
+			<button class="btn close" type="button" v-on:click="layerNone">CLOSE</button>
+		</div>
+	</div>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				isOn: false
+			},
+			methods: {
+				layerBlock: function(){
+					this.isOn = true;
+					const backBg = document.createElement('div');
+					backBg.setAttribute("id", "backBg");
+					document.body.appendChild(backBg)
+				},
+				layerNone: function(){
+					this.isOn = false;
+					const backBg = document.getElementById('backBg');
+					backBg.remove();
+				}
+			}
+		});
+	</script>
+</body>
+</html>
