@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Menu</title>
+	<style>
+		body{color:#fff;background:#333;}
+		ul{padding:0;}
+		li{list-style:none}
+		button{background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;}
+		button:focus{outline:none}
+		.main_depth{max-width:1280px;}
+		.main_depth:after{display:block;content:'';clear:both}
+		.main_depth li{float:left;width:25%;border:1px solid #fff;border-left:none;box-sizing:border-box}
+		.main_depth li:first-child{border-left:1px solid}
+		.main_depth li button{padding:20px 0;width:100%;}
+	</style>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<!-- Practice -->
+	<div id="app">
+		<ul class="main_depth" v-on:mouseover="hihi">
+			<li v-for="(item, index) in depth" :class="{'on': index === 0}">
+				<button :data-index="index" type="button">{{ item.title }}</button>
+				<ul class="sub_depth">
+					<li v-for="(item, index) in subDepth" :class="{'on': index === 0}">
+						{{ item }}
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				depth: [
+					{title: 'MODEL'},
+					{title: 'BUY'},
+					{title: 'SERVICE'},
+					{title: 'INSIDE'}
+				],
+				subDepth: [
+					['전체 모델 보기', '모델 비교'],
+					[],
+					[],
+					[]
+				]
+			},
+			methods: {
+				hihi: function(e){
+					console.log(e.target);
+				}
+			}
+		});
+	</script>
+</body>
+</html>
