@@ -5,30 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vue Menu</title>
 	<style>
-		/* body{color:#fff;background:#333;} */
+		body{color:#fff;background:#333;}
 		ul{padding:0;}
 		li{list-style:none}
 		button{background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;}
 		button:focus{outline:none}
-		.main_depth{max-width:1280px;}
+		.main_depth{max-width:1280px;position:relative;}
 		.main_depth:after{display:block;content:'';clear:both}
-		.main_depth li{float:left;width:25%;border:1px solid #fff;border-left:none;box-sizing:border-box}
-		.main_depth li:first-child{border-left:1px solid #fff}
-		.main_depth li button{padding:20px 0;width:100%;}
+		.main_depth:before{display:block;content:'';width:100%;height:calc(100% - 60px);background-color:#fff;position:absolute;top:60px;left:0;z-index:-1;}
+		.main_depth > li{float:left;width:25%;}
+		.main_depth > li > button{padding:20px 0;width:100%;border:1px solid #fff;border-left:none;box-sizing:border-box}
+		.main_depth > li:first-child > button{border-left:1px solid #fff}
+		.main_depth li.on .sub_depth{display:block;}
+		.sub_depth{display:none;max-width:1280px;}
+		.sub_depth:after{display:block;content:'';clear:both}
+		.sub_depth > li > button{text-align:left;color:#333}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<!-- Practice -->
 	<div id="app">
-		<ul class="main_depth" v-on:mouseover="hihi">
-			<li v-for="(item, index) in depth" :class="{'on': index === 0}">
-				<button :data-index="index" type="button">{{ item.title }}</button>
-			</li>
-		</ul>
-		<ul class="sub_depth" v-for="line in subDepth">
-			<li v-for="(item, index) in line" :class="{'on': index === 0}">
-				{{ item }}
+		<ul class="main_depth" v-on:mouseout="mouseOut">
+			<li v-for="(item, index) in depth">
+				<button v-on:mouseover="mouseOver" :data-index="index" type="button">{{ item.title }}</button>
+				<ul class="sub_depth">
+					<li v-for="subtit in item.content">
+						<button :data-index="index" type="button">{{ subtit }}</button>
+					</li>
+				</ul>
 			</li>
 		</ul>
 	</div>
@@ -37,21 +42,26 @@
 			el: "#app",
 			data: {
 				depth: [
-					{title: 'MODEL'},
-					{title: 'BUY'},
-					{title: 'SERVICE'},
-					{title: 'INSIDE'}
-				],
-				subDepth: [
-					['전체 모델 보기', '모델 비교'],
-					['e-쇼룸(내 차 만들기)', '전시장 조회(전시/시승차)', '구매절차 안내', '맞춤형 금융계산기', '이달의 구매 혜택', '재구매 혜택'],
-					['멤버십 서비스', 'MY 르노삼성 앱', '이지링크(EASY LINK)', '차량관리 가이드', 'A/S 뉴스레터', '오토솔루션 서비스', '액세서리', '서비스 네트워크 조회', '엔젤센터'],
-					['뉴스', '이벤트']
+					{title: 'MODEL', content: ['전체 모델 보기', '모델 비교']},
+					{title: 'BUY', content: ['e-쇼룸(내 차 만들기)', '전시장 조회(전시/시승차)', '구매절차 안내', '맞춤형 금융계산기', '이달의 구매 혜택', '재구매 혜택']},
+					{title: 'SERVICE', content: ['멤버십 서비스', 'MY 르노삼성 앱', '이지링크(EASY LINK)', '차량관리 가이드', 'A/S 뉴스레터', '오토솔루션 서비스', '액세서리', '서비스 네트워크 조회', '엔젤센터']},
+					{title: 'INSIDE', content: ['뉴스', '이벤트']}
 				]
 			},
 			methods: {
-				hihi: function(e){
-					console.log(e.target);
+				mouseOver: function(e){
+					let idx = e.target.dataset.index;
+					let mainWrap = document.querySelector('.main_depth').children;
+					for(let i = 0; i < mainWrap.length; i++){
+						mainWrap[i].classList.remove('on');
+					}
+					mainWrap[idx].classList.add('on');
+				},
+				mouseOut: function(e){
+					let mainWrap = document.querySelector('.main_depth').children;
+					for(let i = 0; i < mainWrap.length; i++){
+						mainWrap[i].classList.remove('on');
+					}
 				}
 			}
 		});
