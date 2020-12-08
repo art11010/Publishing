@@ -12,23 +12,35 @@
 		button:focus{outline:none}
 		.main_depth{max-width:1280px;position:relative;}
 		.main_depth:after{display:block;content:'';clear:both}
-		.main_depth:before{display:block;content:'';width:100%;height:calc(100% - 60px);background-color:#fff;position:absolute;top:60px;left:0;z-index:-1;}
+		.main_depth:before{opacity:0;content:'';width:100%;height:0;background-color:#fff;position:absolute;top:60px;left:0;z-index:-1;transition:.3s .3s;}
+		.main_depth.on:before{opacity:1;height:calc(100% - 60px);}
+
+
+
+
 		.main_depth > li{float:left;width:25%;}
 		.main_depth > li > button{padding:20px 0;width:100%;border:1px solid #fff;border-left:none;box-sizing:border-box}
 		.main_depth > li:first-child > button{border-left:1px solid #fff}
 		.main_depth li.on .sub_depth{display:block;}
 		.sub_depth{display:none;max-width:1280px;}
 		.sub_depth:after{display:block;content:'';clear:both}
-		.sub_depth > li > button{text-align:left;color:#333}
+		.sub_depth > li > button{display:block;width:100%;text-align:left;color:#333}
+
+		animation:name duration timing-function delay iteration-count direction fill-mode;
+		/* .sub_depth{opacity:0;background-color:#fff;height:0;transition:0.3s;}
+		.sub_depth > li > button{font-size:0;}
+		.sub_depth.on{opacity:1;background-color:#fff;height:100%;}
+		.sub_depth.on > li > button{font-size:inherit;color:#333} */
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
 	<!-- Practice -->
 	<div id="app">
-		<ul class="main_depth" v-on:mouseout="mouseOut">
+		<!-- <ul class="main_depth" v-on:mouseout="mouseOut" v-on:mouseover="mouseOver"> -->
+		<ul class="main_depth" v-on:mouseover="mouseOver">
 			<li v-for="(item, index) in depth">
-				<button v-on:mouseover="mouseOver" :data-index="index" type="button">{{ item.title }}</button>
+				<button :data-index="index" type="button">{{ item.title }}</button>
 				<ul class="sub_depth">
 					<li v-for="subtit in item.content">
 						<button :data-index="index" type="button">{{ subtit }}</button>
@@ -51,16 +63,25 @@
 			methods: {
 				mouseOver: function(e){
 					let idx = e.target.dataset.index;
-					let mainWrap = document.querySelector('.main_depth').children;
-					for(let i = 0; i < mainWrap.length; i++){
-						mainWrap[i].classList.remove('on');
+					let mainWrap = document.querySelector('.main_depth');
+					let mainChild = document.querySelector('.main_depth').children;
+					let subWrap = document.querySelectorAll('.sub_depth');
+					if(e.target == mainWrap){
+						return;
+					}else{
+						for(let i = 0; i < mainChild.length; i++){
+							mainChild[i].classList.remove('on');
+						}
+						mainChild[idx].classList.add('on');
+						subWrap[idx].classList.add('on');
 					}
-					mainWrap[idx].classList.add('on');
 				},
 				mouseOut: function(e){
-					let mainWrap = document.querySelector('.main_depth').children;
-					for(let i = 0; i < mainWrap.length; i++){
-						mainWrap[i].classList.remove('on');
+					let mainChild = document.querySelector('.main_depth').children;
+					let subWrap = document.querySelectorAll('.sub_depth');
+					for(let i = 0; i < mainChild.length; i++){
+						mainChild[i].classList.remove('on');
+						subWrap[i].classList.remove('on');
 					}
 				}
 			}

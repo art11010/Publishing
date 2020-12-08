@@ -6,11 +6,11 @@
 	<title>Vue Tab Menu</title>
 	<style>
 		body{color:#fff;background:#333;}
-		ul{padding:0;}
+		ul{padding:0;width:fit-content;}
 		li{list-style:none}
 		button{background:none;border:none;font-size:inherit;color:inherit;cursor:pointer;}
 		button:focus{outline:none}
-		img{display:block;margin:0 auto;}
+		img{display:block;margin:0 auto;width:100%;}
 		.tab_wrap:after{display:block;content:'';clear:both;}
 		.tab_wrap li{float:left;border:1px solid #fff;border-left:none;overflow:hidden;position:relative;}
 		.tab_wrap li:first-child{border-left:1px solid #fff;}
@@ -24,7 +24,7 @@
 		.tab_wrap button{padding:15px;}
 		.content_wrap{width:280px;border:1px solid #fff;text-align:center;}
 		.content_wrap li{display:none;}
-		.content_wrap li.on{display:block;}
+		.content_wrap li.on{display:block;padding:15px;}
 	</style>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
