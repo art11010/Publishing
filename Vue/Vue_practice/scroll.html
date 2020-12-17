@@ -30,7 +30,7 @@
 	<!-- <div id="app" @scroll="pageScroll"> -->
 	<div id="app">
 		<ul class="btn_wrap">
-			<li v-for="(n, index) in num" :class="{ active: index === activeIndex }" @click="activeIndex = index" :data-index="index">
+			<li v-for="(n, index) in num" :class="{ active: index === activeIndex && scrollPosition > test[n] }" @click="activeIndex = index" :data-index="index">
 				<button type="button" @click="btnClick"></button>
 			</li>
 		</ul>
@@ -66,6 +66,8 @@
 				activeIndex: 0,
 				scrolled: false,
 				sections:['section-compo', 'section-compo', 'section-compo'],
+				scrollPosition: null,
+				test: []
 			},
 			methods: {
 				btnClick: function(e){
@@ -88,17 +90,8 @@
 					}
 				},
 				pageScroll: function(){
-					let fullPage = document.querySelectorAll(".fullpage");
-					// let idx = fullPage.dataset.index;
-					// console.log(idx)
-					let location = document.querySelectorAll(".fullpage")[1].offsetTop;
-					if(window.scrollY > 150){
-						window.scroll({
-							top: location,
-							behavior: 'smooth'
-						});
-					}
-					// let location = document.querySelectorAll(".fullpage")[idx].offsetTop;
+					this.scrollPosition = window.scrollY;
+					console.log(this.scrollPosition)
 				},
 				// VueScrollactive: function(){
 				// 	var VueScrollactive = require('vue-scrollactive');
@@ -110,20 +103,34 @@
 					return sectNum;
 				}
 			},
+			watch: {
+				test: function(){
+					let fullPage = document.querySelectorAll(".fullpage");
+				let sectNum = this.sections.length;
+				for(let i = 0; i < sectNum; i++){
+					let sectTop = fullPage[i].offsetTop;
+					this.test.push(sectTop);
+					console.log(this.test);
+					// fullPage[i].setAttribute('data-scroll', sectTop );
+				}
+				}
+			},
 			created: function () {
 				window.addEventListener('scroll', this.pageScroll);
 			},
 			destroyed: function () {
 				window.removeEventListener('scroll', this.pageScroll);
 			},
-			mounted(){
-				let fullPage = document.querySelectorAll(".fullpage");
-				let sectNum = this.sections.length;
-				for(let i = 0; i < sectNum; i++){
-					let sectTop = fullPage[i].offsetTop;
-					fullPage[i].setAttribute('data-scroll', sectTop );
-				}
-			}
+			// mounted(){
+			// 	let fullPage = document.querySelectorAll(".fullpage");
+			// 	let sectNum = this.sections.length;
+			// 	for(let i = 0; i < sectNum; i++){
+			// 		let sectTop = fullPage[i].offsetTop;
+			// 		this.test.push(sectTop);
+			// 		console.log(this.test);
+			// 		// fullPage[i].setAttribute('data-scroll', sectTop );
+			// 	}
+			// }
 		});
 	</script>
 </body>
