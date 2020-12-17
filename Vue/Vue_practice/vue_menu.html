@@ -16,10 +16,9 @@
 		.main_depth > li > button{padding:20px 0;width:100%;border:1px solid #fff;border-left:none;box-sizing:border-box}
 		.main_depth > li:first-child > button{border-left:1px solid #fff}
 		.main_depth li.on .sub_depth{display:block;}
-		.sub_depth{display:none;max-width:1280px;}
-		.sub_depth:after{display:block;content:'';clear:both}
+		.sub_depth{display:none;}
 		.sub_depth > li > button{display:block;width:100%;text-align:left;color:#333}
-		.sub_depth:before{display:block;opacity:0;content:'';width:100%;height:0;background-color:#fff;position:absolute;top:60px;left:0;z-index:-1;}
+		.sub_depth:before{display:block;content:'';width:100%;height:0;background-color:#fff;position:absolute;top:60px;left:0;z-index:-1;opacity:0;}
 		.main_depth:hover .sub_depth:before{animation:menuOn .5s forwards;}
 		@keyframes menuOn {
 			100% {opacity:1;height:calc(100% - 60px);}
@@ -32,7 +31,7 @@
 	<div id="app">
 		<ul class="main_depth" v-on:mouseout="mouseOut" v-on:mouseover="mouseOver">
 		<!-- <ul class="main_depth" v-on:mouseover="mouseOver"> -->
-			<li v-for="(item, index) in depth" :class="{'on': index === 0}">
+			<li v-for="(item, index) in depth">
 				<button :data-index="index" type="button">{{ item.title }}</button>
 				<ul class="sub_depth">
 					<li v-for="subtit in item.content">
@@ -66,13 +65,13 @@
 							mainChild[i].classList.remove('on');
 						}
 						mainChild[idx].classList.add('on');
-						// mainWrap.classList.add('on');
 						subWrap[idx].classList.add('on');
 					}
 				},
 				mouseOut: function(e){
 					let mainChild = document.querySelector('.main_depth').children;
 					let subWrap = document.querySelectorAll('.sub_depth');
+					console.log(typeof subWrap)
 					for(let i = 0; i < mainChild.length; i++){
 						mainChild[i].classList.remove('on');
 						subWrap[i].classList.remove('on');

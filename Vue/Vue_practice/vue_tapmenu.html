@@ -32,35 +32,25 @@
 	<!-- Practice -->
 	<div id="app">
 		<ul class="tab_wrap" v-on:click="hihi">
-			<li v-for="(item, index) in menuAry" :class="{'on': index === 0}"><button :data-index="index" type="button">{{ item.title }}</button></li>
+			<li v-for="(item, index) in menuAry" :class="{'on': index === 0}"><button :data-index="index" type="button">{{ item }}</button></li>
 		</ul>
 		<ul class="content_wrap">
 			<li class="on">First 1buni<img src="img/ilbuni_0.png" alt=""></li>
 			<li>Second 1buni<img src="img/ilbuni_1.png" alt=""></li>
 			<li>Third 1buni<img src="img/ilbuni_2.png" alt=""></li>
-			<!-- <li v-for="(item, index) in menuAry" :class="{'on': index === 0}">
-				<img :src="imgSrc" alt="">{{ item.content }}
-			</li> -->
 		</ul>
 	</div>
 	<script>
 		new Vue({
 			el: "#app",
 			data: {
-				// menuAry: ['Menu 01', 'Menu 02', 'Menu 03'],
-				menuAry: [
-					{title: 'Menu 01', content: 'First 1buni'},
-					{title: 'Menu 02', content: 'Second 1buni'},
-					{title: 'Menu 03', content: 'Third 1buni'}
-				],
-				// imgSrc: 'img/ilbuni_'+2+'.png'
+				menuAry: ['Menu 01', 'Menu 02', 'Menu 03'],
 			},
 			methods: {
 				hihi: function(e){
 					let idx = e.target.dataset.index;
 					let tabWrap = document.querySelector('.tab_wrap').children;
 					let contWrap = document.querySelector('.content_wrap').children;
-					console.log(contWrap)
 					for(let i = 0; i < contWrap.length; i++){
 						tabWrap[i].classList.remove('on')
 						contWrap[i].classList.remove('on')
