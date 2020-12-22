@@ -12,7 +12,7 @@ window.addEventListener('DOMContentLoaded',function(){
 			return {
 				id: null,
 				uuid: 0,
-				bgColors: ['green', 'coral', 'blue', 'purple']
+				bgColors: ['red', 'green', 'blue', 'purple']
 			}
 		},
 		mounted(){
@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded',function(){
 	new Vue({
 		el: '#app',
 		data: {
-			sections:['section-compo', 'section-compo', 'section-compo'],
+			sections:['section-compo', 'section-compo', 'section-compo', 'section-compo'],
 			activeIndex: null,
 			offsets: [],
 			inMove: false,
@@ -56,7 +56,11 @@ window.addEventListener('DOMContentLoaded',function(){
 				if(sectNum == 1){
 					return
 				}else{
-					this.sections.splice(sectNum-1, 1);
+					if(this.activeIndex == sectNum-1){
+						return
+					}else{
+						this.sections.splice(sectNum-1, 1);
+					}
 				}
 			},
 			pageScroll: function(e){
@@ -93,10 +97,6 @@ window.addEventListener('DOMContentLoaded',function(){
 				setTimeout(() => {
 					this.inMove = false;
 				}, 500);
-				// setTimeout(function(){
-				// 	this.inMove = false;
-				// 	console.log(this.inMove)
-				// },500);
 			}
 		},
 		computed: {
