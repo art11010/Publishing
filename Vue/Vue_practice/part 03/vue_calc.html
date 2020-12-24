@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue Calculator</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="vue_calc.js"></script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- Practice -->
+	<div id="ui_page">
+		<div id="ui_wrap">
+			<div id="ui_body">
+				<div class="ui_contents">
+					<div id="ui_evtWrap" class="rs">
+						<div class="evt_calc">
+							<div class="tit">
+								<h3 class="rs bold">우리 지역 <span class="fnt_r">보조금</span> 확인</h3>
+								<p><strong>트위지로 팔도강산을 누빌 그 날을 위하여!</strong> <br>내가 사는 지역의 트위지 구매 보조금을 손쉽게 확인해보세요. 구매부터 유지까지, 알뜰한 트위지 라이프 시작!</p>
+							</div>
+							<div class="calc_box">
+								<strong class="q">우리 지역 <em class="rs bold">보조금</em>은 얼마?</strong>
+								<ul>
+									<li class="step step01"><em class="num">STEP 01</em>
+										<p class="desc">아래 전국 지도에서 보조금을 <strong>확인할 지역을 선택</strong></p>
+										<div class="area">
+											<span class="txt">선택한 지역은</span>
+											<span class="rs_select">
+												<label for="sel_city">전라남도</label>
+												<select id="sel_city">
+													<!-- <option value="map_off">선택해주세요</option> -->
+													<option value="map_gangwon">강원도</option>
+													<option value="map_gyeonggi">경기도</option>
+													<option value="map_gyeongsang-s">경상남도</option>
+													<option value="map_gyeongsang-n">경상북도</option>
+													<option value="map_jeolla-s" selected>전라남도</option>
+													<option value="map_jeolla-n">전라북도</option>
+													<option value="map_chungcheong-s">충청남도</option>
+													<option value="map_chungcheong-n">충청북도</option>
+													<option value="map_jeju">제주특별자치도</option>
+													<option value="map_sejong">세종특별자치시</option>
+													<option value="map_daejeon">대전광역시</option>
+													<option value="map_gwangju">광주광역시</option>
+													<option value="map_incheon">인천광역시</option>
+													<option value="map_ulsan">울산광역시</option>
+													<option value="map_daegu">대구광역시</option>
+													<option value="map_busan">부산광역시</option>
+													<option value="map_seoul">서울특별시</option>
+												</select>
+											</span>
+											<span class="txt">입니다</span>
+	
+											<div id="mapCount" class="map">
+												<table>
+													<tr> <th>서울특별시</th> <td>680</td> <td>650</td> </tr>
+													<tr> <th>부산광역시</th> <td>700</td> <td>630</td> </tr>
+													<tr> <th>대구광역시</th> <td>600</td> <td>730</td> </tr>
+													<tr> <th>인천광역시</th> <td>670</td> <td>660</td> </tr>
+													<tr> <th>광주광역시</th> <td>650</td> <td>680</td> </tr>
+													<tr> <th>대전광역시</th> <td>700</td> <td>630</td> </tr>
+													<tr> <th>울산광역시</th> <td>700</td> <td>630</td> </tr>
+													<tr> <th>세종특별자치시</th> <td>600</td> <td>730</td> </tr>
+													<tr> <th>경기도</th> <td>650</td> <td>680</td> </tr>
+													<tr> <th>강원도</th> <td>770</td> <td>560</td> </tr>
+													<tr> <th>충청북도</th> <td>900</td> <td>430</td> </tr>
+													<tr> <th>충청남도</th> <td>820</td> <td>510</td> </tr>
+													<tr> <th>전라북도</th> <td>650</td> <td>680</td> </tr>
+													<tr> <th>전라남도</th> <td>1000</td> <td>330</td> </tr>
+													<tr> <th>경상북도</th> <td>900</td> <td>430</td> </tr>
+													<tr> <th>경상남도</th> <td>800</td> <td>530</td> </tr>
+													<tr> <th>제주특별자치도</th> <td>800</td> <td>530</td> </tr>
+												</table>
+											</div>
+										</div>
+										<img id="priceMap" src="img/map/map_jeolla-s.png" alt="" usemap="#citymap">
+										<map name="citymap">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="부산광역시" title="부산광역시" coords="418,518,407,511,366,540,384,553">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="충청북도" title="충청북도" coords="201,309,281,274,341,293,318,322,277,334,255,353,264,363,262,383,274,395,275,404,271,418,260,424,245,421,234,418,228,403,222,395,227,378,219,369,210,365,204,351,196,345,211,330">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="충청남도" title="충청남도" coords="206,327,183,307,155,318,149,333,145,309,118,304,85,322,77,333,91,344,111,340,119,352,117,362,135,430,154,422,171,413,180,423,203,417,213,432,225,430,234,427,222,404,202,405,187,389,176,374,172,350,194,344,200,336">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="대구광역시" title="대구광역시" coords="333,435,354,430,360,445,355,455,349,466,340,465,329,475,321,477,319,470,322,459,327,455,321,446">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="대전광역시" title="대전광역시" coords="208,367,195,387,204,404,220,402,223,378">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="강원도" title="강원도" coords="317,97,345,157,425,281,345,292,283,271,251,284,257,232,231,219,229,195,235,180,220,169,183,136,296,133">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="광주광역시" title="광주광역시" coords="140,529,160,528,170,540,163,549,146,552,135,545">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="경기도" title="경기도" coords="178,142,229,183,223,198,227,218,253,236,247,286,195,311,183,304,157,312,140,254,147,234,159,251,190,244,188,216,166,208,149,223,126,218,124,202,141,184">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="경상북도" title="경상북도" coords="425,284,345,295,319,327,279,336,260,352,267,360,266,381,276,393,279,404,268,429,268,443,298,473,315,477,316,450,329,433,357,427,364,441,351,472,340,469,338,480,352,485,394,474,412,469,418,477,435,475,448,422,428,426">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="경상남도" title="경상남도" coords="263,445,234,487,240,505,232,521,253,563,326,581,367,547,363,536,402,510,378,485,354,490,335,485,301,479">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="인천광역시" title="인천광역시" coords="145,228,129,224,118,201,102,197,94,216,102,230,136,256">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="제주특별자치도" title="제주특별자치도" coords="122,686,140,667,194,656,213,672,206,686,186,696,160,702,136,702,123,697">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="전라북도" title="전라북도" coords="136,436,169,417,177,426,202,421,209,433,214,437,258,428,262,440,240,466,230,483,230,494,233,503,228,514,214,518,197,521,181,517,172,515,179,505,170,498,167,507,157,504,146,498,139,509,131,514,117,511,112,501,138,489,114,479,145,461">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="전라남도" title="전라남도" coords="104,516,79,549,85,584,94,616,116,645,132,653,214,629,260,590,247,567,227,520,199,528,179,525,166,556,140,554,130,541,139,527,160,523,172,525,168,512">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="세종특별자치시" title="세종특별자치시" coords="194,348,175,351,190,386,204,364">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="서울특별시" title="서울특별시" coords="150,228,179,213,183,229,185,240,178,245,158,244,154,238">
+											<area onclick="clickMap(this);" onfocus="this.blur()" href="javascript:;" shape="poly" alt="울산광역시" title="울산광역시" coords="383,488,419,516,434,478,400,467">
+										</map>
+									</li>
+									<li class="step step02"><em class="num">STEP 02</em>
+										<p class="desc">보조금 확인하고 <strong>구매 상담 신청!</strong></p>
+										<div class="top">
+											<div class="calc">
+												<p>
+													<span class="price first on">전라남도</span>에서 구매 시<br>
+													 보조금 최대 <strong><span class="price second on">1,000</span> 만원 지원</strong>
+												 </p>
+											</div>
+										</div>
+										<div class="bottom">
+											<div class="twizy on">
+												<ul>
+													<li><span class="item rs bold">LIFE</span> 11,900,000 <em>원</em></li>
+													<li><span class="item rs bold">INTENS</span> 12,900,000 <em>원</em></li>
+												</ul>
+											</div>
+											<div class="final">
+												<p>
+													보조금 적용 시 <span class="rs bold">트위지 최종 구매가</span> <br>
+													<strong>
+														<em class="rs bold">
+															<span class="price on">190</span>만원
+														</em>부터~
+													</strong>
+												</p>
+												<ul class="evt_tip">
+													<li>LIFE 트림 기준</li>
+												</ul>
+											</div>
+											<div class="btn"><button type="button" class="rs on" onclick="purchaseBtn(this);">구매 상담 신청</button></div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
