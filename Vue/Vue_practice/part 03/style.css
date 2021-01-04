@@ -59,7 +59,6 @@ input[type="text"]::-ms-clear{display:none}
 #ui_evtWrap .calc_box .step .area .txt{display:inline-block;vertical-align:middle;font-size:25px;font-weight:700;}
 #ui_evtWrap .calc_box .step .rs_select{width:262px;height:58px;margin:0 5px;background:url('img/ico_selec.png') no-repeat 94% center;border:2px solid #ffcc33;box-sizing:border-box;vertical-align:middle;}
 #ui_evtWrap .calc_box .step .rs_select label{width:85%;height:54px;line-height:54px;color:#000;font-size:32px;}
-#ui_evtWrap .calc_box .step .map{display:block;width:0;height:0;font-size:0;text-indent:-999em;overflow:hidden;}
 #ui_evtWrap area,
 #ui_evtWrap area:focus{border:none;outline:none;outline-style:none;-moz-outline-style:none;}
 

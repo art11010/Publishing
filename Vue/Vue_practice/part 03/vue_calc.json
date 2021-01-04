@@ -1,0 +1,19 @@
+[
+	{"location": "서울특별시","subsidy": "680","final" : "650"},
+	{"location": "부산광역시","subsidy": "700","final" : "630"},
+	{"location": "대구광역시","subsidy": "600","final" : "730"},
+	{"location": "인천광역시","subsidy": "670","final" : "660"},
+	{"location": "광주광역시","subsidy": "650","final" : "680"},
+	{"location": "대전광역시","subsidy": "700","final" : "630"},
+	{"location": "울산광역시","subsidy": "700","final" : "630"},
+	{"location": "세종특별자치시","subsidy": "600","final" : "730"},
+	{"location": "경기도","subsidy": "650","final" : "680"},
+	{"location": "강원도","subsidy": "770","final" : "560"},
+	{"location": "충청북도","subsidy": "900","final" : "430"},
+	{"location": "충청남도","subsidy": "820","final" : "510"},
+	{"location": "전라북도","subsidy": "650","final" : "680"},
+	{"location": "전라남도","subsidy": "1000","final" : "330"},
+	{"location": "경상북도","subsidy": "900","final" : "430"},
+	{"location": "경상남도","subsidy": "800","final" : "530"},
+	{"location": "제주특별자치도","subsidy": "800","final" : "530"}
+]
