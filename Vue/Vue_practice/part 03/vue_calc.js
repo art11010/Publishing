@@ -1,3 +1,4 @@
+
 window.addEventListener('DOMContentLoaded',function(){
 	new Vue({
 		el: "#ui_evtWrap",
@@ -53,6 +54,7 @@ window.addEventListener('DOMContentLoaded',function(){
 				if(this.$data.selected == this.calcLoct[i].location){
 					Vue.set(this.$data,"subsidyPrice",this.calcLoct[i].subsidy);
 					Vue.set(this.$data,"finalPrice",1190 - this.calcLoct[i].subsidy);
+					Vue.set(this.$data,"imgName",'img/map/' + this.calcLoct[i].imgTitle + '.png');
 				}
 			}
         },
