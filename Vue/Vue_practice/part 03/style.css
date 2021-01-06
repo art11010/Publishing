@@ -31,6 +31,9 @@ body,input,textarea,a,select,button{
 textarea{resize:none}
 textarea:focus{outline:none}
 input[type="text"]::-ms-clear{display:none}
+select{-webkit-appearance:none;-moz-appearance:none;appearance:none;}
+select::-ms-expand{display:none;}
+
 
 /* 공통 CSS */
 .hide{display:block;width:0;height:0;font-size:0;line-height:0;text-indent:-99999em;overflow:hidden}
@@ -53,12 +56,21 @@ input[type="text"]::-ms-clear{display:none}
 #ui_evtWrap .calc_box .step.step01{background-image:url('img/step01_bg.jpg');}
 #ui_evtWrap .calc_box .step.step02{background-image:url('img/step02_bg.png');margin-left:45px;}
 #ui_evtWrap .calc_box .step .num{font-size:0;text-indent:-999em;}
-#ui_evtWrap .calc_box .step .desc{position:absolute;top:55px;left:0;z-index:3;width:100%;text-align:center;font-size:22px;}
+#ui_evtWrap .calc_box .step .desc{position:absolute;top:40px;left:0;z-index:3;width:100%;text-align:center;font-size:22px;}
 #ui_evtWrap .calc_box .step img{position:absolute;top:0;left:0;z-index:2;}
-#ui_evtWrap .calc_box .step .area{position:absolute;bottom:50px;left:0;z-index:3;width:100%;text-align:center;}
+#ui_evtWrap .calc_box .step .area{position:absolute;bottom:20px;left:0;z-index:3;width:100%;text-align:center;}
 #ui_evtWrap .calc_box .step .area .txt{display:inline-block;vertical-align:middle;font-size:25px;font-weight:700;}
-#ui_evtWrap .calc_box .step .rs_select{width:262px;height:58px;margin:0 5px;background:url('img/ico_selec.png') no-repeat 94% center;border:2px solid #ffcc33;box-sizing:border-box;vertical-align:middle;}
-#ui_evtWrap .calc_box .step .rs_select label{width:85%;height:54px;line-height:54px;color:#000;font-size:32px;}
+
+
+
+/* #ui_evtWrap .calc_box .step .rs_select{width:262px;height:58px;margin:0 5px;background:url('img/ico_selec.png') no-repeat 94% center;border:2px solid #ffcc33;box-sizing:border-box;vertical-align:middle;} */
+/* #ui_evtWrap .calc_box .step .rs_select{display:block;margin:15px 0;} */
+/* #ui_evtWrap .calc_box .step .rs_select label{padding:2px 10px;vertical-align:middle;font-size:36px;font-weight:700;border-bottom:2px solid #ffcc33;box-sizing:border-box;} */
+#ui_evtWrap .calc_box .step .rs_select select{padding:6px 40px 3px 8px;font-size:30px;font-weight:700;border:2px solid #ffcc33;box-sizing:border-box;background:url(img/ico_selec.png) no-repeat 94% center;}
+
+
+
+
 #ui_evtWrap area,
 #ui_evtWrap area:focus{border:none;outline:none;outline-style:none;-moz-outline-style:none;}
 
@@ -67,7 +79,7 @@ input[type="text"]::-ms-clear{display:none}
 #ui_evtWrap .calc_box .price .dot:after{content:',';}
 #ui_evtWrap .calc_box .top{height:218px;margin-top:110px;box-sizing:border-box;}
 #ui_evtWrap .calc_box .top .calc p{text-align:center;line-height:1.4em;letter-spacing:-0.05em;font-size:34px;}
-#ui_evtWrap .calc_box .top .calc p .price.first{width:222px;}
+#ui_evtWrap .calc_box .top .calc p .price.first{width:250px;}
 #ui_evtWrap .calc_box .top .calc p .price.second{width:176px;margin-top:20px;font-size:48px;}
 
 #ui_evtWrap .calc_box .bottom{padding:20px 40px 40px;}

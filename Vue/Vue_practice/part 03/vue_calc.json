@@ -17,3 +17,26 @@
 	{"location": "경상남도","subsidy": "800","final" : "530"},
 	{"location": "제주특별자치도","subsidy": "800","final" : "530"}
 ]
+
+// const calcLocation = [
+// 	{"location": "서울특별시","subsidy": "680"},
+// 	{"location": "부산광역시","subsidy": "700"},
+// 	{"location": "대구광역시","subsidy": "600"},
+// 	{"location": "인천광역시","subsidy": "670"},
+// 	{"location": "광주광역시","subsidy": "650"},
+// 	{"location": "대전광역시","subsidy": "700"},
+// 	{"location": "울산광역시","subsidy": "700"},
+// 	{"location": "세종특별자치시","subsidy": "600"},
+// 	{"location": "경기도","subsidy": "650"},
+// 	{"location": "강원도","subsidy": "770"},
+// 	{"location": "충청북도","subsidy": "900"},
+// 	{"location": "충청남도","subsidy": "820"},
+// 	{"location": "전라북도","subsidy": "650"},
+// 	{"location": "전라남도","subsidy": "1000"},
+// 	{"location": "경상북도","subsidy": "900"},
+// 	{"location": "경상남도","subsidy": "800"},
+// 	{"location": "제주특별자치도","subsidy": "800"}
+// ]
+// const calcString = JSON.stringify(calcLoct);
+// const calcJson = JSON.parse(calcString);
+// console.log(calcJson[0].location);
