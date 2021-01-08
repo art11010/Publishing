@@ -35,9 +35,46 @@ window.addEventListener('DOMContentLoaded',function(){
 				let finalPrev = Number(this.finalPrice);
 				let finalNext = Number(1190 - subsidyNext);
 				this.changeNum(subsidyPrev, subsidyNext, 800, 'subsidy');
-				this.changeNum(finalPrev, finalNext, 800, 'final');
+				// this.changeNum(finalPrev, finalNext, 800, 'final');
 			},
 			changeNum: function(start, end, duration, type){
+				let startStr = String(start);
+				let startArray = [];
+				let endStr = String(end);
+				let endArray = [];
+				// for(let i = startStr.length; i < startStr.length; --i){
+				for(let i = startStr.length; i > 0; i--){
+					let startDivi = startStr.substring(i,i-1)
+					startArray.push(startDivi);
+					// console.log(startArray)
+				}
+				for(let i = endStr.length; i > 0; i--){
+					let endDivi = endStr.substring(i,i-1)
+					endArray.push(endDivi);
+					// console.log(endArray)
+				}
+				console.log(startArray)
+				console.log(endArray)
+				for(let i = endStr.length; i > 0; i--){
+					if (startArray[i-1] === endArray[i-1]) return;
+					let range2 = startArray[i-1] - endArray[i-1];
+					let current2 = startArray[i-1];
+					let increment2 = endArray[i-1] > startArray[i-1] ? 1 : -1;
+					let stepTime2 = Math.abs(Math.floor(duration / range2));
+					let timer2 = setInterval(function() {
+						current2 += increment2;
+						console.log(current2)
+						if (current2 == endArray[i-1]) {
+							clearInterval(timer2);
+						}
+					}, stepTime2);
+					// if{
+					// 	console.log('hi')
+					// }
+				}
+
+
+
 				if (start === end) return;
 				let range = end - start;
 				let current = start;

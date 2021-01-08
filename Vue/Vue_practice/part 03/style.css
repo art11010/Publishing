@@ -34,6 +34,10 @@ input[type="text"]::-ms-clear{display:none}
 select{-webkit-appearance:none;-moz-appearance:none;appearance:none;}
 select::-ms-expand{display:none;}
 
+/* Vue CSS */
+.v-enter-active{transition:opacity .8s;}
+.v-leave-active{transition:opacity .7s ease .1s;position:absolute;}
+.v-enter, .v-leave-to{opacity:0;}
 
 /* 공통 CSS */
 .hide{display:block;width:0;height:0;font-size:0;line-height:0;text-indent:-99999em;overflow:hidden}
