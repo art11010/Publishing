@@ -1,0 +1,23 @@
+@charset "UTF-8";
+body{display: flex;justify-content: center;align-items: center;font-family:'Gloria Hallelujah', 'Nanum Pen Script', cursive;background-color:#333;}
+input{background:none;border:none}
+input:focus{outline:none}
+button{padding:0;cursor:pointer;background:none;border:none;font-family:'Gloria Hallelujah', cursive;}
+button:focus{outline:none}
+
+#app{padding:50px 90px;width:1040px;height:fit-content;box-shadow:10px 15px 25px #111;background-image:url(img/paper_texture_background.jpg);}
+#app h1{padding-bottom:20px;text-align:center;}
+.kor{font-size:28px;}
+
+
+.input_wrap label{margin-right:20px;font-size:22px;}
+.input_wrap input{width:175px;border-bottom:2px dashed #000;}
+.input_wrap .add_btn{width:100px;height:45px;line-height:45px;font-size:18px;position:relative;}
+.input_wrap .add_btn:after{display:block;content:'';width:0px;border-bottom:2px dashed #000;position:absolute;bottom:0;left:0;transition:.3s;}
+.input_wrap .add_btn:hover:after{width:100%;}
+
+.prodt_list{margin-top:50px;}
+.prodt_list p{font-size:22px;}
+.prodt_list span{display:inline-block;width:175px;text-align:center;}
+
+.total_price{font-size:22px;text-align:right;}
