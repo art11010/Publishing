@@ -14,11 +14,12 @@
 </head>
 <body>
 	<!-- Practice -->
-	<div id="app">
+	<!-- <div id="app">
 		<h1>Vue Shopping Basket</h1>
 		<div class="input_wrap">
 			<label>Product Name : <input type="text" v-model.lazy="prodtName"></label>
-			<label>Product Price : <input type="number" v-model.lazy="prodtPrice"></label>
+			<label>Product Price : <input type="number" v-model.lazy="prodtPrice"></label><br>
+			<label>Number of products : <input type="number" v-model.lazy="prodtNumber"></label>
 			<button type="button" class="add_btn">Add</button>
 		</div>
 		<div class="prodt_list">
@@ -28,6 +29,49 @@
 		</div>
 		<div class="total_price">
 			<span class="kor">총 액</span> : {{ prodtPrice }}
+		</div>
+	</div> -->
+	<!-- <div id="app_1">
+		<h1>Vue Shopping Basket</h1>
+		<input type="text" v-model.trim="addText" v-on:keyup.enter="addToDo" placeholder="할일">
+		<div v-for="todo in todos">
+			<label>
+				<input type="checkbox" v-model="todo.done">
+				<span v-bind:class="{donestyle:todo.done}">{{ todo.text }}</span>
+			</label>
+		</div>
+		<button type="button" :style="{'display':'block'}" v-on:click="cleanToDo">처리완료삭제</button>
+		<p>{{ remaining }} / {{ todos.length }}건 처리</p>
+	</div>
+	<style>
+		.donestyle{text-decoration: line-through;color: lightgray}
+	</style> -->
+
+	<div id="app">
+		<h1>Vue Shopping Basket</h1>
+		<div id="inputWrap">
+			<label>Product Name : <input type="text" v-model.lazy="prodtName" class="kor"></label>
+			<label>Product Price : <input type="number" v-model.lazy="prodtPrice"></label>
+			<label>Number of products : <input type="number" min="1" max="10" v-model="prodtNumber" class="num"></label>
+			<button type="button" class="add_btn" @click="addClick">Add</button>
+		</div>
+		<div id="probuctList">
+			<probuct-list
+			v-for="(item, index) in prodtList"
+			:key="item.id"
+			:index="index"
+			:prodt-n="item"
+			@click="DelClick"
+			></probuct-list>
+		</div>
+		<!-- <probuct-list></probuct-list> -->
+		<!-- <div id="probuctList">
+			<label>Product Name : {{ prodtName }}</label>
+			<label>Product Price : {{ prodtPrice }}</label>
+			<label>Number of products : {{ prodtNumber }}</label>
+		</div> -->
+		<div id="totalPrice">
+			Total Price : {{ totalPrice }}
 		</div>
 	</div>
 </body>
