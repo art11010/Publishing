@@ -8,32 +8,50 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="../reset.css">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script src="vue_basket.js"></script>
 </head>
 <body>
-	<div id="app">
-		<h1>Vue Shopping Basket</h1>
-		<div id="inputWrap">
-			<label>Product Name : <input type="text" v-model.lazy="prodtName" class="kor"></label>
-			<label>Product Price : <input type="number" v-model.lazy="prodtPrice"></label>
-			<label>Number of products : <input type="number" min="1" max="10" v-model="prodtNumber" class="num"></label>
-			<button type="button" class="add_btn" @click="addClick">Add</button>
-		</div>
-		<div id="probuctList">
-			<probuct-list
-			v-for="(item, index) in prodtList"
-			:key="item.id"
-			:index="index"
-			:prodt-n="item"
-			@delete="DelClick"
-			@toto="totalPricefn"
-			></probuct-list>
-		</div>
-		<div id="totalPrice">
-			Total Price : {{ totalPrice }}
+	<div id="appWrap">
+		<div id="app">
+			<h1> Vue Shopping Basket</h1>
+			<div id="inputWrap">
+				<label for="pName">Product Name : 
+					<input type="text" id="pName" class="kor"
+						v-model.lazy="prodtName"
+						ref="pName"
+					>
+				</label>
+				<label for="pPrice">Product Price : 
+					<input type="number" id="pPrice" min="1" max="99999999999999" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+						v-model="prodtPrice"
+					>
+				</label> 
+				<label for="pNumber">Number of products : 
+					<input type="number" id="pNumber" class="num" min="1" max="50"
+						v-model="prodtNumber"
+						@keyup.enter="addClick"
+					>
+				</label>
+				<button type="button" class="add_btn" @click="addClick">
+					<i class="fas fa-shopping-cart"></i>
+				</button>
+			</div>
+			<div id="probuctList">
+				<probuct-list
+					v-for="(item, index) in prodtList"
+					:key="item.id"
+					:index="index"
+					:prodt-n="item"
+					@totalfn="totalPricefn"
+				></probuct-list>
+			</div>
+			<div id="totalPrice">
+				Total Price : {{ totalPrice }}
+			</div>
 		</div>
 	</div>
 </body>

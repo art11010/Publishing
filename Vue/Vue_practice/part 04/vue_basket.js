@@ -1,14 +1,15 @@
 window.addEventListener('DOMContentLoaded',function(){
 	Vue.component('probuct-list',{
 		template: `
-			<div class="prodt_list" :class="{select:this.check}" :data-index=index>
-				<input type="checkbox" v-model="check" class="check_box">
-				<label>Name : <input disabled type="text" :value="this.prodtN.name" class="kor"></label>
+			<div class="prodt_list" :class="{select:this.check}">
+				<input type="checkbox" v-model="check" class="check_box" :id="index">
+				<label :for="index"></label>
+				<label>Name : <input disabled type="text" :value="prodtN.name" class="kor" ref="input"></label>
 				<label>Price : <input disabled type="number" :value="plusPrice"></label>
-				<label>Number : <input disabled type="number" :value="this.prodtN.amount" class="num"></label>
-				<button type="button" @click="addAmount">+</button>
-				<button type="button" @click="minAmount">-</button>
-				<button type="button" @click="delList">Delete</button>
+				<label>Number : <input disabled type="number" :value="prodtN.number" class="num"></label>
+				<button type="button" @click="plusnumber">+</button>
+				<button type="button" @click="minnumber">-</button>
+				<button type="button" @click="delList" class="del">Delete</button>
 			</div>
 		`,
 		props: {
@@ -17,41 +18,42 @@ window.addEventListener('DOMContentLoaded',function(){
 		},
 		data(){
 			return {
-				list_num: null,
 				check: this.prodtN.check,
 			}
 		},
 		methods:{
-			addAmount:function(){
-				if(10 <= this.prodtN.amount){
-					return alert('10개 이하만 구매 가능합니다.');
+			plusnumber:function(){
+				if(50 <= this.prodtN.number){
+					return alert('50개 이하만 구매 가능합니다.');
 				}
-				this.prodtN.amount++;
+				this.prodtN.number++;
 			},
-			minAmount:function(){
-				if(1 >= this.prodtN.amount){
+			minnumber:function(){
+				if(1 >= this.prodtN.number){
 					return alert('1개 이상 선택해주세요.');
 				}
-				this.prodtN.amount--;
+				this.prodtN.number--;
 			},
-			delList:function(e){
-				this.$emit('delete', this._uid);
+			delList:function(){
+				this.$emit('totalfn', 'delete', null, this.index);
 			}
 		},
 		mounted(){
-			this.$emit('toto', this.plusPrice);
+			this.$emit('totalfn', 'mounted', this.plusPrice);
 		},
 		watch: {
 			plusPrice: function(e){
-				this.$emit('toto', e, this._uid);
+				this.$emit('totalfn', 'plusPrice', e, this.index);
 			},
 			check: function(e){
-				this.$emit('toto', this.plusPrice, this._uid, e);
+				this.$emit('totalfn', 'check', this.plusPrice, this.index, e);
+				this.prodtN.check = this.check;
 			}
 		},
 		computed: {
 			plusPrice: function(){
-				return this.prodtN.price * this.prodtN.amount;
+				Vue.set(this.$data,	"check", this.prodtN.check);
+				return this.prodtN.price * this.prodtN.number;
 			},
 		},
 	});
@@ -62,10 +64,10 @@ window.addEventListener('DOMContentLoaded',function(){
 			prodtPrice: null,
 			prodtNumber: null,
 			totalPriceArray:[],
-			totalPrice: null,
+			totalPrice: 0,
 			prodtList:[
-				// {check: true, name: '가방', price: 29000, amount: 1},
-				// {check: true, name: '신발', price: 129000, amount: 2},
+				{check: true, name: '가방', price: 29000, number: 1},
+				{check: true, name: '신발', price: 129000, number: 2},
 			],
 		},
 		methods: {
@@ -74,27 +76,28 @@ window.addEventListener('DOMContentLoaded',function(){
 					return alert('값을 입력해주세요.');
 				}else{
 					this.prodtList.push(
-						{check: true, name:this.prodtName, price:this.prodtPrice, amount:this.prodtNumber}
+						{check: true, name:this.prodtName, price:this.prodtPrice, number:this.prodtNumber}
 					);
 					this.prodtName = null;
 					this.prodtPrice = null;
 					this.prodtNumber = null;
+					this.$refs.pName.focus();
 				}
 			},
-			DelClick: function(uid){
-				uid = uid-1;
-				this.prodtList.splice(uid, 1);
-				this.totalPriceArray.splice(uid, 1);
-				this.sumFn();
-			},
-			totalPricefn: function(p,uid,bool){
-				if(!uid){
-					this.totalPriceArray.push(p);
-				}else{
-					this.totalPriceArray.splice(uid-1, 1, p);
-				}
-				if(bool == false){
-					this.totalPriceArray.splice(uid-1, 1, null);
+			totalPricefn: function(type, plus, idx, bool){
+				if(type == 'mounted'){
+					this.totalPriceArray.push(plus);
+				}else if(type == 'check'){
+					if(bool == false){
+						this.totalPriceArray.splice(idx, 1, null);
+					}else if(bool == true){
+						this.totalPriceArray.splice(idx, 1, plus);
+					}
+				}else if(type == 'delete'){
+					this.prodtList.splice(idx, 1);
+					this.totalPriceArray.splice(idx, 1);
+				}else if(type == 'plusPrice'){
+					this.totalPriceArray.splice(idx, 1, plus);
 				}
 				this.sumFn();
 			},
@@ -106,17 +109,29 @@ window.addEventListener('DOMContentLoaded',function(){
 			}
 		},
 		watch: {
+			prodtPrice:function(){
+				if(this.prodtPrice == '' || this.prodtPrice == null) return;
+				if(99999999999999 < this.prodtPrice){
+					alert('정확한 가격을 입력해주세요.');
+					return this.prodtPrice = 99999999999999;
+				}else if(1 > this.prodtPrice){
+					alert('정확한 가격을 입력해주세요.');
+					return this.prodtPrice = 1;
+				}
+			},
 			prodtNumber:function(){
 				if(this.prodtNumber == '' || this.prodtNumber == null) return;
-				if(10 < this.prodtNumber){
-					alert('10개 이하만 구매 가능합니다.');
-					return this.prodtNumber = 10;
+				if(50 < this.prodtNumber){
+					alert('50개 이하만 구매 가능합니다.');
+					return this.prodtNumber = 50;
 				}else if(1 > this.prodtNumber){
 					alert('1개 이상 구매 가능합니다.');
 					return this.prodtNumber = 1;
 				}
 			},
-		}
+		},
+		mounted(){
+			this.$refs.pName.focus();
+		},
 	});
-
 });
