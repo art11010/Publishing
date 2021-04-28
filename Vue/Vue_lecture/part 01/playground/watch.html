@@ -4,21 +4,31 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Methods</title>
+	<title>Watch</title>
 </head>
 <body>
 	<div id="app">
-		<button v-on:click="logText">click me</button>
-		<input type="text" v-on:keyup.enter="logText">
-		<button>add</button>
+		{{ num }}
+		<button v-on:click="addNum">increase</button>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
 		new Vue({
 			el: '#app',
+			data:{
+				num: 10
+			},
 			methods: {
+				addNum: function(){
+					this.num++;
+				},
 				logText: function(){
-					console.log('clicked');
+					console.log('changed');
+				}
+			},
+			watch: {
+				num: function(){
+					this.logText();
 				}
 			}
 		});
