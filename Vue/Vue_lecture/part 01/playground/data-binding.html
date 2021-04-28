@@ -4,16 +4,24 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Instance</title>
+	<title>Document</title>
 </head>
 <body>
-	<div id="app"></div>
+	<div id="app">
+		<p>{{ num }}</p>
+		<p>{{ doubleNum }}</p>
+	</div>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	<script>
-		var vm = new Vue({
+		new Vue({
 			el: '#app',
 			data: {
-				message: 'hi'
+				num: 10
+			},
+			computed: {
+				doubleNum: function(){
+					return this.num * 2;
+				}
 			}
 		});
 	</script>
