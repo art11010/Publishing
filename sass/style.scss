@@ -2,11 +2,26 @@ $wGray:#808080;
 $gray:#333;
 $pink:#fdd;
 $white:#fff;
-$blue:blue;
-$red:red;
+$blue:lightsteelblue;
 $fz30:20px;
 body{background-color:$wGray;}
-.btn1{display: block;width: 200px;height: 50px;line-height: 50px;font-size: $fz30;color:$gray;text-align: center;background-color: $white;border:1px solid $gray;
+.one{display: block;width: 200px;height: 50px;line-height: 50px;font-size: $fz30;color:$gray;text-align: center;background-color: $white;border:1px solid $gray;
 	&:hover{background-color: $gray;color:$white;border-color:$white}
 }
-.btn2{display: block;padding: 10px;font-size: $fz30;border:1px solid $gray;background-color: $pink;color:$gray;}
+.two{display: block;padding: 10px;font-size: $fz30;border:1px solid $gray;background-color: $pink;color:$gray;}
+
+
+.ul_wrap{color:$pink;
+	ul{border:1px solid $pink;
+		> li{background-color: $pink;
+			a{color:$gray;text-decoration:none;
+				&:hover{text-decoration:underline}
+				&.test_a{font-weight: 700;}
+			}
+			.test_a{color:$blue}
+			&:last-child{border:1px dotted $gray}
+		}
+	}
+}
+
+@mixin test{}
